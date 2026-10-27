@@ -20,7 +20,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
 <style>
-:root{--g1:#0b3b2e;--g2:#0f4a3a;--gold:#d4a40a;--gold2:#f0c53a;--cu1:#2b160b;--cu2:#6b3a1c;--cu3:#a8642a;--red:#b3261e;--ok:#1f9d55;--txt:#fff;--mut:#e9dcc4;--r:16px;--serif:Georgia,"Times New Roman",Times,serif;--sans:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+:root{--g1:#0b3b2e;--g2:#0f4a3a;--gold:#d4a40a;--gold2:#f0c53a;--cu1:#2b160b;--cu2:#6b3a1c;--cu3:#a8642a;--red:#b3261e;--ok:#17703c;--txt:#fff;--mut:#e9dcc4;--r:16px;--serif:Georgia,"Times New Roman",Times,serif;--sans:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;min-height:100vh;color:var(--txt);font-family:var(--sans);font-size:1rem;line-height:1.5;background:#3a1d0d;background-image:radial-gradient(ellipse at 15% 10%,rgba(214,130,50,.55),transparent 55%),radial-gradient(ellipse at 90% 40%,rgba(168,100,42,.45),transparent 50%),linear-gradient(180deg,#4a2611,#2b160b);background-attachment:fixed}
@@ -54,7 +54,7 @@ main{max-width:1000px;margin:0 auto;padding:18px 14px 40px}
 .lcard.done{border-color:var(--gold2);box-shadow:0 0 0 2px rgba(240,197,58,.4),0 6px 18px rgba(0,0,0,.3)}
 .stars{color:var(--gold2);font-size:1.15rem;letter-spacing:2px}
 .chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--gold);border-radius:999px;padding:3px 12px;font-size:.9rem;color:var(--gold2)}
-.hero{display:grid;gap:14px}
+.hero{display:grid;gap:14px}.jk{font-family:var(--serif);font-size:1.2rem;line-height:1.4;margin:.4em 0}.jk.punch{color:var(--gold2);font-weight:700}
 .nameRow{display:flex;gap:8px;flex-wrap:wrap}
 .nameRow input{flex:1 1 180px;min-height:48px;border-radius:12px;border:2px solid var(--gold);background:#fff;color:#1a1205;padding:0 14px;font:inherit}
 .namebtn{min-height:48px;padding:0 18px;border-radius:12px;border:2px solid #777;background:#555;color:#ddd;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
@@ -106,7 +106,7 @@ body.nofig .fh,body.nofig .bub{display:none}
 body.fig main,body.fig .ftr{padding-bottom:130px}
 .rm .fh *,.rm .fh{animation:none!important}
 .foam{position:fixed;width:10px;height:10px;border-radius:50%;background:#fff;z-index:40;pointer-events:none;opacity:.95}
-.cf{position:fixed;top:-12px;width:10px;height:14px;z-index:45;pointer-events:none}
+.cf{position:fixed;top:-60px;z-index:45;pointer-events:none;line-height:0}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-6px) rotate(1deg)}}
 @keyframes hop{0%{transform:translateY(0)}35%{transform:translateY(-34px) rotate(-8deg)}70%{transform:translateY(0) rotate(4deg)}100%{transform:none}}
 @keyframes enter{from{transform:translateX(-160px) rotate(-25deg)}60%{transform:translateX(8px) rotate(6deg)}to{transform:none}}
@@ -131,7 +131,7 @@ body.fig main,body.fig .ftr{padding-bottom:130px}
 
 <script>
 "use strict";
-const VERSION = "1.0.4", STAND = "27.10.2026";
+const VERSION = "1.2.1", STAND = "27.10.2026";
 const SHARE_URL = "https://nosz.github.io/kuchlbauer/";
 const SITE = "https://kuchlbauer.de/";
 const LANGS = [["de","DE","Deutsch","de-DE","de"],["en","EN","English","en-GB","en"],["it","IT","Italiano","it-IT","it"],["by","BAY","Bairisch","de-DE","bar"]];
@@ -164,6 +164,11 @@ const S = {
  brand:Array(4).fill("Kuchlbauer Quiz by Anja"),
  title:["Das Kuchlbauer-Quiz","The Kuchlbauer Quiz","Il Quiz Kuchlbauer","Des Kuchlbauer-Quiz"],
  sub:["Der Weissbier-Spezialist aus Abensberg: sieben Lektionen, eine sprechende Flasche und null Kater.","The wheat beer specialist from Abensberg: seven lessons, one talking bottle and zero hangover.","Lo specialista della birra di frumento di Abensberg: sette lezioni, una bottiglia parlante e zero postumi.","Da Weissbier-Spezialist aus Abensberg: sieben Lektionen, a redade Flaschn und koa Brummschädl."],
+ jokesH:["Flaschl erzählt Witze","Flaschl tells jokes","Flaschl racconta barzellette","Da Flaschl dazählt Witz"],
+ jokesSub:["Die besten Bierwitze, frei erzählt von einer Flasche.","The best beer jokes, freely told by a bottle.","Le migliori barzellette sulla birra, raccontate liberamente da una bottiglia.","De bestn Bierwitz, frei dazählt vo ra Flaschn."],
+ jokeShow:["Pointe zeigen","Show punchline","Mostra la battuta","Pointn herzoang"],
+ jokeNext:["Nächster Witz","Next joke","Prossima barzelletta","Nächster Witz"],
+ jokeNote:["Frei nach bekannten Bierwitz-Motiven selbst formuliert. Humor, keine Aussage über die Brauerei.","Freely written after well-known beer joke motifs. Humour, no statement about the brewery.","Scritte liberamente su motivi noti di barzellette sulla birra. Umorismo, nessuna affermazione sulla birreria.","Frei noch bekannte Bierwitz-Motive söiba gschrim. Spaß, koa Aussage über d'Brauerei."],
  share:["Teilen","Share","Condividi","Teiln"],
  figOff:["Flaschl ausblenden","Hide Flaschl","Nascondi Flaschl","Flaschl ausblendn"],
  figOn:["Flaschl einblenden","Show Flaschl","Mostra Flaschl","Flaschl einblendn"],
@@ -405,6 +410,46 @@ const LESSONS = [
    ["Wos is as Weissbier-Quartier+ laut Startseitn?","A klimapositives Logistikzentrum","A Skigebiet","A Museum fia Kronkorkn","D'Startseitn beschreibt's als klimapositives Logistikzentrum und als Lebensraum fia Mensch und Natur."]]
  ]}
 ];
+/* ---------- Witze (frei nach bekannten Bierwitz-Motiven selbst formuliert; Eintrag mit 1 Text = Spruch ohne Pointe, mit 2 = Witz mit Pointe) ---------- */
+const JOKES = [
+ [["Treffen sich zwei Flaschen. Sagt die eine: „Du siehst leer aus.“","Sagt die andere: „Danke, ich habe auch gerade nichts im Kopf.“"],["Two bottles meet. One says: “You look empty.”","The other: “Thanks, I've got nothing on my mind either.”"],["Si incontrano due bottiglie. Una dice: «Sembri vuota.»","L'altra: «Grazie, anch'io non ho niente in testa.»"],["Treffa se zwoa Flaschn. Sagt de oane: „Du schaugst leer aus.“","Sagt de ander: „Dankschee, i hob aa grad nix im Kopf.“"]],
+ [["Mein Fitnessplan: zweimal die Woche Maßtraining.","Maß halten klappt dabei leider nie."],["My fitness plan: two Maß sessions a week.","The trouble is, in German “Maß halten” means keeping moderation. I never manage it."],["Il mio piano fitness: due volte a settimana allenamento di Maß.","Ma la misura, purtroppo, non so mai tenerla. (In tedesco «Maß» è sia il boccale da litro sia la misura.)"],["Mei Fitnessplan: zwoamoi d'Woch Maßtraining.","Maß haltn kloppt dabei leider nia."]],
+ [["Kennst du den Witz vom Braumeister?","Der ist schon so alt, der ist abgelagert."],["Know the one about the master brewer?","It's so old it's already matured."],["Conosci la barzelletta del mastro birraio?","È così vecchia che è già maturata."],["Kennst an Witz vom Braumoasta?","Der is scho so oid, der is abglagert."]],
+ [["Ich habe das Weissbier gebeten, ruhig zu bleiben.","Es sagte: „Ich bin nur gerade ein bisschen aufgeschäumt.“"],["I asked the wheat beer to stay calm.","It said: “I'm just a bit foamed up right now.”"],["Ho chiesto alla birra di frumento di stare calma.","Ha risposto: «Sono solo un po' schiumata in questo momento.»"],["I hob 's Weissbier bittn, ruhig zum bleibn.","Es hod gsagt: „I bin grad bloß a bissl aufgschäumt.“"]],
+ [["Was ist meine liebste Form der Wertschätzung?","Pfand. Man bringt mich immer zurück."],["What's my favourite form of appreciation?","Deposit refunds. They always bring me back."],["Qual è la mia forma di apprezzamento preferita?","Il vuoto a rendere. Mi riportano sempre indietro."],["Wos mog i am liabstn als Wertschätzung?","Pfand. Ma bringt mi immer zruck."]],
+ [["Was ist ein Weissbier ohne Schaum?","Wie ein Turm ohne Hundertwasser: Er steht, aber es fehlt das gewisse Etwas."],["What is a wheat beer without foam?","Like a tower without Hundertwasser: it stands, but it lacks that certain something."],["Che cos'è una birra di frumento senza schiuma?","Come una torre senza Hundertwasser: sta in piedi, ma manca quel qualcosa in più."],["Wos is a Weissbier ohne Schaum?","Wia a Turm ohne Hundertwasser: Er steht, aber 's fehlt des gwisse Etwas."]],
+ [["Was macht die Hefe am liebsten beim Yoga?","Den herabschauenden Bodensatz."],["What does yeast like best in yoga?","Downward-facing sediment."],["Cosa preferisce fare il lievito nello yoga?","Il sedimento a testa in giù."],["Wos mog d'Hefe beim Yoga am liabstn?","Den herabschauadn Bodnsatz."]],
+ [["Sagt ein Weissbier zum anderen: „Du wirkst heute so trüb.“","„Das ist Absicht. Ich bin ein Weissbier, kein Pils!“"],["One wheat beer says to another: “You look cloudy today.”","“On purpose. I'm a wheat beer, not a pilsner!”"],["Una birra di frumento dice all'altra: «Oggi sei torbida.»","«È voluto. Sono una birra di frumento, non una pils!»"],["Sagt a Weissbier zum andern: „Du schaugst heid so trüb aus.“","„Des is Absicht. I bin a Weissbier, koa Pils!“"]]
+ ,
+ [["Was haben ein guter Vorsatz und Bierschaum gemeinsam?","Beide halten nur, wenn man sie nicht anpustet."],["What do a good resolution and beer foam have in common?","Both only last if you don't blow on them."],["Cosa hanno in comune un buon proposito e la schiuma della birra?","Entrambi durano solo se non ci soffi sopra."],["Wos hom a guada Vorsatz und da Bierschaum gmeinsam?","Boide haltn nur, wenn ma s' need o'blast."]],
+ [["Warum kann ein Weissbier nicht lügen?","Weil man ihm immer auf den Grund schauen kann."],["Why can't wheat beer lie?","Because you can always get to the bottom of it."],["Perché la birra di frumento non sa mentire?","Perché puoi sempre andare a fondo."],["Warum konn a Weissbier need lügn?","Weil ma eam imma af'n Grund schaun konn."]],
+ [["Warum sind Brauer so entspannt?","Sie lassen erst mal alles gären."],["Why are brewers so relaxed?","They let everything ferment first."],["Perché i birrai sono così rilassati?","Lasciano prima fermentare tutto."],["Warum san Brauer so entspannt?","Sie lassn erst amoi olles gärn."]],
+ [["Was sagt das leere Glas zum Wirt?","„Ich glaube, wir müssen reden. Ich fühle mich so unausgefüllt.“"],["What does the empty glass say to the landlord?","“I think we need to talk. I feel so unfulfilled.”"],["Cosa dice il bicchiere vuoto all'oste?","«Credo che dobbiamo parlare: mi sento così incompiuto.»"],["Wos sagt des leere Glas zum Wirt?","„I glaub, mia miassn redn. I fühl mi so unausgfüllt.“"]],
+ [["Wie nennt man einen Bierkrug mit Selbstbewusstsein?","Einen Maßstab."],["What do you call a beer mug with self-confidence?","A Maßstab. (German for benchmark, and it contains Maß, the litre mug.)"],["Come si chiama un boccale con tanta autostima?","Un Maßstab (in tedesco «metro di misura», e contiene Maß, il boccale da litro)."],["Wia hoaßt a Bierkruag mit Selbstbewusstsein?","A Maßstab."]],
+ [["Warum brauchen Hopfen und Malz keine Paartherapie?","Bei den beiden ist noch nichts verloren."],["Why don't hops and malt need couples therapy?","With those two, nothing is lost yet. (German idiom: a lost cause is “Hopfen und Malz verloren”.)"],["Perché luppolo e malto non hanno bisogno di terapia di coppia?","Per loro non è ancora tutto perduto (in tedesco «Hopfen und Malz verloren» significa causa persa)."],["Warum brauchn Hopfn und Malz koa Paartherapie?","Bei de zwoa is no nix valorn."]],
+ [["Was sagt ein Weissbier, wenn es fertig eingeschenkt ist?","„Jetzt bin ich obenauf.“"],["What does a wheat beer say once it has been poured?","“Now I'm on top of things.”"],["Cosa dice una birra di frumento appena versata?","«Ora sono in cima a tutto.»"],["Wos sagt a Weissbier, wenn 's eigschenkt is?","„Iatz bin i obenauf.“"]],
+ [["Warum steht im Hundertwasser-Turm kein Lineal?","Gerade Linien sind dort nicht gefragt."],["Why is there no ruler in the Hundertwasser tower?","Straight lines aren't in demand there."],["Perché nella torre di Hundertwasser non c'è un righello?","Le linee dritte lì non vanno di moda."],["Warum steht im Hundertwasser-Turm koa Lineal?","Gerade Linien san do need gfragt."]],
+ [["Was singt die Hefe, wenn sie verliebt ist?","„Ich bin so gärn bei dir.“"],["What does yeast sing when it's in love?","“Ich bin so gärn bei dir.” (German pun: gären means to ferment, gern means gladly.)"],["Cosa canta il lievito quando è innamorato?","«Ich bin so gärn bei dir.» (Gioco di parole tedesco: gären = fermentare, gern = volentieri.)"],["Wos singt d'Hefe, wenn s' valiabt is?","„I bin so gärn bei dir.“"]],
+ [["Was gehört zur Weißwurst wie das Amen in die Kirche?","Ein Weissbier. Der Rest ist Senf."],["What goes with white sausage like the Amen in church?","A wheat beer. The rest is just mustard."],["Cosa ci vuole con la Weißwurst come l'amen in chiesa?","Una birra di frumento. Il resto è senape."],["Wos ghert zur Weißwurscht wia 's Amen in d'Kirch?","A Weissbier. Der Rest is Senf."]],
+ [["Was sagt die volle Flasche zur leeren?","„Du solltest öfter mal was aufnehmen.“"],["What does the full bottle say to the empty one?","“You should take in something more often.”"],["Cosa dice la bottiglia piena a quella vuota?","«Dovresti prendere qualcosa più spesso.»"],["Wos sagt de volle Flaschn zu da leern?","„Du solltast öfter amoi wos aufnehma.“"]],
+ [["Warum darf Flaschl nicht Karussell fahren?","Hinterher schäumt er über."],["Why is Flaschl not allowed on the carousel?","Afterwards he foams over."],["Perché a Flaschl non è permesso salire sulla giostra?","Dopo schiuma e trabocca."],["Warum derf da Flaschl need Karussell fahrn?","Hinterher schäumt er über."]],
+ [["Ein Weissbier ohne Schaumkrone ist wie ein König ohne Krone: Es regiert trotzdem, sieht aber nicht danach aus."],["A wheat beer without a head is like a king without a crown: it still rules, it just doesn't look the part."],["Una birra di frumento senza schiuma è come un re senza corona: regna lo stesso, ma non sembra."],["A Weissbier ohne Schaumkron is wia a Kini ohne Kron: er regiert trotzdem, aber er schaut need danach aus."]],
+ [["Die Hefe kann nichts dafür, dass sie sich immer unten absetzt. Sie ist einfach bodenständig."],["Yeast can't help always settling at the bottom. It's just down to earth."],["Il lievito non può farci niente se si deposita sempre sul fondo. È semplicemente con i piedi per terra."],["D'Hefe konn nix dafür, dass s' si imma untn absetzt. Sie is oafach bodenständig."]],
+ [["Der Schaum ist der Smalltalk des Weissbiers: Er sieht gut aus und hält nicht lange."],["Foam is the small talk of wheat beer: it looks good and doesn't last long."],["La schiuma è il chiacchiericcio della birra di frumento: ha un bell'aspetto e dura poco."],["Da Schaum is da Smalltalk vom Weissbier: Er schaut guad aus und hoitt need lang."]],
+ [["Ich habe nichts gegen Pfand. Ich hänge nur sehr an meiner Rückgabe."],["I've got nothing against deposits. I'm just very attached to my return."],["Non ho niente contro il vuoto a rendere. Sono solo molto legato al mio ritorno."],["I hob nix gegn Pfand. I hock bloß sehr an meiner Rückgabe."]],
+ [["Die beste Erfindung nach dem Bier? Das Glas. Sonst müssten wir schnorcheln."],["The best invention after beer? The glass. Otherwise we'd have to snorkel."],["La migliore invenzione dopo la birra? Il bicchiere. Altrimenti dovremmo fare snorkeling."],["De beste Erfindung nach'm Bier? 's Glas. Sonst miassatn mia schnorchln."]],
+ [["Gutes Weissbier schenkt man schräg ein. Ich weiß, wovon ich rede, ich liege oft schräg."],["Good wheat beer is poured at an angle. I know what I'm talking about, I often lie at an angle."],["La buona birra di frumento si versa inclinata. So di cosa parlo, spesso sto inclinato anch'io."],["A guads Weissbier schenkt ma schräg ei. I woaß, wovo i red, i lieg oft schräg."]],
+ [["Manche Menschen zählen Schäfchen. Ich zähle Schaumbläschen. Nach drei bin ich eingeschlafen."],["Some people count sheep. I count foam bubbles. After three I'm asleep."],["C'è chi conta le pecore. Io conto le bollicine di schiuma. Dopo tre dormo."],["Manche zähln Schäfchen. I zähl Schaumbläschen. Nach dreie schlof i."]],
+ [["Ein Hundertwasser-Turm und ein Weissbier haben eins gemeinsam: Man schaut immer erst von unten."],["A Hundertwasser tower and a wheat beer have one thing in common: you always look at them from below first."],["Una torre di Hundertwasser e una birra di frumento hanno una cosa in comune: si guardano sempre prima dal basso."],["A Hundertwasser-Turm und a Weissbier hom oans gmeinsam: Ma schaut imma erst vo untn."]],
+ [["Meine Lebensweisheit: Wer lange wartet, bekommt ein gesetztes Weissbier."],["My life motto: those who wait long enough get a settled wheat beer."],["Il mio motto di vita: chi aspetta abbastanza riceve una birra di frumento assestata."],["Mei Lebensweisheit: Wer lang wart, kriagt a gsetztes Weissbier."]],
+ [["Beim Weissbier gilt: erst schauen, dann schäumen, dann genießen."],["With wheat beer it's: look first, then foam, then enjoy."],["Con la birra di frumento vale: prima guardare, poi schiumare, poi gustare."],["Bei am Weissbier gilt: Erst schaun, nacha schäumen, nacha genieß'n."]],
+ [["Ich bin nicht dick, ich habe einen großzügigen Flaschenbauch."],["I'm not fat, I have a generous bottle belly."],["Non sono grasso, ho un generoso pancione da bottiglia."],["I bin need dick, i hob an großzügign Flaschnbauch."]],
+ [["Wenn Hopfen und Malz verloren sind, ruft man am besten den Braumeister."],["When hops and malt are lost, the best thing is to call the master brewer."],["Quando luppolo e malto sono perduti, la cosa migliore è chiamare il mastro birraio."],["Wenn Hopfn und Malz valorn san, ruaft ma am bestn an Braumoasta."]]
+];
+let joke = {bag: [], cur: null, shown: false};
+const hasPunch = () => JOKES[joke.cur][0].length === 2;
+function nextJoke(){ if(!joke.bag.length) joke.bag = shuffle(JOKES.map((_, i) => i)); joke.cur = joke.bag.pop(); joke.shown = false; }
+nextJoke();
 const NQ = 3;
 const lessonById = id => LESSONS.find(l => l.id === id);
 const bestOf = id => (st.prog[id] && st.prog[id].best) || 0;
@@ -464,14 +509,14 @@ function foamBurst(){
 }
 function confetti(){
   if(reduced()) return;
-  const cols = ["#d4a40a", "#f0c53a", "#fff", "#1b7a5f", "#b3261e"];
-  for(let i = 0; i < 36; i++){
-    const e = h("div", {class:"cf"}); e.style.left = Math.random() * 100 + "vw"; e.style.background = rnd(cols);
-    e.style.animation = "fall " + (1.8 + Math.random() * 1.6) + "s linear " + Math.random() * .6 + "s forwards";
-    document.body.append(e); setTimeout(() => e.remove(), 4500);
+  const cols = [["#b9702c", "#d4a40a"], ["#2f8f5f", "#f0c53a"], ["#7a4a24", "#b3261e"], ["#c98a3c", "#1b7a5f"], ["#3f7f9f", "#fff"]];
+  for(let i = 0; i < 28; i++){
+    const c = rnd(cols), e = h("div", {class:"cf"}); const sz = 18 + Math.random() * 14;
+    e.innerHTML = '<svg viewBox="0 0 24 44" width="' + sz + '" height="' + (sz * 1.83) + '" aria-hidden="true"><path d="M9 4h6v10c0 4 6 5 6 11v14c0 2-2 4-4 4H7c-2 0-4-2-4-4V25c0-6 6-7 6-11Z" fill="' + c[0] + '" stroke="#3a1c08" stroke-width="1.2"/><rect x="8" y="1" width="8" height="4" rx="1" fill="#d4a40a"/><rect x="3.500" y="27" width="17" height="9" fill="' + c[1] + '"/><circle cx="9.500" cy="20" r="1.600" fill="#fff"/><circle cx="14.500" cy="20" r="1.600" fill="#fff"/><circle cx="9.800" cy="20.200" r=".8" fill="#2a1205"/><circle cx="14.800" cy="20.200" r=".8" fill="#2a1205"/><path d="M9.500 23.500q2.500 2.200 5 0" fill="none" stroke="#2a1205" stroke-width="1.100" stroke-linecap="round"/></svg>';
+    e.style.left = Math.random() * 96 + "vw"; e.style.animation = "fall " + (2 + Math.random() * 1.8) + "s linear " + Math.random() * .7 + "s forwards";
+    document.body.append(e); setTimeout(() => e.remove(), 5200);
   }
-}
-function setFig(){
+}function setFig(){
   document.body.classList.toggle("nofig", !st.fig); document.body.classList.toggle("fig", st.fig);
   document.documentElement.classList.toggle("rm", reduced());
 }
@@ -566,6 +611,12 @@ function viewHome(){
       h("div", {}, h("p", {class:"small mut", text:t("nameQ")}), nameBlock(),
         h("div", {class:"row", style:"margin-top:8px"}, st.name ? h("button", {type:"button", class:"btn ghost", onclick:() => { st.name = ""; save(); render(); }}, ic("person"), t("anon")) : h("button", {type:"button", class:"btn ghost", onclick:() => snack(t("anon"))}, ic("person"), t("anon"))))),
     h("h2", {text:t("lessons")}), h("div", {class:"grid"}, cards),
+    h("section", {class:"card jokes"}, h("h2", {}, ic("emoji-laughing"), " ", t("jokesH")), h("p", {class:"mut small", text:t("jokesSub")}),
+      h("p", {class:"jk" + (hasPunch() ? "" : " punch"), text:JOKES[joke.cur][li()][0]}),
+      hasPunch() && joke.shown ? h("p", {class:"jk punch", text:JOKES[joke.cur][li()][1]}) : null,
+      h("div", {class:"row"}, hasPunch() && !joke.shown ? h("button", {type:"button", class:"btn", onclick:() => { joke.shown = true; render(); say(JOKES[joke.cur][li()][1], 7000); hop(); }}, ic("chat-dots"), t("jokeShow")) : null,
+        h("button", {type:"button", class:hasPunch() && !joke.shown ? "btn ghost" : "btn", onclick:() => { nextJoke(); render(); if(!hasPunch()){ say(JOKES[joke.cur][li()][0], 7000); hop(); } }}, ic("arrow-right"), t("jokeNext"))),
+      h("p", {class:"small mut", style:"margin-top:10px", text:t("jokeNote")})),
     h("div", {class:"row", style:"margin:16px 0"}, h("button", {type:"button", class:"btn ghost", onclick:() => go({v:"certs"})}, ic("trophy"), t("certs"))),
     installCard(),
     h("section", {class:"card"}, h("h2", {text:t("official")}), h("p", {class:"mut small", text:t("officialSub")}),
@@ -637,9 +688,9 @@ function certSvg(id){
   const nm = st.name || t("guest");
   let y = 330, body = "";
   const line = (txt, size, fill, weight, anchor) => { body += '<text x="' + (anchor === "start" ? 360 : 780) + '" y="' + y + '" text-anchor="' + (anchor || "middle") + '" font-family="Georgia,serif" font-size="' + size + '" fill="' + fill + '"' + (weight ? ' font-weight="' + weight + '"' : "") + '>' + esc(txt) + '</text>'; y += size * 1.35; };
-  wrap(nm, 22).forEach(s => line(s, 50, "#0b3b2e", 700)); y += 22;
+  const nmBig = nm.length <= 22; wrap(nm, nmBig ? 22 : 30).forEach(s => line(s, nmBig ? 50 : 38, "#0b3b2e", 700)); y += nmBig ? 22 : 14;
   wrap(master ? t("didMaster") : t("didPass"), 52).forEach(s => line(s, 26, "#333"));
-  if(master){ y += 8; LESSONS.forEach(l => line(l.t[li()], 21, "#0f4a3a", 600)); }
+  if(master){ y += 8; LESSONS.forEach(l => line(l.t[li()], 19, "#0f4a3a", 600)); }
   else { y += 10; wrap(L.t[li()], 30).forEach(s => line("„" + s + "“", 36, "#8a6500", 700)); y += 4; line(t("rightOf", {r:bestOf(id), n:NQ}), 24, "#333", 600); y += 12;
     L.q.forEach(q => { const a = q[li()]; wrap(t("knew") + " " + a[1], 62).forEach((s, i) => line(s, 20, "#222", i ? 400 : 600)); y += 4; }); }
   const stN = master ? 3 : bestOf(id);

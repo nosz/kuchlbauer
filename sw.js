@@ -1,5 +1,5 @@
 /* Kuchlbauer-Quiz - Service Worker. VERSION muss mit VERSION in index.html uebereinstimmen. */
-const VERSION = "1.0.4";
+const VERSION = "1.2.1";
 const CACHE = "kuchlbauer-quiz-" + VERSION;
 const CORE = ["./", "index.html", "manifest.webmanifest", "vendor/bootstrap-icons/bootstrap-icons.min.css", "vendor/bootstrap-icons/fonts/bootstrap-icons.woff2"];
 const OPTIONAL = ["favicon.png", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "icon-maskable-512.png", "kuchlbauer_vorschau.png"];

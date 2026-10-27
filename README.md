@@ -1,6 +1,6 @@
 # Das Kuchlbauer-Quiz mit Flaschl
 
-**Version 1.0.4, Stand 27.10.2026.** Eigenständige Web-App (PWA) rund um die Brauerei zum Kuchlbauer in Abensberg (https://kuchlbauer.de/), gebaut nach dem Vorbild von DANCECHANCE (Referenz in `referenz/`, unverändert).
+**Version 1.2.1, Stand 27.10.2026.** Eigenständige Web-App (PWA) rund um die Brauerei zum Kuchlbauer in Abensberg (https://kuchlbauer.de/), gebaut nach dem Vorbild von DANCECHANCE (Referenz in `referenz/`, unverändert).
 
 ## Starten (lokal)
 Die App braucht einen kleinen Webserver (wegen Service Worker und PWA):
@@ -38,7 +38,20 @@ Startseite https://kuchlbauer.de/ · Bier & Kunst https://kuchlbauer.de/bier-und
 - Karriere-Link: kuchlbauer.de nutzt selbst `http://`; die App verlinkt die https-Adresse.
 - Service-Worker-Registrierung ließ sich im eingebetteten Browserfenster nicht prüfen (Fehler dort von der Umgebung); Syntax von `sw.js` ist geprüft. Bitte einmal in Chrome/Edge unter http://localhost:8765/ gegenprüfen (DevTools, Application).
 
+## Tests
+Automatische Suite: 	ests/kuchlbauer.test.js (1048 Prüfungen, Stand 1.1.0, 0 Fehler). Ausführen bei laufendem Testserver in der Browser-Konsole auf http://localhost:8765/ :
+
+```js
+const s = await (await fetch('tests/kuchlbauer.test.js')).text(); const r = await (0, eval)(s + '\nrunSuite()'); console.log(r.summary, r.fails);
+```
+
+Nicht automatisch prüfbar: Service-Worker-Registrierung und Installation (in Chrome/Edge unter localhost nachprüfen).
+
 ## Änderungsprotokoll
+- 1.2.1 (27.10.2026): Witze: Zähler „x von y“ entfernt. Die Witze kommen in zufälliger Reihenfolge (ohne Wiederholung in einer Runde), mal mit, mal ohne Pointe.
+- 1.2.0 (27.10.2026): Viel mehr Witze: jetzt 32 (20 Witze mit Pointe, 12 Sprüche ohne Pointe) in vier Sprachen. Sprüche ohne Pointe zeigen nur den Text, Flaschl sagt ihn direkt. Alle selbst formuliert.
+- 1.1.0 (27.10.2026): Neuer Abschnitt „Flaschl erzählt Witze“ (8 Bierwitze in vier Sprachen, Pointe zum Aufdecken, Flaschl spricht die Pointe, Reihenfolge ohne Wiederholung). Konfetti sind jetzt lauter süße Flaschen mit Gesicht. Die Web-Suche lieferte nur Wortspiel-Listen und Wirtshaus-Motive, keine abschreibbaren Witze: Die Witze sind selbst formuliert (Motive: leere Flaschen, Maß halten, abgelagert, aufgeschäumt, Pfand, trüb).
+- 1.0.5 (27.10.2026): Testsuite `tests/kuchlbauer.test.js` (999 Prüfungen) eingeführt. Gefunden und behoben: zu geringer Kontrast bei richtiger Antwort (Grün abgedunkelt), lange Namen auf der Urkunde (Name bricht kleiner um, Meister-Liste kompakter).
 - 1.0.4 (27.10.2026): Urkunde mit Verschnörkelungen: Eck-Schnörkel mit Ranken und Blättern, Zierranken statt einfacher Linien, Lorbeerkranz um das Medaillon.
 - 1.0.3 (27.10.2026): Urkunde neu gestaltet: Pergament-Hintergrund, bairische Raute (blau-weiß) im Rahmen, Goldrahmen mit Eckornamenten, Medaillon mit Flaschl, goldenes Siegel mit Sternen, Zierlinien, Unterschriftenlinie.
 - 1.0.2 (27.10.2026): Kopfzeile: Flaschen-Symbol (Umriss der Flaschl-Figur, Bootstrap Icons hat keine Flasche) statt Becher-Symbol.
