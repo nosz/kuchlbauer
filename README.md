@@ -1,6 +1,6 @@
 # Das Kuchlbauer-Quiz mit Flaschl
 
-**Version 1.2.1, Stand 27.10.2026.** Eigenständige Web-App (PWA) rund um die Brauerei zum Kuchlbauer in Abensberg (https://kuchlbauer.de/), gebaut nach dem Vorbild von DANCECHANCE (Referenz in `referenz/`, unverändert).
+**Version 1.2.2, Stand 27.10.2026.** Eigenständige Web-App (PWA) rund um die Brauerei zum Kuchlbauer in Abensberg (https://kuchlbauer.de/), gebaut nach dem Vorbild von DANCECHANCE (Referenz in `referenz/`, unverändert).
 
 ## Starten (lokal)
 Die App braucht einen kleinen Webserver (wegen Service Worker und PWA):
@@ -18,11 +18,11 @@ Dann http://localhost:8765/ im Browser öffnen. Die Datei `index.html` läuft au
 - **Spielmechanik:** 1 bis 3 Sterne je Lektion (ab 2 von 3 bestanden), fünf Ränge, Konfetti.
 - **Urkunden:** je bestandener Lektion, dazu die Meister-Urkunde nach allen sieben. Als PNG speichern, drucken oder **teilen** (Teilen-Menü mit Bild, sonst Fenster mit WhatsApp, E-Mail, Link kopieren). Sprache der Urkunde = Menüsprache.
 - **Namensfeld** mit Speichern-Knopf (grau, aktiv, grün „Gespeichert“), Name bleibt nur im Browser.
-- **PWA:** installierbar, läuft offline, Update-Hinweis. Icons mit Bootstrap Icons (lokal in `vendor/`, kein CDN).
+- **PWA:** installierbar, läuft offline, Update-Hinweis. Icons: Bootstrap Icons als eingebettete SVG (kein CDN, keine Schriftdatei).
 - Farben aus den Kuchlbauer-Screenshots: Dunkelgrün `#0b3b2e`/`#0f4a3a` (Kopf, Fuß), Gold `#d4a40a`/`#f0c53a`, Kupfer/Braun als Hintergrund, Weiß für Text.
 
-## Dateien (alle ins Hauptverzeichnis, `vendor/` mit Unterordnern)
-`index.html`, `manifest.webmanifest`, `sw.js`, `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `favicon.png`, `apple-touch-icon.png`, `kuchlbauer_vorschau.png`, `vendor/bootstrap-icons/bootstrap-icons.min.css`, `vendor/bootstrap-icons/fonts/bootstrap-icons.woff2`. Bei jeder neuen Version `VERSION` in `index.html` **und** `sw.js` gemeinsam erhöhen.
+## Dateien (alle ins Hauptverzeichnis)
+`index.html`, `manifest.webmanifest`, `sw.js`, `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `favicon.png`, `apple-touch-icon.png`, `kuchlbauer_vorschau.png`. Bei jeder neuen Version `VERSION` in `index.html` **und** `sw.js` gemeinsam erhöhen.
 
 ## Quellen (ausschließlich kuchlbauer.de, abgerufen 27.10.2026)
 Startseite https://kuchlbauer.de/ · Bier & Kunst https://kuchlbauer.de/bier-und-kunst/ · Familienbrauerei https://kuchlbauer.de/en/beer-and-art/family-brewery/ · Kuchlbauer Turm https://kuchlbauer.de/en/beer-and-art/the-kuchlbauer-tower/ · Führungen & Tickets https://kuchlbauer.de/tickets-2/ · Veranstaltungen & Genuss https://kuchlbauer.de/veranstaltungen-genuss/ · Braukurs https://kuchlbauer.de/braukurs/ · Besucherinfo https://kuchlbauer.de/besucherinfo/
@@ -48,6 +48,7 @@ const s = await (await fetch('tests/kuchlbauer.test.js')).text(); const r = awai
 Nicht automatisch prüfbar: Service-Worker-Registrierung und Installation (in Chrome/Edge unter localhost nachprüfen).
 
 ## Änderungsprotokoll
+- 1.2.2 (27.10.2026): Icons fest als SVG in `index.html` eingebettet (Bootstrap Icons 1.11.3, MIT); die Icon-Schrift und der Ordner `vendor/` entfallen. Grund: Die Symbole in der Kopfzeile erschienen auf der Live-Seite als leere Kästchen. Kopfzeile überarbeitet: Sprachumschalter als runde Gruppe mit gefülltem Gold für die aktive Sprache, Teilen- und Figur-Knöpfe als Pillen, auf breiten Bildschirmen mit Beschriftung.
 - 1.2.1 (27.10.2026): Witze: Zähler „x von y“ entfernt. Die Witze kommen in zufälliger Reihenfolge (ohne Wiederholung in einer Runde), mal mit, mal ohne Pointe.
 - 1.2.0 (27.10.2026): Viel mehr Witze: jetzt 32 (20 Witze mit Pointe, 12 Sprüche ohne Pointe) in vier Sprachen. Sprüche ohne Pointe zeigen nur den Text, Flaschl sagt ihn direkt. Alle selbst formuliert.
 - 1.1.0 (27.10.2026): Neuer Abschnitt „Flaschl erzählt Witze“ (8 Bierwitze in vier Sprachen, Pointe zum Aufdecken, Flaschl spricht die Pointe, Reihenfolge ohne Wiederholung). Konfetti sind jetzt lauter süße Flaschen mit Gesicht. Die Web-Suche lieferte nur Wortspiel-Listen und Wirtshaus-Motive, keine abschreibbaren Witze: Die Witze sind selbst formuliert (Motive: leere Flaschen, Maß halten, abgelagert, aufgeschäumt, Pfand, trüb).
