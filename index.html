@@ -1,1 +1,761 @@
-index
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Das Kuchlbauer-Quiz</title>
+<meta name="description" content="DE: Das Weissbier-Quiz rund um die Brauerei zum Kuchlbauer in Abensberg mit Flaschl, der sprechenden Flasche. EN · IT · Bairisch. Läuft auch offline.">
+<meta name="theme-color" content="#0b3b2e">
+<link rel="canonical" href="https://nosz.github.io/kuchlbauer/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Das Kuchlbauer-Quiz mit Flaschl">
+<meta property="og:description" content="Sieben Lektionen zur Brauerei zum Kuchlbauer in Abensberg, eine sprechende Flasche und Urkunden. Deutsch, English, Italiano, Bairisch.">
+<meta property="og:url" content="https://nosz.github.io/kuchlbauer/">
+<meta property="og:image" content="https://nosz.github.io/kuchlbauer/kuchlbauer_vorschau.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Das Kuchlbauer-Quiz mit Flaschl">
+<meta name="twitter:image" content="https://nosz.github.io/kuchlbauer/kuchlbauer_vorschau.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="vendor/bootstrap-icons/bootstrap-icons.min.css">
+<style>
+:root{--g1:#0b3b2e;--g2:#0f4a3a;--gold:#d4a40a;--gold2:#f0c53a;--cu1:#2b160b;--cu2:#6b3a1c;--cu3:#a8642a;--red:#b3261e;--ok:#1f9d55;--txt:#fff;--mut:#e9dcc4;--r:16px;--serif:Georgia,"Times New Roman",Times,serif;--sans:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;color:var(--txt);font-family:var(--sans);font-size:1rem;line-height:1.5;background:#3a1d0d;background-image:radial-gradient(ellipse at 15% 10%,rgba(214,130,50,.55),transparent 55%),radial-gradient(ellipse at 90% 40%,rgba(168,100,42,.45),transparent 50%),linear-gradient(180deg,#4a2611,#2b160b);background-attachment:fixed}
+h1,h2,h3{font-family:var(--serif);color:var(--gold);letter-spacing:.04em;line-height:1.2;margin:0 0 .5em}
+h1{font-size:clamp(1.7rem,6vw,2.6rem)}h2{font-size:1.4rem}h3{font-size:1.15rem}
+a{color:var(--gold2)}
+button{font:inherit;color:inherit}
+.hdr{position:sticky;top:0;z-index:20;background:var(--g1);border-bottom:3px solid var(--gold);box-shadow:0 4px 14px rgba(0,0,0,.4)}
+.hin{max-width:1000px;margin:0 auto;padding:8px 14px;display:flex;align-items:center;gap:10px;flex-wrap:nowrap}
+.brand{display:flex;align-items:center;gap:8px;background:none;border:0;cursor:pointer;font-family:var(--serif);font-weight:700;letter-spacing:.06em;font-size:1.1rem;color:#fff;padding:4px;min-height:44px;flex:1 1 auto;min-width:0;text-align:left}
+.brand i{color:var(--gold);font-size:1.4rem}.bsym{display:inline-flex;flex:none}.brand span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.langs{display:flex;gap:2px}
+.lg{min-width:40px;min-height:40px;padding:0 6px;border:2px solid transparent;border-radius:10px;background:none;cursor:pointer;font-family:var(--serif);font-weight:700;letter-spacing:.05em;color:#fff}
+.lg[aria-pressed=true]{border-color:var(--gold);color:var(--gold)}
+.ib{flex:none;width:40px;height:40px;border-radius:10px;border:2px solid var(--gold);background:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--gold)}
+.ib:focus-visible,.lg:focus-visible,.btn:focus-visible,.opt:focus-visible,.brand:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--gold2);outline-offset:2px}
+main{max-width:1000px;margin:0 auto;padding:18px 14px 40px}
+.card{background:rgba(11,59,46,.93);border:1px solid var(--gold);border-radius:var(--r);padding:18px;margin:0 0 16px;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.card p{margin:0 0 .7em}.card p:last-child{margin-bottom:0}
+.mut{color:var(--mut)}
+.small{font-size:.9rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:12px;border:2px solid var(--gold);background:var(--gold);color:#1a1205;font-weight:700;cursor:pointer;text-decoration:none;font-size:1rem}
+.btn.ghost{background:transparent;color:#fff}
+.btn.big{min-height:58px;font-size:1.1rem;width:100%}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.lcard{margin:0;display:flex;flex-direction:column;gap:8px}
+.lcard h3{display:flex;gap:10px;align-items:center;margin:0}
+.lcard h3 i{font-size:1.5rem}
+.lcard.done{border-color:var(--gold2);box-shadow:0 0 0 2px rgba(240,197,58,.4),0 6px 18px rgba(0,0,0,.3)}
+.stars{color:var(--gold2);font-size:1.15rem;letter-spacing:2px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--gold);border-radius:999px;padding:3px 12px;font-size:.9rem;color:var(--gold2)}
+.hero{display:grid;gap:14px}
+.nameRow{display:flex;gap:8px;flex-wrap:wrap}
+.nameRow input{flex:1 1 180px;min-height:48px;border-radius:12px;border:2px solid var(--gold);background:#fff;color:#1a1205;padding:0 14px;font:inherit}
+.namebtn{min-height:48px;padding:0 18px;border-radius:12px;border:2px solid #777;background:#555;color:#ddd;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.namebtn.act{background:var(--gold);border-color:var(--gold2);color:#1a1205;animation:ring 1.6s infinite}
+.namebtn.ok{background:var(--ok);border-color:#5fd18a;color:#fff}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(240,197,58,.75)}70%{box-shadow:0 0 0 10px rgba(240,197,58,0)}100%{box-shadow:0 0 0 0 rgba(240,197,58,0)}}
+.bar{display:flex;gap:6px;margin:0 0 14px}.bar b{flex:1;height:8px;border-radius:4px;background:rgba(255,255,255,.2)}.bar b.on{background:var(--gold)}.bar b.cur{background:var(--gold2);box-shadow:0 0 0 2px rgba(240,197,58,.5)}
+.opts{display:grid;gap:10px;margin:14px 0}
+.opt{display:flex;align-items:center;gap:12px;text-align:left;min-height:56px;padding:10px 14px;border-radius:12px;border:2px solid var(--gold);background:rgba(255,255,255,.07);cursor:pointer;font-size:1.02rem}
+.opt:hover:not([disabled]){background:rgba(212,164,10,.2)}
+.opt.right{background:var(--ok);border-color:#7be0a3}.opt.bad{background:var(--red);border-color:#f09a94}
+.opt[disabled]{cursor:default}.opt i{font-size:1.3rem;flex:none}
+.expl{border-left:5px solid var(--gold);background:rgba(0,0,0,.25);padding:10px 14px;border-radius:0 12px 12px 0;margin:10px 0}
+.cert img{width:100%;height:auto;border:3px solid var(--gold);border-radius:8px;background:#fff;display:block}
+.ofl{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.ofl .btn{justify-content:flex-start;background:transparent;color:#fff}
+.ofl .btn:hover{background:rgba(212,164,10,.2)}
+.ftr{background:var(--g1);position:relative;margin-top:30px;padding:34px 14px 24px;border-top:0}
+.ftr:before{content:"";position:absolute;left:0;right:0;top:-24px;height:26px;background:var(--g1);clip-path:ellipse(75% 100% at 50% 100%);border-top:0}
+.ftr svg.wave{position:absolute;left:0;top:-14px;width:100%;height:20px}
+.fin{max-width:1000px;margin:0 auto;display:grid;gap:14px;justify-items:center;text-align:center}
+.flinks{display:flex;gap:6px 18px;flex-wrap:wrap;justify-content:center}
+.flinks a{color:#fff;font-family:var(--serif);font-weight:700;text-decoration:none;min-height:36px;display:inline-flex;align-items:center;letter-spacing:.03em}
+.flinks a:hover{color:var(--gold2);text-decoration:underline}
+.soc{display:flex;gap:12px}.soc a{width:44px;height:44px;border:2px solid var(--gold);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.3rem;text-decoration:none}
+.fcredit{display:grid;gap:8px;justify-items:center}
+.fver{margin:0;color:var(--mut);font-size:.9rem}.fby{margin:0;color:#fff;font-family:var(--serif);font-weight:700;font-size:1.1rem;letter-spacing:.05em}
+a.credit{display:inline-flex;align-items:center;justify-content:center;gap:10px;flex-wrap:nowrap;min-height:54px;padding:8px 22px;border-radius:999px;border:2px solid #fff;background:linear-gradient(135deg,#0b3b2e,#1b7a5f);color:#fff;font-weight:800;font-size:1.05rem;box-shadow:0 0 0 3px var(--gold);text-decoration:none;white-space:nowrap;flex-direction:column;gap:0}
+a.credit .cr-top{display:inline-flex;align-items:center;gap:10px}
+a.credit .cr-u{text-decoration:underline;font-weight:600;font-size:.85rem;color:var(--gold2)}
+.snack{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:60;background:#fff;color:#1a1205;border-radius:12px;padding:12px 16px;display:none;box-shadow:0 6px 20px rgba(0,0,0,.5);text-align:center}
+.snack.on{display:block}
+dialog{border:2px solid var(--gold);border-radius:var(--r);background:var(--g1);color:#fff;padding:18px;max-width:min(92vw,420px);width:100%}
+dialog::backdrop{background:rgba(0,0,0,.7)}
+dialog .btn{width:100%;margin-top:8px}
+.fh{position:fixed;left:6px;bottom:calc(6px + env(safe-area-inset-bottom));width:96px;z-index:30;pointer-events:none;transform-origin:50% 100%}
+.fh svg{width:100%;height:auto;display:block;overflow:visible;filter:drop-shadow(0 4px 4px rgba(0,0,0,.45))}
+.fh.in{animation:enter 1s ease-out both}
+.fh .body{animation:bob 3s ease-in-out infinite;transform-origin:50% 100%}
+.fh.hop .body{animation:hop .7s ease-out 1}
+.fh .lid{transform-box:fill-box;transform-origin:50% 0;animation:blink 5s infinite}
+.fh .arm{transform-box:fill-box;transform-origin:0 100%;animation:wave 2.4s ease-in-out infinite}
+.fh .mo{opacity:0}.fh.talk .mo{animation:talk .3s steps(2) infinite}.fh.talk .ms{animation:talk2 .3s steps(2) infinite}
+.bub{position:fixed;left:108px;bottom:calc(96px + env(safe-area-inset-bottom));z-index:31;max-width:min(300px,calc(100vw - 124px));background:#fff;color:#1a1205;border-radius:14px;padding:10px 14px;font-size:.95rem;line-height:1.35;box-shadow:0 6px 18px rgba(0,0,0,.45);pointer-events:none;opacity:0;transform:translateY(8px);transition:opacity .25s,transform .25s}
+.bub.on{opacity:1;transform:none}
+.bub:before{content:"";position:absolute;left:-9px;bottom:16px;border:9px solid transparent;border-right-color:#fff;border-left:0}
+.bub b{display:block;color:var(--g1);font-family:var(--serif);letter-spacing:.04em}
+body.nofig .fh,body.nofig .bub{display:none}
+body.fig main,body.fig .ftr{padding-bottom:130px}
+.rm .fh *,.rm .fh{animation:none!important}
+.foam{position:fixed;width:10px;height:10px;border-radius:50%;background:#fff;z-index:40;pointer-events:none;opacity:.95}
+.cf{position:fixed;top:-12px;width:10px;height:14px;z-index:45;pointer-events:none}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-6px) rotate(1deg)}}
+@keyframes hop{0%{transform:translateY(0)}35%{transform:translateY(-34px) rotate(-8deg)}70%{transform:translateY(0) rotate(4deg)}100%{transform:none}}
+@keyframes enter{from{transform:translateX(-160px) rotate(-25deg)}60%{transform:translateX(8px) rotate(6deg)}to{transform:none}}
+@keyframes blink{0%,92%,100%{transform:scaleY(0)}95%{transform:scaleY(1)}}
+@keyframes wave{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(16deg)}}
+@keyframes talk{0%{opacity:0}100%{opacity:1}}@keyframes talk2{0%{opacity:1}100%{opacity:0}}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+@keyframes rise{to{transform:translate(var(--dx),-70vh);opacity:0}}
+@media (prefers-reduced-motion:reduce){.fh *,.fh,.namebtn.act{animation:none!important}.bub{transition:none}}
+@media (max-width:480px){.hin{flex-wrap:wrap}.brand{flex:1 1 100%!important;min-height:36px}.brand span{display:inline!important;font-size:.95rem;white-space:normal}.fh{width:70px}.bub{left:82px;bottom:calc(76px + env(safe-area-inset-bottom));max-width:calc(100vw - 94px)}.brand{font-size:.95rem}.lg{min-width:36px}.hin{gap:6px;padding:8px 8px}.ib{width:38px;height:38px}a.credit{font-size:.95rem;padding:8px 14px}}
+@media print{.hdr,.ftr,.fh,.bub,.noprint{display:none!important}body{background:#fff}.card{border:0;box-shadow:none;background:#fff;color:#000}}
+</style>
+</head>
+<body class="fig">
+<div id="top"></div>
+<main id="app" tabindex="-1"></main>
+<div id="foot"></div>
+<div class="snack" id="snack" role="status" aria-live="polite"></div>
+<dialog id="shdlg" aria-label="Teilen"></dialog>
+<div class="fh" id="fh" aria-hidden="true"></div>
+<div class="bub" id="bub" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+const VERSION = "1.0.4", STAND = "27.10.2026";
+const SHARE_URL = "https://nosz.github.io/kuchlbauer/";
+const SITE = "https://kuchlbauer.de/";
+const LANGS = [["de","DE","Deutsch","de-DE","de"],["en","EN","English","en-GB","en"],["it","IT","Italiano","it-IT","it"],["by","BAY","Bairisch","de-DE","bar"]];
+const KEY = "kuchlbauer-quiz-v1";
+
+/* ---------- Zustand ---------- */
+let st = {lang:null, prog:{}, name:"", fig:true};
+try{ Object.assign(st, JSON.parse(localStorage.getItem(KEY) || "{}")); }catch(e){ /* ohne Speicher weiter */ }
+if(!LANGS.some(l => l[0] === st.lang)){ const n = (navigator.language || "de").slice(0,2); st.lang = n === "en" ? "en" : n === "it" ? "it" : "de"; }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(st)); }catch(e){ /* ignorieren */ } }
+const li = () => LANGS.findIndex(l => l[0] === st.lang);
+const $ = s => document.querySelector(s);
+function h(tag, attrs, ...kids){
+  const e = document.createElement(tag);
+  for(const k in (attrs || {})){ const v = attrs[k]; if(v == null || v === false) continue;
+    if(k === "class") e.className = v; else if(k === "text") e.textContent = v;
+    else if(k.startsWith("on")) e.addEventListener(k.slice(2), v); else e.setAttribute(k, v === true ? "" : v); }
+  for(const c of kids.flat()){ if(c == null || c === false) continue; e.append(c.nodeType ? c : document.createTextNode(c)); }
+  return e;
+}
+const ic = (n, c) => h("i", {class:"bi bi-" + n + (c ? " " + c : ""), "aria-hidden":"true"});
+const ext = (href, cls, ...kids) => h("a", {href, class:cls, target:"_blank", rel:"noopener"}, ...kids);
+const fmt = (s, o) => s.replace(/\{(\w+)\}/g, (m, k) => o[k] != null ? o[k] : m);
+const rnd = a => a[Math.floor(Math.random() * a.length)];
+const shuffle = a => { a = a.slice(); for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- Texte: [de, en, it, bairisch] ---------- */
+const S = {
+ brand:Array(4).fill("Kuchlbauer Quiz by Anja"),
+ title:["Das Kuchlbauer-Quiz","The Kuchlbauer Quiz","Il Quiz Kuchlbauer","Des Kuchlbauer-Quiz"],
+ sub:["Der Weissbier-Spezialist aus Abensberg: sieben Lektionen, eine sprechende Flasche und null Kater.","The wheat beer specialist from Abensberg: seven lessons, one talking bottle and zero hangover.","Lo specialista della birra di frumento di Abensberg: sette lezioni, una bottiglia parlante e zero postumi.","Da Weissbier-Spezialist aus Abensberg: sieben Lektionen, a redade Flaschn und koa Brummschädl."],
+ share:["Teilen","Share","Condividi","Teiln"],
+ figOff:["Flaschl ausblenden","Hide Flaschl","Nascondi Flaschl","Flaschl ausblendn"],
+ figOn:["Flaschl einblenden","Show Flaschl","Mostra Flaschl","Flaschl einblendn"],
+ home:["Zur Startseite","To the start page","Alla pagina iniziale","Zur Startseitn"],
+ nameQ:["Wie heißt du? Dann wird deine Urkunde persönlicher. Der Name bleibt nur auf diesem Gerät.","What is your name? It makes your certificate more personal. It stays on this device only.","Come ti chiami? Il tuo attestato sarà più personale. Il nome resta solo su questo dispositivo.","Wia hoaßt na du? Nacha werd dei Urkundn persönlicher. Da Nam bleibt nur af dem Gerät."],
+ namePh:["Dein Name","Your name","Il tuo nome","Dei Nam"],
+ save:["Speichern","Save","Salva","Speichern"],
+ saved:["Gespeichert","Saved","Salvato","Gspeichert"],
+ savedMsg:["Gespeichert: {n}","Saved: {n}","Salvato: {n}","Gspeichert: {n}"],
+ anon:["Lieber anonym bleiben","Stay anonymous","Preferisco restare anonimo","Liaba anonym bleibn"],
+ changeName:["Name ändern","Change name","Cambia nome","Nam ändern"],
+ start:["Starte hier","Start here","Inizia qui","Fang do o"],
+ next:["Dein nächster Schritt","Your next step","Il tuo prossimo passo","Dei nächster Schritt"],
+ lessons:["Die Lektionen","The lessons","Le lezioni","De Lektionen"],
+ lesson:["Lektion","Lesson","Lezione","Lektion"],
+ qOf:["Frage {a} von {b}","Question {a} of {b}","Domanda {a} di {b}","Frog {a} vo {b}"],
+ begin:["Los geht's","Let's go","Si parte","Auf geht's"],
+ cont:["Weiter","Next","Avanti","Weida"],
+ finish:["Ergebnis ansehen","See result","Vedi il risultato","Ergebnis o'schaun"],
+ overview:["Zur Übersicht","To the overview","Alla panoramica","Zur Übersicht"],
+ result:["Ergebnis","Result","Risultato","Ergebnis"],
+ rightOf:["{r} von {n} richtig","{r} of {n} correct","{r} su {n} corrette","{r} vo {n} richtig"],
+ passed:["Bestanden! Deine Urkunde ist freigeschaltet.","Passed! Your certificate is unlocked.","Superato! Il tuo attestato è sbloccato.","Bstandn! Dei Urkundn is freigschaltn."],
+ failed:["Noch nicht bestanden. Du brauchst mindestens 2 von 3 richtig.","Not passed yet. You need at least 2 of 3 correct.","Non ancora superato. Servono almeno 2 risposte su 3.","No it bstandn. Du brauchst mindestns 2 vo 3 richtig."],
+ again:["Nochmal spielen","Play again","Gioca ancora","Nomoi spuin"],
+ cert:["Urkunde","Certificate","Attestato","Urkundn"],
+ certs:["Alle Urkunden","All certificates","Tutti gli attestati","Alle Urkundn"],
+ none:["Noch keine Urkunde. Bestehe eine Lektion mit mindestens 2 von 3 richtig.","No certificate yet. Pass a lesson with at least 2 of 3 correct.","Ancora nessun attestato. Supera una lezione con almeno 2 risposte su 3.","No koa Urkundn. Bstehe a Lektion mit mindestns 2 vo 3 richtig."],
+ shareCert:["Urkunde den Freunden zeigen","Show the certificate to friends","Mostra l'attestato agli amici","Urkundn de Freind herzoang"],
+ saveImg:["Als Bild speichern","Save as image","Salva come immagine","Als Bild speichern"],
+ print:["Drucken","Print","Stampa","Drucka"],
+ master:["Meister-Urkunde","Master certificate","Attestato da maestro","Moasta-Urkundn"],
+ masterLocked:["Schaffe alle 7 Lektionen, dann gibt es die Meister-Urkunde.","Pass all 7 lessons to get the master certificate.","Supera tutte le 7 lezioni per l'attestato da maestro.","Pack alle 7 Lektionen, nacha gibt's de Moasta-Urkundn."],
+ rank:["Rang","Rank","Grado","Rang"],
+ ranks:[["Bierdeckel-Anfänger","Beer-mat beginner","Principiante del sottobicchiere","Bierdeckl-Anfänger"],["Maßkrug-Lehrling","Stein apprentice","Apprendista del boccale","Maßkruag-Lehrbua"],["Braugeselle","Brewing journeyman","Garzone di birrificio","Braugsell"],["Braumeister-Anwärter","Master brewer candidate","Aspirante mastro birraio","Braumoasta-Anwärter"],["Weissbier-Meister","Wheat beer master","Maestro della birra di frumento","Weissbier-Moasta"]],
+ stars:["Sterne","stars","stelle","Stern"],
+ official:["Auf der offiziellen Seite","On the official site","Sul sito ufficiale","Af da offiziellen Seitn"],
+ officialSub:["Preise, Zeiten und Termine stehen bewusst nicht im Quiz. Dort sind sie aktuell (Seiten auf Deutsch).","Prices, times and dates are deliberately not in the quiz. They are up to date there (pages in German).","Prezzi, orari e date non sono volutamente nel quiz. Lì sono aggiornati (pagine in tedesco).","Preise, Zeitn und Termine stengan mit Absicht need im Quiz. Do san s' aktuell (Seitn af Deitsch)."],
+ oBier:["Bier & Kunst","Beer & Art","Birra & Arte","Bier & Kunst"],
+ oFuehr:["Führungen & Tickets","Tours & Tickets","Visite guidate & Biglietti","Führungen & Tickets"],
+ oEvent:["Veranstaltungen & Genuss","Events & Enjoyment","Eventi & Gusto","Veranstaltungen & Genuss"],
+ oBesuch:["Besucherinfo","Visitor information","Info per i visitatori","Besucherinfo"],
+ oBrau:["Braukurse","Brewing courses","Corsi di produzione","Braukurse"],
+ oShop:["Shop","Shop","Negozio","Shop"],
+ source:["Quelle","Source","Fonte","Quelln"],
+ disc:["Alle Fakten stammen von kuchlbauer.de (Stand 27.10.2026) und können sich ändern. Preise, Zeiten und Termine nennt das Quiz bewusst nicht. Flaschl und seine Sprüche sind erfunden (Humor), die Mundart und die Übersetzungen sind liebevoll gemeint: Muttersprachler sollten sie gegenlesen.","All facts come from kuchlbauer.de (as of 27.10.2026) and may change. The quiz deliberately gives no prices, times or dates. Flaschl and his jokes are made up (humour); the dialect and translations are meant kindly, native speakers should proofread them.","Tutti i fatti provengono da kuchlbauer.de (stato 27.10.2026) e possono cambiare. Il quiz non indica volutamente prezzi, orari o date. Flaschl e le sue battute sono inventati (umorismo); dialetto e traduzioni sono fatti con affetto, madrelingua dovrebbero rileggerli.","Olle Fakten kemman vo kuchlbauer.de (Stand 27.10.2026) und kenna se ändern. Preise, Zeitn und Termine nennt des Quiz mit Absicht need. Da Flaschl und seine Sprüch san dafundn (Spaß), de Mundart und de Übersetzungen san liabevoi gmoant: Muttersprachler soitn s' gegnlesn."],
+ instCta:["Als App installieren: ein Tipp, und sie liegt auf deinem Startbildschirm. Läuft auch ohne Internet.","Install as an app: one tap and it sits on your home screen. Works offline too.","Installa come app: un tocco e sta nella schermata iniziale. Funziona anche offline.","Als App installiern: oa Tipp, und sie liegt af deim Startbildschirm. Geht aa ohne Internet."],
+ instBtn:["Installieren","Install","Installa","Installiern"],
+ instIos:["iPhone/iPad: in Safari auf das Teilen-Symbol (Quadrat mit Pfeil) tippen, dann „Zum Home-Bildschirm“ wählen.","iPhone/iPad: in Safari tap the Share icon (square with arrow), then choose “Add to Home Screen”.","iPhone/iPad: in Safari tocca l'icona Condividi (quadrato con freccia), poi «Aggiungi alla schermata Home».","iPhone/iPad: in Safari af s Teiln-Symbol (Quadrat mit Pfeil) tippn, nacha „Zum Home-Bildschirm“ nehma."],
+ shMsg:["Probier mal das Kuchlbauer-Quiz: sieben Lektionen rund um den Weissbier-Spezialisten aus Abensberg, mit Flaschl, der sprechenden Flasche.","Try the Kuchlbauer Quiz: seven lessons about the wheat beer specialist from Abensberg, with Flaschl, the talking bottle.","Prova il Quiz Kuchlbauer: sette lezioni sullo specialista della birra di frumento di Abensberg, con Flaschl, la bottiglia parlante.","Probier moi des Kuchlbauer-Quiz: sieben Lektionen ums Weissbier aus Abensberg, mit am Flaschl, da redadn Flaschn."],
+ shLesson:["Lektion „{l}“ im Kuchlbauer-Quiz bestanden: {r} von {n} richtig. Flaschl ist stolz wie ein Kasten Weissbier.","Lesson “{l}” passed in the Kuchlbauer Quiz: {r} of {n} correct. Flaschl is as proud as a crate of wheat beer.","Lezione «{l}» superata nel Quiz Kuchlbauer: {r} su {n} corrette. Flaschl è fiero come una cassa di birra.","Lektion „{l}“ im Kuchlbauer-Quiz bstandn: {r} vo {n} richtig. Da Flaschl is stolz wia a Kastn Weissbier."],
+ shMaster:["Alle Lektionen im Kuchlbauer-Quiz geschafft: Die Meister-Urkunde gehört mir! Prost!","All lessons done in the Kuchlbauer Quiz: the master certificate is mine! Cheers!","Tutte le lezioni del Quiz Kuchlbauer completate: l'attestato da maestro è mio! Prosit!","Alle Lektionen im Kuchlbauer-Quiz gschafft: De Moasta-Urkundn ghert mir! Prost!"],
+ copied:["Link kopiert","Link copied","Link copiato","Link kopiert"],
+ shClose:["Schließen","Close","Chiudi","Zuamacha"],
+ shCopy:["Link kopieren","Copy link","Copia link","Link kopiern"],
+ shWa:["WhatsApp","WhatsApp","WhatsApp","WhatsApp"],
+ shMail:["E-Mail","Email","E-mail","E-Mail"],
+ update:["Neue Version bereit. Seite neu laden.","New version ready. Reload the page.","Nuova versione pronta. Ricarica la pagina.","Neie Version do. Seitn neu lodn."],
+ ver:["Version","Version","Versione","Version"],
+ by:Array(4).fill("Design by Anja"),
+ didPass:["hat die Lektion bestanden","has passed the lesson","ha superato la lezione","hot de Lektion bstandn"],
+ didMaster:["hat alle sieben Lektionen bestanden und ist Weissbier-Meister","has passed all seven lessons and is a wheat beer master","ha superato tutte le sette lezioni ed è maestro della birra di frumento","hot alle sieben Lektionen bstandn und is Weissbier-Moasta"],
+ certTitle:["URKUNDE","CERTIFICATE","ATTESTATO","URKUNDN"],
+ certMTitle:["MEISTER-URKUNDE","MASTER CERTIFICATE","ATTESTATO DA MAESTRO","MOASTA-URKUNDN"],
+ guest:["Weissbier-Fan","Wheat beer fan","Fan della birra di frumento","Weissbier-Fan"],
+ knew:["Gewusst:","You knew:","Hai saputo:","Gwusst:"],
+ sig:["Unterschrift: Flaschl","Signed: Flaschl","Firmato: Flaschl","Unterschrift: Flaschl"],
+ certFoot:["Fakten von kuchlbauer.de, Stand 27.10.2026","Facts from kuchlbauer.de, as of 27.10.2026","Fatti da kuchlbauer.de, stato 27.10.2026","Fakten vo kuchlbauer.de, Stand 27.10.2026"]
+};
+const t = (k, o) => { const v = S[k][li()]; return o ? fmt(v, o) : v; };
+
+/* ---------- Flaschl: Sprüche ---------- */
+const M = {
+ greet:[["Servus! Ich bin Flaschl. Ich bin leer, aber voller Wissen.","Prost und Servus! Ich bin Flaschl, deine Weissbierflasche mit Hang zu Fachwissen."],
+        ["Hi! I'm Flaschl. I'm empty, but full of knowledge.","Cheers! I'm Flaschl, your wheat beer bottle with a taste for facts."],
+        ["Servus! Sono Flaschl. Sono vuoto, ma pieno di sapere.","Prosit! Sono Flaschl, la tua bottiglia di birra con la passione per i fatti."],
+        ["Servus! I bin da Flaschl. I bin leer, aber voi mit Wissn.","Prost und Servus! I bin da Flaschl, dei Weissbierflaschn mit am Hang zum Fachwissn."]],
+ greetN:["Servus, {n}! Schön, dass du da bist. Ich halte dir den Platz an der Theke frei.","Hello, {n}! Great to see you. I'm keeping your spot at the bar.","Servus, {n}! Che bello vederti. Ti tengo il posto al bancone.","Servus, {n}! Schee, dass d' do bist. I halt dir da Platz an da Theknn frei."],
+ idle:[["Ein Weissbier braucht Geduld. Ich auch, aber ich habe den Kronkorken oben.","Ich bin keine Leergut-Flasche. Ich bin eine Wissensflasche.","Eine Lektion dauert ungefähr so lang wie ein Weissbier einschenken. Mit schöner Schaumkrone, bitte.","Mein Hobby: Schaumkronen bewundern. Mein Albtraum: der Flaschenautomat.","Preise und Zeiten merke ich mir nicht. Die stehen unten auf der offiziellen Seite.","Ich bin voll. Mit Wissen, versteht sich."],
+        ["A wheat beer needs patience. So do I, but I keep my cap on.","I'm not a deposit bottle. I'm a knowledge bottle.","A lesson takes about as long as pouring a wheat beer. With a nice head of foam, please.","My hobby: admiring foam. My nightmare: the bottle return machine.","I don't remember prices or times. They're on the official site below.","I'm full. Of knowledge, of course."],
+        ["La birra di frumento vuole pazienza. Anch'io, ma io tengo il tappo.","Non sono vuoto a rendere. Sono una bottiglia di sapere.","Una lezione dura quanto versare una birra. Con una bella schiuma, grazie.","Il mio hobby: ammirare la schiuma. Il mio incubo: la macchina del vuoto a rendere.","Prezzi e orari non li ricordo. Sono sul sito ufficiale, qui sotto.","Sono pieno. Di sapere, ovviamente."],
+        ["A Weissbier braucht Geduld. I aa, aber i hob an Kronkorkn drobn.","I bin koa Leergut-Flaschn. I bin a Wissnsflaschn.","A Lektion dauert ungfähr so lang wia a Weissbier eischenka. Mit schena Schaumkron, bitte.","Mei Hobby: Schaumkronen bewundan. Mei Albtraum: da Flaschnautomat.","Preise und Zeitn merk i ma need. De stengan untn af da offiziellen Seitn.","I bin voi. Mit Wissn, logisch."]],
+ right:[["Prost! Richtig!","Genau! Ein Treffer wie ein frischer Fassanstich.","Stark! Ich spüre schon die Schaumkrone wachsen."],
+        ["Cheers! Correct!","Exactly! A hit like a fresh keg tapping.","Strong! I can feel the foam head growing."],
+        ["Prosit! Giusto!","Esatto! Un colpo come una spillatura fresca.","Forte! Sento già crescere la schiuma."],
+        ["Prost! Richtig!","Genau! A Treffer wia a frischer Fassanstich.","Stark! I spür scho de Schaumkron wachsn."]],
+ wrong:[["Knapp daneben. Die Erklärung kommt gleich.","Aua. Aber aus Fehlern wird man klug, nicht schal.","Nicht schlimm. Selbst ein 70-Meter-Entwurf musste erst mal umgebaut werden."],
+        ["Close, but no. The explanation is coming up.","Ouch. But mistakes make you wise, not stale.","No worries. Even a 70-metre design had to be reworked first."],
+        ["Quasi. La spiegazione arriva subito.","Ahi. Ma dagli errori si impara, non si diventa sgasati.","Niente paura. Anche un progetto di 70 metri ha dovuto essere rivisto."],
+        ["Knapp dahoam vorbei. De Erklärung kimmt glei.","Aua. Aber aus Fehler werd ma gscheid, need schal.","Is need schlimm. Ogor a 70-Meter-Entwurf hod erst umbaut werdn miassn."]],
+ pass:["Bestanden! Ich bin stolz wie ein Kasten Weissbier.","Passed! I'm as proud as a crate of wheat beer.","Superato! Sono fiero come una cassa di birra.","Bstandn! I bin stolz wia a Kastn Weissbier."],
+ fail:["Noch nicht ganz. Versuch es nochmal, ich schüttle mich vorher nicht.","Not quite yet. Try again, I won't shake myself beforehand.","Non ancora. Riprova, non mi agito prima.","No need ganz. Probier's nomoi, i schüttl mi vorher need."],
+ master:["Alle Lektionen! Du bist offiziell Weissbier-Meister. Inoffiziell auch.","All lessons! You're officially a wheat beer master. Unofficially too.","Tutte le lezioni! Sei ufficialmente maestro della birra di frumento. Anche ufficiosamente.","Alle Lektionen! Du bist offiziell Weissbier-Moasta. Inoffiziell aa."],
+ lang:["Auf Deutsch geht es auch.","English is fine too, cheers!","Anche in italiano, Prosit!","Af Bairisch geht's aa, mia redn wia uns da Schnobl gwachsn is."]
+};
+const mt = (k, i) => { const v = M[k][li()]; return i == null ? v : v[i]; };
+
+/* ---------- Lektionen ---------- */
+/* q-Eintrag je Sprache: [Frage, richtige Antwort, falsch 1, falsch 2, Erklärung]; Reihenfolge der Antworten wird gemischt */
+const LESSONS = [
+{id:"fam", ic:"people", url:SITE + "bier-und-kunst/",
+ t:["Die Familienbrauerei","The family brewery","La birreria di famiglia","De Familienbrauerei"],
+ i:["Die Brauerei zum Kuchlbauer steht in Abensberg. Der Name „zum Kuchlbauer“ geht laut Website auf 1751 zurück, seit 1904 gehört der Betrieb der Familie, heute in der neunten Generation. Laut Brauerei gehört sie zu den Betrieben mit dem ältesten Braurecht, das der Graf im 14. Jahrhundert verliehen hat. Sechs Weissbiere kommen aus dem Sudhaus.",
+    "The Brauerei zum Kuchlbauer is in Abensberg. According to the website, the name “zum Kuchlbauer” goes back to 1751; the family has owned the business since 1904, now in its ninth generation. The brewery says it holds one of the oldest brewing rights, granted by the local count in the 14th century. Six wheat beers come out of the brewhouse.",
+    "La Brauerei zum Kuchlbauer si trova ad Abensberg. Secondo il sito il nome «zum Kuchlbauer» risale al 1751; dal 1904 l'azienda appartiene alla famiglia, oggi alla nona generazione. Secondo la birreria possiede uno dei diritti di produzione più antichi, concesso dal conte nel XIV secolo. Dalla sala cottura escono sei birre di frumento.",
+    "De Brauerei zum Kuchlbauer steht in Abensberg. Da Nam „zum Kuchlbauer“ geht laut Website af 1751 zruck, seit 1904 ghert da Betrieb da Familie, heid in da neinten Generation. Laut Brauerei is s' oans vo de Betriebe mit am ältestn Braurecht, des da Graf im 14. Jahrhundert vagebn hod. Sechs Weissbier kemman aus'm Sudhaus."],
+ q:[
+  [["Seit wie vielen Generationen besteht laut Website die Familientradition?","Seit neun Generationen","Seit drei Generationen","Seit 25 Generationen","Die Startseite nennt neun Generationen Familientradition. Wer bei 25 tippt, rechnet wohl in Bierkrügen."],
+   ["According to the website, for how many generations has the family tradition lasted?","Nine generations","Three generations","25 generations","The start page names nine generations of family tradition. Anyone guessing 25 is probably counting beer mugs."],
+   ["Secondo il sito, da quante generazioni dura la tradizione di famiglia?","Da nove generazioni","Da tre generazioni","Da 25 generazioni","La pagina iniziale parla di nove generazioni. Chi dice 25 forse conta i boccali."],
+   ["Seit wia vui Generationen gibt's laut Website de Familientradition?","Seit neun Generationen","Seit drei Generationen","Seit 25 Generationen","De Startseitn nennt neun Generationen. Wer 25 sagt, zoit wohl Maßkriag."]],
+  [["Seit wann trägt der Betrieb den Namen „zum Kuchlbauer“?","Seit 1751","Seit 1951","Seit 2051","Der Name geht laut Familienbrauerei-Seite auf das Jahr 1751 zurück. 2051 wäre doch etwas voreilig."],
+   ["Since when has the business carried the name “zum Kuchlbauer”?","Since 1751","Since 1951","Since 2051","The family brewery page says the name goes back to 1751. 2051 would be a bit premature."],
+   ["Da quando l'azienda porta il nome «zum Kuchlbauer»?","Dal 1751","Dal 1951","Dal 2051","La pagina sulla birreria di famiglia dice che il nome risale al 1751. Il 2051 sarebbe un po' prematuro."],
+   ["Seit wann hoaßt da Betrieb „zum Kuchlbauer“?","Seit 1751","Seit 1951","Seit 2051","Da Nam geht laut Familienbrauerei-Seitn af 1751 zruck. 2051 warat a bissl z'friah."]],
+  [["Wie viele Weissbiere braut die Brauerei laut Familienbrauerei-Seite?","Sechs","Zwei","Zwölf","Die Seite spricht von sechs Weissbieren nach traditionellen Rezepten mit regionalen Rohstoffen. Ihre Namen nennt sie dort nicht."],
+   ["How many wheat beers does the brewery make, according to the family brewery page?","Six","Two","Twelve","The page mentions six wheat beers made to traditional recipes with regional raw materials. It does not name them there."],
+   ["Quante birre di frumento produce la birreria secondo la pagina sulla birreria di famiglia?","Sei","Due","Dodici","La pagina parla di sei birre di frumento con ricette tradizionali e materie prime regionali. Lì non ne cita i nomi."],
+   ["Wia vui Weissbier braut d'Brauerei laut Familienbrauerei-Seitn?","Sechs","Zwoa","Zwoif","D'Seitn red't vo sechs Weissbier nach traditionelle Rezepte mit regionale Rohstoff. De Nam nennt s' do need."]]
+ ]},
+{id:"turm", ic:"palette", url:SITE + "bier-und-kunst/",
+ t:["Turm und KunstHaus","Tower and KunstHaus","Torre e KunstHaus","Turm und KunstHaus"],
+ i:["Der Kuchlbauer Turm ist ein Architekturprojekt von Friedensreich Hundertwasser. Er entwarf ihn 1999 mit 70 Metern, so ließ er sich nicht bauen. Sein langjähriger Freund und Kollege Peter Pelikan passte den Entwurf an, gebaut wurde 2007 bis 2010. Im KunstHausAbensberg gibt es Einblicke in Leben und Werk Hundertwassers.",
+    "The Kuchlbauer Tower is an architectural project by Friedensreich Hundertwasser. He designed it in 1999 at 70 metres, which could not be built at that size. His lifelong friend and colleague Peter Pelikan adapted the design; it was built from 2007 to 2010. The KunstHausAbensberg offers insights into Hundertwasser's life and work.",
+    "La Torre Kuchlbauer è un progetto architettonico di Friedensreich Hundertwasser. Nel 1999 la disegnò alta 70 metri, ma così non si poteva costruire. Il suo amico e collega di lunga data Peter Pelikan adattò il progetto; la costruzione durò dal 2007 al 2010. Il KunstHausAbensberg offre uno sguardo sulla vita e l'opera di Hundertwasser.",
+    "Da Kuchlbauer Turm is a Architekturprojekt vom Friedensreich Hundertwasser. Er hod'n 1999 mit 70 Meter entworfn, so hod mas need baun kinna. Sei langjähriger Freind und Kollege Peter Pelikan hod'n Entwurf angpasst, baut worn is 2007 bis 2010. Im KunstHausAbensberg gibt's Einblicke in Lebn und Werk vom Hundertwasser."],
+ q:[
+  [["Wer hat den Kuchlbauer Turm 1999 entworfen?","Friedensreich Hundertwasser","Antoni Gaudí","Der Braumeister mit einem Bierdeckel","Der Turm ist laut Website ein Architekturprojekt von Friedensreich Hundertwasser."],
+   ["Who designed the Kuchlbauer Tower in 1999?","Friedensreich Hundertwasser","Antoni Gaudí","The master brewer, on a beer mat","According to the website the tower is an architectural project by Friedensreich Hundertwasser."],
+   ["Chi progettò la Torre Kuchlbauer nel 1999?","Friedensreich Hundertwasser","Antoni Gaudí","Il mastro birraio, su un sottobicchiere","Secondo il sito la torre è un progetto architettonico di Friedensreich Hundertwasser."],
+   ["Wer hod'n Kuchlbauer Turm 1999 entworfn?","Friedensreich Hundertwasser","Antoni Gaudí","Da Braumoasta af am Bierdeckl","Da Turm is laut Website a Architekturprojekt vom Friedensreich Hundertwasser."]],
+  [["Wer passte den Entwurf an, sodass der Turm gebaut werden konnte?","Peter Pelikan, Freund und Kollege Hundertwassers","Niemand, er steht seit dem Mittelalter dort","Flaschl persönlich","Peter Pelikan plante, überarbeitete und baute den Turm in der heutigen Form. Flaschl hat nur zugeschaut."],
+   ["Who adapted the design so the tower could be built?","Peter Pelikan, Hundertwasser's friend and colleague","Nobody, it has stood there since the Middle Ages","Flaschl in person","Peter Pelikan planned, revised and built the tower as it stands today. Flaschl just watched."],
+   ["Chi adattò il progetto in modo da poter costruire la torre?","Peter Pelikan, amico e collega di Hundertwasser","Nessuno, è lì dal Medioevo","Flaschl in persona","Peter Pelikan ha pianificato, rielaborato e costruito la torre com'è oggi. Flaschl ha solo guardato."],
+   ["Wer hod'n Entwurf angpasst, dass da Turm baut werdn hod kinna?","Peter Pelikan, Freind und Kollege vom Hundertwasser","Neamd, er steht scho seit'm Mittelalter do","Da Flaschl persönlich","Peter Pelikan hod'n Turm planat, überarbeit und baut, wia er heid steht. Da Flaschl hod bloß zuagschaut."]],
+  [["Wie hoch war Hundertwassers ursprünglicher Entwurf von 1999?","70 Meter","7 Meter","700 Meter","Der Entwurf hatte 70 Meter und ließ sich so nicht bauen. Der Braukurs-Seite zufolge ist der gebaute Turm 35 Meter hoch."],
+   ["How tall was Hundertwasser's original design from 1999?","70 metres","7 metres","700 metres","The design was 70 metres and could not be built that way. According to the brewing course page the tower as built is 35 metres tall."],
+   ["Quanto era alto il progetto originale di Hundertwasser del 1999?","70 metri","7 metri","700 metri","Il progetto era di 70 metri e non si poteva costruire così. Secondo la pagina del corso la torre costruita è alta 35 metri."],
+   ["Wia hoch war da ursprüngliche Entwurf vom Hundertwasser vo 1999?","70 Meter","7 Meter","700 Meter","Da Entwurf hod 70 Meter ghabt und is so need baubar gwen. Laut Braukurs-Seitn is da baute Turm 35 Meter hoch."]]
+ ]},
+{id:"fuehr", ic:"ticket-perforated", url:SITE + "tickets-2/",
+ t:["Führungen und Tickets","Tours and tickets","Visite guidate e biglietti","Führungen und Tickets"],
+ i:["Zur Brauerei gehört „Kuchlbauers Bierwelt“ mit Brauereiführung und Turm. Geführt wird zu festen Zeiten, an welchen Tagen, hängt vom Zeitraum ab; zusätzlich gibt es Führungen nach Bedarf. Karfreitag und Allerheiligen ist geschlossen, Winterpause ist vom 24.12. bis 06.01. Hunde dürfen aus hygienischen Gründen nicht mit. Preise und Tickets: bitte auf der offiziellen Seite nachsehen.",
+    "The brewery offers “Kuchlbauers Bierwelt” with a brewery tour and the tower. Tours run at fixed times; which days depends on the period; extra tours are available on demand. Closed on Good Friday and All Saints' Day, winter break from 24 Dec to 6 Jan. Dogs are not allowed for hygiene reasons. Prices and tickets: please check the official site.",
+    "Alla birreria appartiene «Kuchlbauers Bierwelt» con visita alla birreria e alla torre. Si visita a orari fissi; i giorni dipendono dal periodo; in più ci sono visite su richiesta. Chiuso il Venerdì Santo e a Ognissanti, pausa invernale dal 24.12 al 06.01. I cani non sono ammessi per motivi igienici. Prezzi e biglietti: vedi il sito ufficiale.",
+    "Zur Brauerei ghert „Kuchlbauers Bierwelt“ mit Brauereiführung und Turm. Gführt werd zu festn Zeitn, an wia vui Tag, hängt vom Zeitraum o; zusätzlich gibt's Führungen nach Bedarf. Karfreitag und Allerheiligen is zua, Winterpausn is vom 24.12. bis 06.01. Hund derfa aus hygienische Gründ need mit. Preise und Tickets: bitte af da offiziellen Seitn nachschaun."],
+ q:[
+  [["Zu welchen festen Uhrzeiten finden die Führungen laut Besucherinfo statt?","11:00, 13:00 und 15:00 Uhr","7:00, 9:00 und 12:00 Uhr","Nur nach dem dritten Weissbier","Die Besucherinfo nennt 11, 13 und 15 Uhr. Die Tage variieren je nach Zeitraum, deshalb vorher auf der Seite nachsehen."],
+   ["At which fixed times do the tours run, according to the visitor information?","11:00, 13:00 and 15:00","7:00, 9:00 and 12:00","Only after the third wheat beer","The visitor information names 11, 13 and 15 o'clock. The days vary by period, so check the page beforehand."],
+   ["A quali orari fissi si svolgono le visite secondo le info per i visitatori?","11:00, 13:00 e 15:00","7:00, 9:00 e 12:00","Solo dopo la terza birra","Le info indicano le 11, le 13 e le 15. I giorni variano secondo il periodo: meglio controllare prima sulla pagina."],
+   ["Zu wöche festn Uhrzeitn find'n d'Führungen laut Besucherinfo statt?","11:00, 13:00 und 15:00 Uhr","7:00, 9:00 und 12:00 Uhr","Bloß nach da dritten Weissbier","D'Besucherinfo nennt 11, 13 und 15 Uhr. D'Tag variiern je nach Zeitraum, drum vorher af da Seitn nachschaun."]],
+  [["An welchen Tagen ist laut Besucherinfo geschlossen?","Karfreitag und Allerheiligen","Rosenmontag und Aschermittwoch","Nie, Brauereien schlafen nicht","Karfreitag und Allerheiligen sind genannt. Dazu kommt die Winterpause vom 24.12. bis einschließlich 06.01."],
+   ["On which days is it closed according to the visitor information?","Good Friday and All Saints' Day","Shrove Monday and Ash Wednesday","Never, breweries don't sleep","Good Friday and All Saints' Day are named. Add the winter break from 24 Dec to 6 Jan inclusive."],
+   ["In quali giorni è chiuso secondo le info per i visitatori?","Venerdì Santo e Ognissanti","Lunedì di Carnevale e Mercoledì delle Ceneri","Mai, le birrerie non dormono","Sono citati il Venerdì Santo e Ognissanti. In più la pausa invernale dal 24.12 al 06.01 compreso."],
+   ["An wöchane Tag is laut Besucherinfo zua?","Karfreitag und Allerheiligen","Rosnmontag und Aschermittwoch","Nia, Brauereien schlafa need","Karfreitag und Allerheiligen san gnennt. Dazua kimmt de Winterpausn vom 24.12. bis eischließlich 06.01."]],
+  [["Dürfen Hunde mit in die Führung?","Nein, aus hygienischen Gründen nicht","Ja, aber nur in den Turm","Ja, alle, auch Pferde","Hunde dürfen laut Besucherinfo aus hygienischen Gründen nicht mitgeführt werden."],
+   ["May dogs join the tour?","No, not for hygiene reasons","Yes, but only into the tower","Yes, all of them, even horses","According to the visitor information, dogs may not be brought along for hygiene reasons."],
+   ["I cani possono partecipare alla visita?","No, per motivi igienici","Sì, ma solo nella torre","Sì, tutti, anche i cavalli","Secondo le info per i visitatori i cani non possono entrare per motivi igienici."],
+   ["Derfa Hund mit in d'Führung?","Na, aus hygienische Gründ need","Jo, aber bloß in Turm","Jo, olle, aa Rösser","Hund derfa laut Besucherinfo aus hygienische Gründ need mitgfüahrt werdn."]]
+ ]},
+{id:"brau", ic:"cup-straw", url:SITE + "braukurs/",
+ t:["Der Braukurs","The brewing course","Il corso di produzione","Da Braukurs"],
+ i:["Im Braukurs brauen Teilnehmende unter Anleitung von Braumeister Uwe selbst ein Weissbier, in der 3-hl-Mikrobrauerei, vom Schroten bis zur Lagerung. Dazu gehören eine Brauereiführung mit Turm und eine Verkostung verschiedener Weissbiere. Der Kurs dauert etwa acht Stunden. Preis, Termine und Buchung stehen auf der Braukurs-Seite; Anfragen laufen laut Seite ausschließlich schriftlich per E-Mail.",
+    "In the brewing course participants brew a wheat beer themselves under the guidance of master brewer Uwe, in the 3 hl microbrewery, from milling to storage. It includes a brewery tour with the tower and a tasting of different wheat beers. The course takes about eight hours. Price, dates and booking are on the course page; according to the page, enquiries are made exclusively in writing by email.",
+    "Nel corso i partecipanti producono da soli una birra di frumento, guidati dal mastro birraio Uwe, nel microbirrificio da 3 hl, dalla macinatura allo stoccaggio. Include una visita alla birreria con la torre e una degustazione di diverse birre di frumento. Il corso dura circa otto ore. Prezzo, date e prenotazione sono sulla pagina del corso; secondo la pagina le richieste vanno fatte solo per iscritto via e-mail.",
+    "Im Braukurs braun d'Teilnehmer unter Anleitung vom Braumoasta Uwe söiba a Weissbier, in da 3-hl-Mikrobrauerei, vom Schroten bis zur Lagerung. Dazua ghert a Brauereiführung mit Turm und a Verkostung vo verschiedene Weissbier. Da Kurs dauert ungfähr acht Stund. Preis, Termine und Buchung stengan af da Braukurs-Seitn; Anfragn laffa laut Seitn ausschließlich schriftlich per E-Mail."],
+ q:[
+  [["Wie groß ist die Mikrobrauerei, in der gebraut wird?","3 Hektoliter","300 Hektoliter","3 Liter","Laut Braukurs-Seite wird in der 3-hl-Mikrobrauerei gebraut, also ein Weissbier in überschaubarer Menge."],
+   ["How big is the microbrewery where the brewing happens?","3 hectolitres","300 hectolitres","3 litres","According to the course page the brewing takes place in the 3 hl microbrewery, a manageable amount of wheat beer."],
+   ["Quanto è grande il microbirrificio in cui si produce?","3 ettolitri","300 ettolitri","3 litri","Secondo la pagina del corso si produce nel microbirrificio da 3 hl, una quantità gestibile di birra di frumento."],
+   ["Wia groß is d'Mikrobrauerei, wo braut werd?","3 Hektoliter","300 Hektoliter","3 Liter","Laut Braukurs-Seitn werd in da 3-hl-Mikrobrauerei braut, oiso a Weissbier in überschaubare Menge."]],
+  [["Wie lange dauert der Braukurs ungefähr?","Etwa acht Stunden","Etwa 45 Minuten","Etwa drei Tage","Die Seite nennt ca. 8 Stunden mit Treffpunkt morgens vor dem Hauptgebäude. Für einen ganzen Brauprozess ist das erstaunlich kurz."],
+   ["About how long does the brewing course take?","About eight hours","About 45 minutes","About three days","The page says approx. 8 hours, meeting in the morning in front of the main building. Pretty short for a whole brewing process."],
+   ["Quanto dura circa il corso di produzione?","Circa otto ore","Circa 45 minuti","Circa tre giorni","La pagina indica ca. 8 ore, con ritrovo al mattino davanti all'edificio principale. Poco, per un intero processo di produzione."],
+   ["Wia lang dauert da Braukurs ungfähr?","Ungfähr acht Stund","Ungfähr 45 Minutn","Ungfähr drei Tag","D'Seitn nennt ca. 8 Stund mit Treffpunkt in da Fruah vor'm Hauptgebäude. Fia an ganzn Brauprozess is des erstaunlich kurz."]],
+  [["Ab wie vielen Teilnehmenden findet der Kurs laut Seite statt?","Ab 7 Teilnehmenden","Ab 2 Teilnehmenden","Ab 70 Teilnehmenden","Wird die Mindestzahl nicht erreicht, werden die Teilnehmenden rechtzeitig informiert. Anfragen gehen laut Seite nur schriftlich per E-Mail."],
+   ["From how many participants does the course take place, according to the page?","From 7 participants","From 2 participants","From 70 participants","If the minimum is not reached, participants are informed in good time. Enquiries are made in writing by email only, says the page."],
+   ["Da quanti partecipanti si svolge il corso secondo la pagina?","Da 7 partecipanti","Da 2 partecipanti","Da 70 partecipanti","Se il minimo non è raggiunto, i partecipanti vengono avvisati in tempo. Le richieste vanno fatte solo per iscritto via e-mail."],
+   ["Ab wia vui Teilnehmer find't da Kurs laut Seitn statt?","Ab 7 Teilnehmer","Ab 2 Teilnehmer","Ab 70 Teilnehmer","Werd de Mindestzoi need erreicht, werdn d'Teilnehmer rechtzeitig informiert. Anfragn gengan laut Seitn bloß schriftlich per E-Mail."]]
+ ]},
+{id:"events", ic:"balloon-heart", url:SITE + "veranstaltungen-genuss/",
+ t:["Veranstaltungen und Genuss","Events and enjoyment","Eventi e gusto","Veranstaltungen und Genuss"],
+ i:["Auf dem Gelände ist immer etwas los: Kuchlbauers Ostermarkt für die ganze Familie, Kuchlbauers Turmweihnacht, der Gillamoos (laut Seite einer der ältesten Jahrmärkte der Region, Tradition seit 1313), der Biergarten am Fuß des Turms neben dem Erdhügelhaus und der Brauereigasthof, das Mutterhaus des Weissbier-Spezialisten. Termine stehen auf der offiziellen Seite.",
+    "There is always something going on at the site: Kuchlbauer's Easter market for the whole family, Kuchlbauer's Turmweihnacht (Christmas at the tower), the Gillamoos (one of the region's oldest fairs according to the page, a tradition since 1313), the beer garden at the foot of the tower next to the earth mound house, and the Brauereigasthof, the mother house of the wheat beer specialist. Dates are on the official site.",
+    "Nel complesso c'è sempre qualcosa da fare: il mercatino di Pasqua di Kuchlbauer per tutta la famiglia, la Turmweihnacht (Natale alla torre), il Gillamoos (secondo la pagina una delle fiere più antiche della regione, tradizione dal 1313), il giardino della birra ai piedi della torre accanto alla casa-collina e il Brauereigasthof, la casa madre dello specialista della birra di frumento. Le date sono sul sito ufficiale.",
+    "Af'm Gelände is imma wos los: Kuchlbauers Ostermarkt fia d'ganze Familie, Kuchlbauers Turmweihnacht, da Gillamoos (laut Seitn oana vo de ältestn Jahrmärkt vo da Region, Tradition seit 1313), da Biergarten am Fuaß vom Turm nebn'm Erdhügelhaus und da Brauereigasthof, as Muattahaus vom Weissbier-Spezialistn. Termine stengan af da offiziellen Seitn."],
+ q:[
+  [["Seit wann hat der Gillamoos laut Seite Tradition?","Seit 1313","Seit 1913","Seit letztem Dienstag","Laut Kuchlbauer-Seite ist der Gillamoos einer der ältesten Jahrmärkte der Region, mit Tradition seit 1313."],
+   ["Since when does the Gillamoos have a tradition, according to the page?","Since 1313","Since 1913","Since last Tuesday","According to the Kuchlbauer page the Gillamoos is one of the region's oldest fairs, a tradition since 1313."],
+   ["Da quando il Gillamoos ha una tradizione secondo la pagina?","Dal 1313","Dal 1913","Da martedì scorso","Secondo la pagina di Kuchlbauer il Gillamoos è una delle fiere più antiche della regione, tradizione dal 1313."],
+   ["Seit wann hod da Gillamoos laut Seitn Tradition?","Seit 1313","Seit 1913","Seit letztn Dienstag","Laut Kuchlbauer-Seitn is da Gillamoos oana vo de ältestn Jahrmärkt vo da Region, mit Tradition seit 1313."]],
+  [["Wo liegt der Biergarten laut Seite?","Am Fuß des Kuchlbauer Turms, neben dem Erdhügelhaus","Auf dem Dach des Turms","Mitten im Hopfenfeld der Hallertau","Der Biergarten liegt am Fuß des Kuchlbauer Turms, neben dem Erdhügelhaus."],
+   ["Where is the beer garden, according to the page?","At the foot of the Kuchlbauer Tower, next to the earth mound house","On the roof of the tower","In the middle of a Hallertau hop field","The beer garden is at the foot of the Kuchlbauer Tower, next to the earth mound house."],
+   ["Dov'è il giardino della birra secondo la pagina?","Ai piedi della Torre Kuchlbauer, accanto alla casa-collina","Sul tetto della torre","In mezzo a un luppoleto dell'Hallertau","Il giardino della birra si trova ai piedi della Torre Kuchlbauer, accanto alla casa-collina."],
+   ["Wo liegt da Biergarten laut Seitn?","Am Fuaß vom Kuchlbauer Turm, nebn'm Erdhügelhaus","Af'm Dach vom Turm","Mittn im Hopfnfeid vo da Hallertau","Da Biergarten liegt am Fuaß vom Kuchlbauer Turm, nebn'm Erdhügelhaus."]],
+  [["Was ist der Brauereigasthof zum Kuchlbauer laut Startseite?","Das Mutterhaus des Weissbier-Spezialisten","Ein Pop-up-Store im Turm","Eine Raststätte an der Autobahn","Der Brauereigasthof ist laut Startseite das Mutterhaus des Weissbier-Spezialisten."],
+   ["What is the Brauereigasthof zum Kuchlbauer according to the start page?","The mother house of the wheat beer specialist","A pop-up store in the tower","A motorway service area","According to the start page the Brauereigasthof is the mother house of the wheat beer specialist."],
+   ["Cos'è il Brauereigasthof zum Kuchlbauer secondo la pagina iniziale?","La casa madre dello specialista della birra di frumento","Un pop-up store nella torre","Un autogrill","Secondo la pagina iniziale il Brauereigasthof è la casa madre dello specialista della birra di frumento."],
+   ["Wos is da Brauereigasthof zum Kuchlbauer laut Startseitn?","As Muattahaus vom Weissbier-Spezialistn","A Pop-up-Store im Turm","A Raststätt an da Autobahn","Da Brauereigasthof is laut Startseitn as Muattahaus vom Weissbier-Spezialistn."]]
+ ]},
+{id:"besuch", ic:"geo-alt", url:SITE + "besucherinfo/",
+ t:["Besucherinfo","Visitor information","Info per i visitatori","Besucherinfo"],
+ i:["Die Brauerei liegt in der Römerstraße 5 bis 9 in Abensberg. Geparkt wird am Brauereigelände (Schulhausplatz 4, bei Märkten gesperrt) oder auf der Gillamooswiese, von dort sind es laut Seite 5 bis 10 Minuten zu Fuß. Vom Bahnhof Abensberg sind es etwa 5 Minuten zu Fuß. Im Turm fährt ein Aufzug bis zur Aussichtsterrasse; Bierwelt und Turm sind aus baulichen Gründen nur bedingt für Rollstuhlfahrende zugänglich.",
+    "The brewery is at Römerstraße 5 to 9 in Abensberg. Parking is at the brewery site (Schulhausplatz 4, closed during markets) or at the Gillamooswiese, from where it is a 5 to 10 minute walk according to the page. From Abensberg station it is about a 5 minute walk. A lift in the tower goes up to the viewing terrace; for structural reasons Bierwelt and tower are only partly accessible to wheelchair users.",
+    "La birreria si trova in Römerstraße 5-9 ad Abensberg. Si parcheggia presso la birreria (Schulhausplatz 4, chiuso durante i mercati) o alla Gillamooswiese, da dove secondo la pagina sono 5-10 minuti a piedi. Dalla stazione di Abensberg sono circa 5 minuti a piedi. Un ascensore nella torre sale fino alla terrazza panoramica; per motivi strutturali Bierwelt e torre sono accessibili solo in parte alle persone in sedia a rotelle.",
+    "D'Brauerei liegt in da Römerstraß 5 bis 9 in Abensberg. Parkt werd am Brauereigelände (Schulhausplatz 4, bei Märkt gsperrt) oda af da Gillamooswiesn, vo do san s' laut Seitn 5 bis 10 Minutn zu Fuaß. Vom Bahnhof Abensberg san s' ungfähr 5 Minutn zu Fuaß. Im Turm fährt a Aufzug bis zur Aussichtsterrassn; Bierwelt und Turm san aus bauliche Gründ bloß bedingt fia Rollstuihfahrer zuagängli."],
+ q:[
+  [["In welcher Straße liegt die Brauerei in Abensberg?","Römerstraße 5 bis 9","Hundertwasserweg 1","Weissbierallee 99","Die Besucherinfo nennt Römerstraße 5–9, 93326 Abensberg. Fürs Navi zum Parkplatz: Schulhausplatz 4."],
+   ["On which street is the brewery in Abensberg?","Römerstraße 5 to 9","Hundertwasserweg 1","Weissbierallee 99","The visitor information gives Römerstraße 5–9, 93326 Abensberg. For the car park navigation: Schulhausplatz 4."],
+   ["In quale via si trova la birreria ad Abensberg?","Römerstraße 5-9","Hundertwasserweg 1","Weissbierallee 99","Le info indicano Römerstraße 5–9, 93326 Abensberg. Per il parcheggio nel navigatore: Schulhausplatz 4."],
+   ["In wöcha Straß liegt d'Brauerei in Abensberg?","Römerstraß 5 bis 9","Hundertwasserweg 1","Weissbierallee 99","D'Besucherinfo nennt Römerstraß 5–9, 93326 Abensberg. Fias Navi zum Parkplatz: Schulhausplatz 4."]],
+  [["Wie weit ist es vom Bahnhof Abensberg zu Fuß?","Etwa 5 Minuten","Etwa 90 Minuten","Nur mit dem Heißluftballon","Laut Besucherinfo sind es vom Bahnhof Abensberg etwa 5 Minuten zu Fuß."],
+   ["How far is it on foot from Abensberg station?","About 5 minutes","About 90 minutes","Only by hot-air balloon","According to the visitor information it is about a 5 minute walk from Abensberg station."],
+   ["Quanto dista a piedi dalla stazione di Abensberg?","Circa 5 minuti","Circa 90 minuti","Solo in mongolfiera","Secondo le info per i visitatori sono circa 5 minuti a piedi dalla stazione di Abensberg."],
+   ["Wia weit is vom Bahnhof Abensberg zu Fuaß?","Ungfähr 5 Minutn","Ungfähr 90 Minutn","Bloß mim Heißluftballon","Laut Besucherinfo san s' vom Bahnhof Abensberg ungfähr 5 Minutn zu Fuaß."]],
+  [["Wie weit fährt der Aufzug im Kuchlbauer Turm?","Bis zur Aussichtsterrasse","Bis in den Gärkeller","Gar nicht, es gibt nur Treppen","Ein Aufzug fährt bis zur Aussichtsterrasse im Turm. Bierwelt und Turm sind trotzdem nur bedingt für Rollstuhlfahrende zugänglich."],
+   ["How far does the lift in the Kuchlbauer Tower go?","Up to the viewing terrace","Down to the fermentation cellar","Not at all, there are only stairs","A lift goes up to the viewing terrace in the tower. Bierwelt and tower are still only partly accessible to wheelchair users."],
+   ["Fin dove sale l'ascensore nella Torre Kuchlbauer?","Fino alla terrazza panoramica","Fino alla cantina di fermentazione","Per niente, ci sono solo scale","Un ascensore sale fino alla terrazza panoramica della torre. Bierwelt e torre sono comunque solo in parte accessibili a chi è in sedia a rotelle."],
+   ["Wia weit fährt da Aufzug im Kuchlbauer Turm?","Bis zur Aussichtsterrassn","Bis in Gärkella","Goa need, s gibt bloß Stiagn","A Aufzug fährt bis zur Aussichtsterrassn im Turm. Bierwelt und Turm san trotzdem bloß bedingt fia Rollstuihfahrer zuagängli."]]
+ ]},
+{id:"boss", ic:"tree", boss:true, url:SITE + "bier-und-kunst/",
+ t:["Bossrunde: Weitblick","Boss round: foresight","Round finale: lungimiranza","Bossrunde: Weitblick"],
+ i:["Letzte Runde! Laut Familienbrauerei-Seite vereinbarte die Brauerei 2018 mit fünf regionalen Landwirten, Gerste ausschließlich für Kuchlbauer anzubauen, und erzeugte 1.239.000 kWh Strom mit eigenen Solaranlagen; Überschuss ging ins Netz. Das Weissbier-Quartier+ beschreibt die Startseite als klimapositives Logistikzentrum und Lebensraum für Mensch und Natur.",
+    "Final round! According to the family brewery page, in 2018 the brewery agreed with five regional farmers to supply barley exclusively to Kuchlbauer, and generated 1,239,000 kWh of electricity with its own solar panels; the surplus went into the grid. The start page describes the Weissbier-Quartier+ as a climate-positive logistics centre and habitat for people and nature.",
+    "Ultimo round! Secondo la pagina sulla birreria di famiglia nel 2018 la birreria ha concordato con cinque agricoltori regionali la fornitura di orzo esclusivamente a Kuchlbauer e ha prodotto 1.239.000 kWh con impianti solari propri; il surplus è andato in rete. La pagina iniziale descrive il Weissbier-Quartier+ come centro logistico a impatto climatico positivo e habitat per uomo e natura.",
+    "Letzte Rundn! Laut Familienbrauerei-Seitn hod d'Brauerei 2018 mit fünf regionale Landwirt vereinbart, Gerstn ausschließlich fia Kuchlbauer anzbaun, und hod 1.239.000 kWh Strom mit eigene Solaranlagn erzeugt; da Überschuss is ins Netz gangan. D'Startseitn beschreibt as Weissbier-Quartier+ als klimapositives Logistikzentrum und Lebensraum fia Mensch und Natur."],
+ q:[
+  [["Mit wie vielen regionalen Landwirten vereinbarte die Brauerei 2018 die Gersten-Lieferung?","Mit fünf","Mit einem einzigen","Mit fünfzig","Die Seite nennt fünf regionale Landwirte, die Gerste ausschließlich für Kuchlbauer liefern."],
+   ["How many regional farmers did the brewery agree barley supplies with in 2018?","Five","Just one","Fifty","The page names five regional farmers supplying barley exclusively to Kuchlbauer."],
+   ["Con quanti agricoltori regionali la birreria concordò nel 2018 la fornitura di orzo?","Con cinque","Con uno solo","Con cinquanta","La pagina cita cinque agricoltori regionali che forniscono orzo esclusivamente a Kuchlbauer."],
+   ["Mit wia vui regionale Landwirt hod d'Brauerei 2018 d'Gerstn-Lieferung vereinbart?","Mit fünf","Mit oam oanzign","Mit fufzig","D'Seitn nennt fünf regionale Landwirt, de Gerstn ausschließlich fia Kuchlbauer liefan."]],
+  [["Wie viel Solarstrom erzeugte die Brauerei laut Seite 2018?","1.239.000 kWh","1.239 kWh","12 kWh, etwa eine Glühbirne","Die Seite nennt 1.239.000 kWh aus eigenen Solaranlagen. Überschüssiger Strom wurde ins Netz eingespeist."],
+   ["How much solar power did the brewery generate in 2018, according to the page?","1,239,000 kWh","1,239 kWh","12 kWh, about one light bulb","The page names 1,239,000 kWh from its own solar panels. Surplus power was fed into the grid."],
+   ["Quanta energia solare produsse la birreria nel 2018 secondo la pagina?","1.239.000 kWh","1.239 kWh","12 kWh, circa una lampadina","La pagina indica 1.239.000 kWh da impianti solari propri. L'energia in eccesso è stata immessa in rete."],
+   ["Wia vui Solarstrom hod d'Brauerei laut Seitn 2018 erzeugt?","1.239.000 kWh","1.239 kWh","12 kWh, ungfähr a Glühbirn","D'Seitn nennt 1.239.000 kWh aus eigene Solaranlagn. Überschüssiger Strom is ins Netz eigspeist worn."]],
+  [["Was ist das Weissbier-Quartier+ laut Startseite?","Ein klimapositives Logistikzentrum","Ein Skigebiet","Ein Museum für Kronkorken","Die Startseite beschreibt es als klimapositives Logistikzentrum und als Lebensraum für Mensch und Natur."],
+   ["What is the Weissbier-Quartier+ according to the start page?","A climate-positive logistics centre","A ski resort","A museum of bottle caps","The start page describes it as a climate-positive logistics centre and habitat for people and nature."],
+   ["Cos'è il Weissbier-Quartier+ secondo la pagina iniziale?","Un centro logistico a impatto climatico positivo","Un comprensorio sciistico","Un museo dei tappi a corona","La pagina iniziale lo descrive come centro logistico a impatto climatico positivo e habitat per uomo e natura."],
+   ["Wos is as Weissbier-Quartier+ laut Startseitn?","A klimapositives Logistikzentrum","A Skigebiet","A Museum fia Kronkorkn","D'Startseitn beschreibt's als klimapositives Logistikzentrum und als Lebensraum fia Mensch und Natur."]]
+ ]}
+];
+const NQ = 3;
+const lessonById = id => LESSONS.find(l => l.id === id);
+const bestOf = id => (st.prog[id] && st.prog[id].best) || 0;
+const passedL = id => bestOf(id) >= 2;
+const allPassed = () => LESSONS.every(l => passedL(l.id));
+const totalStars = () => LESSONS.reduce((n, l) => n + bestOf(l.id), 0);
+const rankIdx = () => { const s = totalStars(); return s >= 19 ? 4 : s >= 14 ? 3 : s >= 9 ? 2 : s >= 4 ? 1 : 0; };
+const nextLesson = () => LESSONS.find(l => !passedL(l.id));
+
+/* ---------- Flaschl (SVG selbst gezeichnet) ---------- */
+function bottleInner(p){
+  return '<defs><linearGradient id="' + p + 'bg" x1="0" x2="1"><stop offset="0" stop-color="#5a300f"/><stop offset=".35" stop-color="#b9702c"/><stop offset=".7" stop-color="#8a4a1b"/><stop offset="1" stop-color="#4a250c"/></linearGradient></defs>'
+  + '<ellipse cx="70" cy="312" rx="48" ry="6" fill="#000" opacity=".25"/>'
+  + '<g class="body">'
+  + '<ellipse cx="50" cy="306" rx="15" ry="8" fill="#b3261e" stroke="#5c0f0a" stroke-width="2"/><ellipse cx="90" cy="306" rx="15" ry="8" fill="#b3261e" stroke="#5c0f0a" stroke-width="2"/>'
+  + '<path d="M58 28 L58 96 C58 130 24 140 24 180 L24 282 C24 296 36 302 50 302 L90 302 C104 302 116 296 116 282 L116 180 C116 140 82 130 82 96 L82 28 Z" fill="url(#' + p + 'bg)" stroke="#3a1c08" stroke-width="3"/>'
+  + '<path d="M62 40 L62 96 C62 126 32 138 32 176 L32 270" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="5" stroke-linecap="round"/>'
+  + '<rect x="53" y="12" width="34" height="16" rx="4" fill="#d4a40a" stroke="#7a5a05" stroke-width="2"/><path d="M59 14v12M65 14v12M71 14v12M77 14v12M83 14v12" stroke="#7a5a05" stroke-width="1.5"/>'
+  + '<circle cx="48" cy="12" r="9" fill="#fff"/><circle cx="62" cy="5" r="10" fill="#fff"/><circle cx="80" cy="6" r="10" fill="#fff"/><circle cx="92" cy="14" r="8" fill="#fff"/>'
+  + '<path d="M24 192 H116 V262 H24 Z" fill="#b3261e" stroke="#d4a40a" stroke-width="3"/>'
+  + '<path d="M30 198 H110 V256 H30 Z" fill="none" stroke="#d4a40a" stroke-width="1.2"/>'
+  + '<text x="70" y="226" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="17" fill="#f6d453" letter-spacing="1">WEISSE</text>'
+  + '<path d="M36 238 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l6 -4" fill="none" stroke="#fff" stroke-width="2.4"/>'
+  + '<polygon points="39,246 45,251 39,256 33,251" fill="#7fb2e5"/><polygon points="55,246 61,251 55,256 49,251" fill="#fff"/><polygon points="71,246 77,251 71,256 65,251" fill="#7fb2e5"/><polygon points="87,246 93,251 87,256 81,251" fill="#fff"/><polygon points="103,246 109,251 103,256 97,251" fill="#7fb2e5"/>'
+  + '<ellipse cx="56" cy="164" rx="10" ry="12" fill="#fff" stroke="#3a1c08" stroke-width="2"/><ellipse cx="84" cy="164" rx="10" ry="12" fill="#fff" stroke="#3a1c08" stroke-width="2"/>'
+  + '<circle cx="58" cy="166" r="5" fill="#2a1205"/><circle cx="86" cy="166" r="5" fill="#2a1205"/><circle cx="60" cy="163" r="1.6" fill="#fff"/><circle cx="88" cy="163" r="1.6" fill="#fff"/>'
+  + '<rect class="lid" x="45" y="151" width="22" height="26" rx="10" fill="#9a5a22"/><rect class="lid" x="73" y="151" width="22" height="26" rx="10" fill="#9a5a22"/>'
+  + '<circle cx="42" cy="182" r="6" fill="#ff8f8a" opacity=".5"/><circle cx="98" cy="182" r="6" fill="#ff8f8a" opacity=".5"/>'
+  + '<path class="ms" d="M56 181 Q70 196 84 181" fill="none" stroke="#2a1205" stroke-width="3" stroke-linecap="round"/>'
+  + '<path class="mo" d="M57 181 Q70 205 83 181 Z" fill="#3a0f0a" stroke="#2a1205" stroke-width="2.5" stroke-linejoin="round"/>'
+  + '<path d="M24 214 Q6 224 6 242" fill="none" stroke="#3a1c08" stroke-width="6" stroke-linecap="round"/><circle cx="6" cy="244" r="8" fill="#fff" stroke="#3a1c08" stroke-width="2"/>'
+  + '<g class="arm"><path d="M116 214 Q136 206 134 184" fill="none" stroke="#3a1c08" stroke-width="6" stroke-linecap="round"/><circle cx="134" cy="180" r="8" fill="#fff" stroke="#3a1c08" stroke-width="2"/></g>'
+  + '</g>';
+}
+const bottleSvg = (p, cls) => '<svg viewBox="-6 -8 152 330" xmlns="http://www.w3.org/2000/svg" class="' + (cls || "") + '">' + bottleInner(p) + '</svg>';
+
+const fh = $("#fh"), bub = $("#bub");
+fh.innerHTML = bottleSvg("fh", "");
+let bubTimer = null, talkTimer = null, lastSay = 0;
+function say(text, ms){
+  if(!st.fig || !text) return;
+  lastSay = Date.now();
+  bub.replaceChildren(h("b", {text:"Flaschl"}), document.createTextNode(text));
+  bub.classList.add("on");
+  fh.classList.add("talk"); clearTimeout(talkTimer); talkTimer = setTimeout(() => fh.classList.remove("talk"), Math.min(ms || 5500, 2600));
+  clearTimeout(bubTimer); bubTimer = setTimeout(() => bub.classList.remove("on"), ms || 5500);
+}
+function hop(){ fh.classList.remove("hop"); void fh.offsetWidth; fh.classList.add("hop"); }
+function foamBurst(){
+  if(reduced() || !st.fig) return;
+  const r = fh.getBoundingClientRect();
+  for(let i = 0; i < 9; i++){
+    const e = h("div", {class:"foam"}); e.style.left = (r.left + r.width / 2 - 5) + "px"; e.style.top = (r.top + 6) + "px";
+    e.style.setProperty("--dx", (Math.random() * 120 - 40) + "px"); e.style.animation = "rise " + (0.9 + Math.random() * .8) + "s ease-out forwards";
+    document.body.append(e); setTimeout(() => e.remove(), 1900);
+  }
+}
+function confetti(){
+  if(reduced()) return;
+  const cols = ["#d4a40a", "#f0c53a", "#fff", "#1b7a5f", "#b3261e"];
+  for(let i = 0; i < 36; i++){
+    const e = h("div", {class:"cf"}); e.style.left = Math.random() * 100 + "vw"; e.style.background = rnd(cols);
+    e.style.animation = "fall " + (1.8 + Math.random() * 1.6) + "s linear " + Math.random() * .6 + "s forwards";
+    document.body.append(e); setTimeout(() => e.remove(), 4500);
+  }
+}
+function setFig(){
+  document.body.classList.toggle("nofig", !st.fig); document.body.classList.toggle("fig", st.fig);
+  document.documentElement.classList.toggle("rm", reduced());
+}
+
+/* ---------- Ansicht ---------- */
+let view = {v:"home"};
+let dip = null;
+const isStandalone = () => matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+const isIos = () => /iphone|ipad|ipod/i.test(navigator.userAgent) && !isStandalone();
+
+function snack(msg){ const s = $("#snack"); s.textContent = msg; s.classList.add("on"); clearTimeout(snack.t); snack.t = setTimeout(() => s.classList.remove("on"), 3200); }
+function go(v){ view = v; render(); window.scrollTo(0, 0); }
+
+function header(){
+  return h("header", {class:"hdr"}, h("div", {class:"hin"},
+    h("button", {type:"button", class:"brand", "aria-label":t("home"), onclick:() => go({v:"home"})}, bottleIcon(), h("span", {text:t("brand")})),
+    h("div", {class:"langs", role:"group", "aria-label":"Sprache / Language"}, LANGS.map(l => h("button", {type:"button", class:"lg", lang:l[4], "aria-pressed":String(l[0] === st.lang), "aria-label":l[2], title:l[2], onclick:() => setLang(l[0])}, l[1]))),
+    h("button", {type:"button", class:"ib", id:"hshare", "aria-label":t("share"), title:t("share"), onclick:() => doShare(t("shMsg"))}, ic("share")),
+    h("button", {type:"button", class:"ib", "aria-label":t(st.fig ? "figOff" : "figOn"), title:t(st.fig ? "figOff" : "figOn"), onclick:toggleFig}, ic(st.fig ? "eye" : "eye-slash"))
+  ));
+}
+/* Flaschen-Symbol (Bootstrap Icons hat keine Flasche): Umriss der Flaschl-Figur in Gold */
+function bottleIcon(){ const s = h("span", {class:"bsym", "aria-hidden":"true"}); s.innerHTML = '<svg viewBox="0 0 24 40" width="22" height="36"><path d="M9.5 3h5v1.5l-.3 8.5c0 3 4.8 4.200 4.800 9.500V34c0 2-1.500 3-3.500 3h-7c-2 0-3.500-1-3.500-3V22.500C5 17.200 9.800 16 9.800 13L9.500 4.500Z" fill="#d4a40a"/><rect x="8.500" y="1" width="7" height="3" rx="1" fill="#f0c53a"/><rect x="5" y="23" width="14" height="8" fill="#b3261e"/><circle cx="10" cy="18" r="1.200" fill="#0b3b2e"/><circle cx="14" cy="18" r="1.200" fill="#0b3b2e"/></svg>'; return s; }
+function setLang(l){
+  st.lang = l; save(); document.documentElement.lang = LANGS[li()][4]; render();
+  say(mt("lang")); hop();
+}
+function toggleFig(){
+  st.fig = !st.fig; save(); setFig(); render();
+  if(st.fig){ hop(); say(st.name ? mt("greetN").replace("{n}", st.name) : mt("greet", 0)); }
+}
+
+function footer(){
+  const L = [["Kontakt","kontakt/"],["Karriere",null,"https://kuchlbauer.de/karriere/"],["Partnerbereich","partnerbereich/"],["Presse","presse/"],["AGB","agb/"],["ALB","alb/"],["Datenschutz","datenschutz/"],["Impressum","impressum/"]];
+  const soc = [["instagram","Instagram","https://www.instagram.com/weissbierbrauerkuchlbauer/"],["facebook","Facebook","https://www.facebook.com/Kuchlbauer/"],["youtube","YouTube","https://www.youtube.com/channel/UCpA5dd_gh52q8ylpZG7k1Jg"]];
+  const f = h("footer", {class:"ftr"},
+    h("svg", {}),
+    h("div", {class:"fin"},
+      h("nav", {class:"flinks", "aria-label":"kuchlbauer.de"}, L.map(x => ext(x[2] || SITE + x[1], "", x[0]))),
+      h("div", {class:"soc"}, soc.map(s => ext(s[2], "", ic(s[0]), h("span", {class:"vh", style:"position:absolute;left:-9999px", text:s[1]})))),
+      view.v === "home" ? h("div", {class:"fcredit"},
+        h("p", {class:"fver"}, h("span", {text:t("ver") + " " + VERSION + " · " + STAND})),
+        h("p", {class:"fby", text:t("by")})) : null
+    ));
+  /* Welle als SVG-Linie in Gold (SVG-Namensraum) */
+  const wave = f.querySelector("svg"); const ns = "http://www.w3.org/2000/svg";
+  const sv = document.createElementNS(ns, "svg"); sv.setAttribute("class", "wave"); sv.setAttribute("viewBox", "0 0 1000 20"); sv.setAttribute("preserveAspectRatio", "none"); sv.setAttribute("aria-hidden", "true");
+  const pa = document.createElementNS(ns, "path"); pa.setAttribute("d", "M0 14 C250 0 500 22 1000 4"); pa.setAttribute("fill", "none"); pa.setAttribute("stroke", "#d4a40a"); pa.setAttribute("stroke-width", "3"); pa.setAttribute("vector-effect", "non-scaling-stroke");
+  sv.append(pa); wave.replaceWith(sv);
+  return f;
+}
+
+function stars(n){ return h("span", {class:"stars", "aria-label":n + " / " + NQ + " " + t("stars")}, [0,1,2].map(i => ic(i < n ? "star-fill" : "star"))); }
+
+function nameBlock(){
+  const inp = h("input", {type:"text", maxlength:"40", value:st.name, placeholder:t("namePh"), "aria-label":t("namePh"), autocomplete:"given-name"});
+  const btn = h("button", {type:"button", class:"namebtn"});
+  function upd(){
+    const v = inp.value.trim(); btn.replaceChildren();
+    if(!v){ btn.className = "namebtn"; btn.disabled = true; btn.append(ic("save"), t("save")); }
+    else if(v === st.name){ btn.className = "namebtn ok"; btn.disabled = false; btn.append(ic("check-lg"), t("saved")); }
+    else { btn.className = "namebtn act"; btn.disabled = false; btn.append(ic("save"), t("save")); }
+  }
+  inp.addEventListener("input", upd);
+  inp.addEventListener("keydown", e => { if(e.key === "Enter"){ e.preventDefault(); btn.click(); } });
+  btn.addEventListener("click", () => {
+    const v = inp.value.trim(); if(!v) return;
+    st.name = v.slice(0, 40); save(); upd(); snack(t("savedMsg", {n:st.name})); say(mt("greetN").replace("{n}", st.name)); hop();
+  });
+  upd();
+  return h("div", {class:"nameRow"}, inp, btn);
+}
+
+function viewHome(){
+  const nx = nextLesson();
+  const done = LESSONS.filter(l => passedL(l.id)).length;
+  const cards = LESSONS.map((l, i) => {
+    const p = passedL(l.id);
+    return h("article", {class:"card lcard" + (p ? " done" : "")},
+      h("h3", {}, ic(l.ic), h("span", {text:(i + 1) + ". " + l.t[li()]})),
+      h("div", {class:"row"}, stars(bestOf(l.id)), l.boss ? h("span", {class:"chip"}, ic("trophy"), "Boss") : null),
+      h("div", {class:"row"},
+        h("button", {type:"button", class:"btn" + (nx && nx.id === l.id ? "" : " ghost"), onclick:() => go({v:"lesson", id:l.id, step:"intro"})}, ic(p ? "arrow-repeat" : "arrow-right"), p ? t("again") : (nx && nx.id === l.id ? t("start") : t("begin"))),
+        p ? h("button", {type:"button", class:"btn ghost", onclick:() => go({v:"cert", id:l.id})}, ic("award"), t("cert")) : null));
+  });
+  const offs = [["oBier","bier-und-kunst/","palette"],["oFuehr","tickets-2/","ticket-perforated"],["oEvent","veranstaltungen-genuss/","balloon-heart"],["oBesuch","besucherinfo/","geo-alt"],["oBrau","braukurs/","cup-straw"],["oShop",null,"bag","https://kuchlbauershop.de/de/"]];
+  return h("div", {},
+    h("section", {class:"card hero"},
+      h("div", {}, h("h1", {text:t("title")}), h("p", {class:"mut", text:t("sub")})),
+      h("div", {class:"row"}, h("span", {class:"chip"}, ic("trophy"), t("rank") + ": " + S.ranks[rankIdx()][li()]), h("span", {class:"chip"}, ic("star-fill"), totalStars() + " / " + (LESSONS.length * NQ) + " " + t("stars"))),
+      nx ? h("button", {type:"button", class:"btn big", onclick:() => go({v:"lesson", id:nx.id, step:"intro"})}, ic("arrow-right"), (done ? t("next") : t("start")) + ": " + nx.t[li()]) : h("button", {type:"button", class:"btn big", onclick:() => go({v:"cert", id:"master"})}, ic("award"), t("master")),
+      h("div", {}, h("p", {class:"small mut", text:t("nameQ")}), nameBlock(),
+        h("div", {class:"row", style:"margin-top:8px"}, st.name ? h("button", {type:"button", class:"btn ghost", onclick:() => { st.name = ""; save(); render(); }}, ic("person"), t("anon")) : h("button", {type:"button", class:"btn ghost", onclick:() => snack(t("anon"))}, ic("person"), t("anon"))))),
+    h("h2", {text:t("lessons")}), h("div", {class:"grid"}, cards),
+    h("div", {class:"row", style:"margin:16px 0"}, h("button", {type:"button", class:"btn ghost", onclick:() => go({v:"certs"})}, ic("trophy"), t("certs"))),
+    installCard(),
+    h("section", {class:"card"}, h("h2", {text:t("official")}), h("p", {class:"mut small", text:t("officialSub")}),
+      h("div", {class:"ofl"}, offs.map(o => ext(o[3] || SITE + o[1], "btn ghost", ic(o[2]), t(o[0]), ic("box-arrow-up-right"))))),
+    h("section", {class:"card"}, h("p", {class:"small mut"}, ic("info-circle"), " ", t("disc")))
+  );
+}
+
+function installCard(){
+  if(isStandalone()) return null;
+  if(dip) return h("section", {class:"card"}, h("p", {text:t("instCta")}), h("button", {type:"button", class:"btn", onclick:async () => { try{ dip.prompt(); await dip.userChoice; }catch(e){ /* abgebrochen */ } dip = null; render(); }}, ic("download"), t("instBtn")));
+  if(isIos()) return h("section", {class:"card"}, h("p", {}, ic("download"), " ", t("instIos")));
+  return null;
+}
+
+function viewLesson(){
+  const L = lessonById(view.id), idx = LESSONS.indexOf(L);
+  const crumb = h("p", {class:"mut small"}, t("lesson") + " " + (idx + 1) + " / " + LESSONS.length);
+  if(view.step === "intro"){
+    return h("section", {class:"card"}, crumb, h("h2", {}, ic(L.ic), " ", L.t[li()]), h("p", {text:L.i[li()]}),
+      h("p", {class:"small"}, ext(L.url, "", ic("box-arrow-up-right"), " " + t("source") + ": " + L.url.replace("https://", ""))),
+      h("div", {class:"row"}, h("button", {type:"button", class:"btn", onclick:() => { view = {v:"lesson", id:L.id, step:"q", n:0, right:0, picked:null, ord:shuffle([0,1,2])}; render(); }}, ic("arrow-right"), t("begin")),
+        h("button", {type:"button", class:"btn ghost", onclick:() => go({v:"home"})}, ic("house"), t("overview"))));
+  }
+  if(view.step === "q"){
+    const q = L.q[view.n][li()];
+    const opts = view.ord.map(k => ({k, text:q[1 + k]}));
+    const bar = h("div", {class:"bar", "aria-hidden":"true"}, L.q.map((_, i) => h("b", {class:i < view.n ? "on" : i === view.n ? "cur" : ""})));
+    const answered = view.picked != null;
+    return h("section", {class:"card"}, crumb, bar, h("p", {class:"mut small", text:t("qOf", {a:view.n + 1, b:NQ})}), h("h2", {text:q[0]}),
+      h("div", {class:"opts", role:"group"}, opts.map(o => {
+        const isRight = o.k === 0, isPick = view.picked === o.k;
+        return h("button", {type:"button", class:"opt" + (answered ? (isRight ? " right" : isPick ? " bad" : "") : ""), disabled:answered, onclick:() => answer(o.k)},
+          answered ? ic(isRight ? "check-lg" : isPick ? "x-lg" : "dash") : ic("circle"), h("span", {text:o.text}));
+      })),
+      answered ? h("div", {}, h("div", {class:"expl"}, ic("info-circle"), " ", q[4]),
+        h("button", {type:"button", class:"btn big", onclick:next}, ic("arrow-right"), view.n + 1 < NQ ? t("cont") : t("finish"))) : null);
+  }
+  const r = view.right, ok = r >= 2;
+  return h("section", {class:"card"}, crumb, h("h2", {text:t("result")}), h("p", {class:"stars", style:"font-size:1.8rem"}, stars(r)),
+    h("p", {}, h("strong", {text:t("rightOf", {r, n:NQ})})), h("p", {text:ok ? t("passed") : t("failed")}),
+    h("div", {class:"opts"},
+      ok ? h("button", {type:"button", class:"btn big", onclick:() => shareLesson(L, r)}, ic("share"), t("shareCert")) : null,
+      ok ? h("button", {type:"button", class:"btn ghost", onclick:() => go({v:"cert", id:L.id})}, ic("award"), t("cert")) : null,
+      (() => { const n = LESSONS[idx + 1]; return ok && n ? h("button", {type:"button", class:"btn", onclick:() => go({v:"lesson", id:n.id, step:"intro"})}, ic("arrow-right"), n.t[li()]) : null; })(),
+      h("button", {type:"button", class:"btn ghost", onclick:() => go({v:"lesson", id:L.id, step:"intro"})}, ic("arrow-repeat"), t("again")),
+      h("button", {type:"button", class:"btn ghost", onclick:() => go({v:"home"})}, ic("house"), t("overview"))));
+}
+function answer(k){
+  if(view.picked != null) return;
+  view.picked = k; if(k === 0){ view.right++; say(rnd(mt("right")), 3500); hop(); foamBurst(); } else say(rnd(mt("wrong")), 4000);
+  render(); const x = $(".expl"); if(x) x.setAttribute("tabindex", "-1");
+}
+function next(){
+  const L = lessonById(view.id);
+  if(view.n + 1 < NQ){ view = {...view, n:view.n + 1, picked:null, ord:shuffle([0,1,2])}; render(); return; }
+  const was = allPassed(), r = view.right;
+  if(!st.prog[L.id] || st.prog[L.id].best < r) st.prog[L.id] = {best:r, date:new Date().toISOString().slice(0, 10)};
+  else if(!st.prog[L.id].date) st.prog[L.id].date = new Date().toISOString().slice(0, 10);
+  save(); view = {...view, step:"res"}; render();
+  if(r >= 2){ confetti(); hop(); say(!was && allPassed() ? mt("master") : mt("pass")); } else say(mt("fail"));
+}
+
+function dateStr(id){ const d = (id === "master" ? (st.prog._masterDate) : st.prog[id] && st.prog[id].date); const x = d ? new Date(d) : new Date(); return x.toLocaleDateString(LANGS[li()][3], {day:"2-digit", month:"2-digit", year:"numeric"}); }
+function wrap(s, max){ const w = String(s).split(/\s+/), out = []; let c = ""; for(const x of w){ if((c + " " + x).trim().length > max){ out.push(c); c = x; } else c = (c + " " + x).trim(); } if(c) out.push(c); return out; }
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function certSvg(id){
+  const master = id === "master", L = master ? null : lessonById(id), W = 1200, H = 850;
+  const nm = st.name || t("guest");
+  let y = 330, body = "";
+  const line = (txt, size, fill, weight, anchor) => { body += '<text x="' + (anchor === "start" ? 360 : 780) + '" y="' + y + '" text-anchor="' + (anchor || "middle") + '" font-family="Georgia,serif" font-size="' + size + '" fill="' + fill + '"' + (weight ? ' font-weight="' + weight + '"' : "") + '>' + esc(txt) + '</text>'; y += size * 1.35; };
+  wrap(nm, 22).forEach(s => line(s, 50, "#0b3b2e", 700)); y += 22;
+  wrap(master ? t("didMaster") : t("didPass"), 52).forEach(s => line(s, 26, "#333"));
+  if(master){ y += 8; LESSONS.forEach(l => line(l.t[li()], 21, "#0f4a3a", 600)); }
+  else { y += 10; wrap(L.t[li()], 30).forEach(s => line("„" + s + "“", 36, "#8a6500", 700)); y += 4; line(t("rightOf", {r:bestOf(id), n:NQ}), 24, "#333", 600); y += 12;
+    L.q.forEach(q => { const a = q[li()]; wrap(t("knew") + " " + a[1], 62).forEach((s, i) => line(s, 20, "#222", i ? 400 : 600)); y += 4; }); }
+  const stN = master ? 3 : bestOf(id);
+  const starPts = (cx, cy, R, r) => { let p = []; for(let k = 0; k < 10; k++){ const a = -Math.PI / 2 + k * Math.PI / 5, rr = k % 2 ? r : R; p.push((cx + Math.cos(a) * rr).toFixed(1) + "," + (cy + Math.sin(a) * rr).toFixed(1)); } return p.join(" "); };
+  const seal = (() => { let p = []; for(let k = 0; k < 32; k++){ const a = k * Math.PI / 16, rr = k % 2 ? 50 : 58; p.push((225 + Math.cos(a) * rr).toFixed(1) + "," + (700 + Math.sin(a) * rr).toFixed(1)); } return p.join(" "); })();
+  const orn = (cx, yy, w) => { let o = ""; for(const s of [-1, 1]){ o += '<path d="M' + (cx + s * 16) + ' ' + yy + ' C' + (cx + s * 44) + ' ' + (yy - 14) + ' ' + (cx + s * 66) + ' ' + (yy + 14) + ' ' + (cx + s * 96) + ' ' + yy + ' S' + (cx + s * (w - 22)) + ' ' + (yy - 12) + ' ' + (cx + s * w) + ' ' + yy + ' C' + (cx + s * (w + 12)) + ' ' + (yy + 6) + ' ' + (cx + s * (w + 14)) + ' ' + (yy - 8) + ' ' + (cx + s * (w + 6)) + ' ' + (yy - 7) + '" fill="none" stroke="#d4a40a" stroke-width="2.500" stroke-linecap="round"/>'
+      + '<path d="M' + (cx + s * 58) + ' ' + (yy + 2) + ' q' + (s * 8) + ' -16 ' + (s * 22) + ' -10 q' + (s * -8) + ' 14 ' + (s * -22) + ' 10z" fill="#d4a40a"/><circle cx="' + (cx + s * 112) + '" cy="' + yy + '" r="2.500" fill="#d4a40a"/>'; }
+    return o + '<polygon points="' + cx + ',' + (yy - 9) + ' ' + (cx + 9) + ',' + yy + ' ' + cx + ',' + (yy + 9) + ' ' + (cx - 9) + ',' + yy + '" fill="#d4a40a"/><circle cx="' + (cx - 24) + '" cy="' + yy + '" r="2.500" fill="#d4a40a"/><circle cx="' + (cx + 24) + '" cy="' + yy + '" r="2.500" fill="#d4a40a"/>'; };
+  const wreath = (() => { let o = ""; for(const s of [-1, 1]){ for(let k = 0; k < 11; k++){ const a = (118 + k * 12.5) * Math.PI / 180, R = 160, px = 225 + s * Math.cos(a) * R * -1 * -1, py = 392 + Math.sin(a) * R; const x = 225 + s * Math.cos(a) * R, y = 392 + Math.sin(a) * R, rot = (Math.atan2(Math.cos(a) * s, -Math.sin(a)) * 180 / Math.PI); o += '<ellipse cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" rx="12" ry="5.500" transform="rotate(' + (((a * 180 / Math.PI) + 90) * (s === 1 ? 1 : -1) + (s === 1 ? 0 : 180)).toFixed(1) + ' ' + x.toFixed(1) + ' ' + y.toFixed(1) + ')" fill="' + (k % 2 ? "#1b7a5f" : "#0f4a3a") + '" stroke="#d4a40a" stroke-width="1"/>'; } } return o; })();
+  const bottle = bottleInner("c").replace(/<rect class="lid"[^>]*\/>/g, "").replace(/<path class="mo"[^>]*\/>/g, "");
+  const corner = (x, y, sx, sy) => '<g transform="translate(' + x + ' ' + y + ') scale(' + sx + ' ' + sy + ')" fill="none" stroke="#d4a40a" stroke-linecap="round"><path d="M0 96 C0 52 8 22 38 11 C60 3 76 16 68 31 C62 41 47 37 50 28" stroke-width="3.500"/><path d="M12 12 C42 42 72 54 124 52 C148 51 158 40 150 31 C145 26 136 30 140 37" stroke-width="3"/><path d="M0 64 C24 66 36 80 36 106 C36 120 26 124 22 118" stroke-width="2"/><path d="M52 62 C70 76 90 80 108 72" stroke-width="1.800"/><path d="M30 44 q14 -18 30 -5 q-12 15 -30 5z" fill="#d4a40a" stroke="none"/><path d="M82 56 q18 -10 30 4 q-16 10 -30 -4z" fill="#d4a40a" stroke="none"/><path d="M8 78 q-10 14 2 28 q10 -14 -2 -28z" fill="#d4a40a" stroke="none"/><circle cx="6" cy="6" r="3.500" fill="#d4a40a" stroke="none"/><circle cx="126" cy="52" r="2.500" fill="#d4a40a" stroke="none"/></g>';
+  const sig = '<path d="M520 752 H1040" stroke="#0b3b2e" stroke-width="1.5"/><text x="780" y="782" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="22" fill="#0b3b2e">' + esc(t("sig")) + '  ·  ' + esc(dateStr(id)) + '</text>';
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '">'
+   + '<defs><radialGradient id="pb" cx=".5" cy=".45" r=".8"><stop offset="0" stop-color="#fffaf0"/><stop offset=".7" stop-color="#f7ebc9"/><stop offset="1" stop-color="#e9d5a0"/></radialGradient>'
+   + '<radialGradient id="md" cx=".5" cy=".4" r=".7"><stop offset="0" stop-color="#fff6d6"/><stop offset="1" stop-color="#f0cf6a"/></radialGradient>'
+   + '<linearGradient id="gl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6d453"/><stop offset=".5" stop-color="#d4a40a"/><stop offset="1" stop-color="#9a7205"/></linearGradient>'
+   + '<linearGradient id="hd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f4a3a"/><stop offset="1" stop-color="#0b3b2e"/></linearGradient></defs>'
+   + '<rect width="' + W + '" height="' + H + '" fill="url(#pb)"/>'
+   + '<rect x="18" y="18" width="' + (W - 36) + '" height="' + (H - 36) + '" fill="none" stroke="#0b3b2e" stroke-width="14"/>'
+   + '<rect x="33" y="33" width="' + (W - 66) + '" height="' + (H - 66) + '" fill="none" stroke="#fff" stroke-width="10"/>'
+   + '<rect x="33" y="33" width="' + (W - 66) + '" height="' + (H - 66) + '" fill="none" stroke="#7fb2e5" stroke-width="10" stroke-dasharray="16 16"/>'
+   + '<rect x="47" y="47" width="' + (W - 94) + '" height="' + (H - 94) + '" fill="none" stroke="url(#gl)" stroke-width="4"/>'
+   + '<rect x="56" y="56" width="' + (W - 112) + '" height="' + (H - 112) + '" fill="none" stroke="#d4a40a" stroke-width="1.2"/>'
+   + corner(62, 62, 1, 1) + corner(W - 62, 62, -1, 1) + corner(62, H - 62, 1, -1) + corner(W - 62, H - 62, -1, -1)
+   + '<rect x="56" y="56" width="' + (W - 112) + '" height="150" fill="url(#hd)"/><path d="M56 206 C330 176 700 230 1144 196" fill="none" stroke="url(#gl)" stroke-width="6"/>'
+   + '<polygon points="' + starPts(150, 128, 14, 6) + '" fill="#f0c53a"/><polygon points="' + starPts(1050, 128, 14, 6) + '" fill="#f0c53a"/>'
+   + '<text x="600" y="124" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="60" fill="#f0c53a" letter-spacing="9">' + esc(master ? t("certMTitle") : t("certTitle")) + '</text>'
+   + '<text x="600" y="170" text-anchor="middle" font-family="Georgia,serif" font-size="26" fill="#fff" letter-spacing="4">' + esc(t("title")) + '</text>'
+   + '<g transform="translate(15 0)">' + wreath + '<circle cx="225" cy="392" r="146" fill="url(#md)" stroke="url(#gl)" stroke-width="7"/><circle cx="225" cy="392" r="134" fill="none" stroke="#d4a40a" stroke-width="1.5" stroke-dasharray="3 7"/>'
+   + '<g transform="translate(165.500 258) scale(.85)">' + bottle + '</g>'
+   + '<path d="M196 735 L180 800 L214 786 L225 806 Z" fill="#b3261e"/><path d="M254 735 L270 800 L236 786 L225 806 Z" fill="#8f1d17"/>'
+   + '<polygon points="' + seal + '" fill="url(#gl)" stroke="#7a5a05" stroke-width="2"/><circle cx="225" cy="700" r="42" fill="none" stroke="#fff6d6" stroke-width="2.5"/>'
+   + [0, 1, 2].map(k => '<polygon points="' + starPts(195 + k * 30, 702, 13, 5.500) + '" fill="' + (k < stN ? "#fff6d6" : "none") + '" stroke="#7a5a05" stroke-width="1.500"/>').join("")
+   + '</g>' + body + orn(780, 288, 230) + orn(780, 726, 230) + sig
+   + '<text x="600" y="822" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#444">' + esc(t("certFoot")) + '</text></svg>';
+}
+const certUrl = id => "data:image/svg+xml;charset=utf-8," + encodeURIComponent(certSvg(id));
+function certBlob(id){
+  return new Promise((res, rej) => { const img = new Image(); img.onload = () => { const c = document.createElement("canvas"); c.width = 1200; c.height = 850; c.getContext("2d").drawImage(img, 0, 0, 1200, 850); c.toBlob(b => b ? res(b) : rej(new Error("png")), "image/png"); }; img.onerror = rej; img.src = certUrl(id); });
+}
+function certTitle(id){ return id === "master" ? t("master") : t("cert") + ": " + lessonById(id).t[li()]; }
+async function saveCert(id){
+  try{ const b = await certBlob(id), a = document.createElement("a"); a.href = URL.createObjectURL(b); a.download = "kuchlbauer-urkunde-" + id + ".png"; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000); }
+  catch(e){ snack("Bild: " + (e.message || e)); }
+}
+async function shareCert(id){
+  const text = id === "master" ? t("shMaster") : t("shLesson", {l:lessonById(id).t[li()], r:bestOf(id), n:NQ});
+  let blob = null; try{ blob = await certBlob(id); }catch(e){ /* ohne Bild teilen */ }
+  doShare(text, blob);
+}
+function shareLesson(L, r){ shareCert(L.id); }
+
+function viewCert(){
+  const id = view.id, master = id === "master";
+  if(master && !allPassed()) return h("section", {class:"card"}, h("p", {text:t("masterLocked")}), h("button", {type:"button", class:"btn ghost", onclick:() => go({v:"certs"})}, ic("arrow-left"), t("certs")));
+  if(master && !st.prog._masterDate){ st.prog._masterDate = new Date().toISOString().slice(0, 10); save(); }
+  return h("section", {class:"card cert"}, h("h2", {text:certTitle(id)}),
+    h("img", {src:certUrl(id), alt:certTitle(id) + " " + (st.name || "")}),
+    h("div", {class:"opts noprint"},
+      h("button", {type:"button", class:"btn big", onclick:() => shareCert(id)}, ic("share"), t("shareCert")),
+      h("div", {class:"row"}, h("button", {type:"button", class:"btn ghost", onclick:() => saveCert(id)}, ic("download"), t("saveImg")),
+        h("button", {type:"button", class:"btn ghost", onclick:() => window.print()}, ic("printer"), t("print")),
+        h("button", {type:"button", class:"btn ghost", onclick:() => go({v:"certs"})}, ic("trophy"), t("certs")))));
+}
+function viewCerts(){
+  const have = LESSONS.filter(l => passedL(l.id));
+  return h("div", {}, h("h1", {text:t("certs")}),
+    have.length ? h("div", {class:"grid"}, have.map(l => h("article", {class:"card lcard"}, h("h3", {}, ic("award"), h("span", {text:l.t[li()]})), stars(bestOf(l.id)),
+      h("div", {class:"row"}, h("button", {type:"button", class:"btn", onclick:() => shareCert(l.id)}, ic("share"), t("share")), h("button", {type:"button", class:"btn ghost", onclick:() => go({v:"cert", id:l.id})}, ic("award"), t("cert")))))) : h("p", {class:"card", text:t("none")}),
+    h("section", {class:"card", style:"margin-top:16px"}, h("h3", {}, ic("trophy"), " ", t("master")),
+      allPassed() ? h("div", {class:"row"}, h("button", {type:"button", class:"btn", onclick:() => shareCert("master")}, ic("share"), t("share")), h("button", {type:"button", class:"btn ghost", onclick:() => go({v:"cert", id:"master"})}, ic("award"), t("cert"))) : h("p", {class:"mut", text:t("masterLocked")})),
+    h("button", {type:"button", class:"btn ghost", onclick:() => go({v:"home"})}, ic("house"), t("overview")));
+}
+
+/* ---------- Teilen ---------- */
+async function doShare(text, blob){
+  try{
+    if(navigator.share){
+      if(blob && navigator.canShare){ const f = new File([blob], "kuchlbauer-urkunde.png", {type:"image/png"}); if(navigator.canShare({files:[f]})){ await navigator.share({files:[f], title:t("title"), text:text + " " + SHARE_URL}); return; } }
+      await navigator.share({title:t("title"), text, url:SHARE_URL}); return;
+    }
+  }catch(e){ if(e && e.name === "AbortError") return; }
+  const d = $("#shdlg"); const full = text + " " + SHARE_URL;
+  d.replaceChildren(h("h3", {text:t("share")}), h("p", {class:"small mut", text:text}),
+    ext("https://wa.me/?text=" + encodeURIComponent(full), "btn", ic("whatsapp"), t("shWa")),
+    h("a", {class:"btn", href:"mailto:?subject=" + encodeURIComponent(t("title")) + "&body=" + encodeURIComponent(full)}, ic("envelope"), t("shMail")),
+    h("button", {type:"button", class:"btn ghost", onclick:async () => { try{ await navigator.clipboard.writeText(full); snack(t("copied")); }catch(e){ snack(SHARE_URL); } }}, ic("clipboard"), t("shCopy")),
+    h("button", {type:"button", class:"btn ghost", onclick:() => d.close()}, ic("x-lg"), t("shClose")));
+  if(d.showModal) d.showModal(); else d.setAttribute("open", "");
+}
+
+/* ---------- Aufbau ---------- */
+function render(){
+  document.documentElement.lang = LANGS[li()][4];
+  document.title = t("title");
+  $("#top").replaceChildren(header());
+  const app = $("#app");
+  app.replaceChildren(view.v === "home" ? viewHome() : view.v === "lesson" ? viewLesson() : view.v === "certs" ? viewCerts() : viewCert());
+  $("#foot").replaceChildren(footer());
+}
+addEventListener("beforeinstallprompt", e => { e.preventDefault(); dip = e; if(view.v === "home") render(); });
+addEventListener("appinstalled", () => { dip = null; render(); });
+
+setFig(); render();
+/* Start: Flaschl hüpft herein, begrüßt und gibt gelegentlich Sprüche (nur auf der Startseite, nie scrollend) */
+if(st.fig){
+  fh.classList.add("in");
+  setTimeout(() => { foamBurst(); say(st.name ? mt("greetN").replace("{n}", st.name) : mt("greet", 0), 6500); }, 900);
+}
+setInterval(() => { if(st.fig && view.v === "home" && !document.hidden && Date.now() - lastSay > 24000) say(rnd(mt("idle")), 6000); }, 8000);
+
+if("serviceWorker" in navigator && location.protocol.startsWith("http")){
+  navigator.serviceWorker.register("sw.js").then(reg => {
+    reg.addEventListener("updatefound", () => { const w = reg.installing; if(w) w.addEventListener("statechange", () => { if(w.state === "installed" && navigator.serviceWorker.controller) snack(t("update")); }); });
+  }).catch(() => { /* offline-Funktion optional */ });
+}
+</script>
+</body>
+</html>

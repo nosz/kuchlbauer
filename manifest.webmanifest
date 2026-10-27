@@ -1,0 +1,22 @@
+{
+  "name": "Das Kuchlbauer-Quiz mit Flaschl",
+  "short_name": "Kuchlbauer-Quiz",
+  "description": "Sieben Lektionen rund um die Brauerei zum Kuchlbauer in Abensberg mit Flaschl, der sprechenden Flasche, Quiz, Humor und Urkunden. Deutsch, English, Italiano, Bairisch. Läuft auch offline.",
+  "id": "/kuchlbauer/",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#0b3b2e",
+  "theme_color": "#0b3b2e",
+  "lang": "de",
+  "dir": "ltr",
+  "categories": ["education", "entertainment"],
+  "prefer_related_applications": false,
+  "icons": [
+    { "purpose": "any", "type": "image/png", "sizes": "192x192", "src": "icon-192.png" },
+    { "purpose": "any", "type": "image/png", "sizes": "512x512", "src": "icon-512.png" },
+    { "purpose": "maskable", "type": "image/png", "sizes": "512x512", "src": "icon-maskable-512.png" }
+  ]
+}
