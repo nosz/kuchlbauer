@@ -4,12 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Das Kuchlbauer-Quiz</title>
-<meta name="description" content="DE: Das Weissbier-Quiz rund um die Brauerei zum Kuchlbauer in Abensberg mit Flaschl, der sprechenden Flasche. EN · IT · Bairisch. Läuft auch offline.">
+<meta name="description" content="DE: Das Weissbier-Quiz rund um die Brauerei zum Kuchlbauer in Abensberg mit Flaschl, der sprechenden Flasche. EN · IT · Bairisch · 日本語. Läuft auch offline.">
 <meta name="theme-color" content="#0b3b2e">
 <link rel="canonical" href="https://nosz.github.io/kuchlbauer/">
+<link rel="alternate" hreflang="de" href="https://nosz.github.io/kuchlbauer/?lang=de">
+<link rel="alternate" hreflang="en" href="https://nosz.github.io/kuchlbauer/?lang=en">
+<link rel="alternate" hreflang="it" href="https://nosz.github.io/kuchlbauer/?lang=it">
+<link rel="alternate" hreflang="bar" href="https://nosz.github.io/kuchlbauer/?lang=by">
+<link rel="alternate" hreflang="ja" href="https://nosz.github.io/kuchlbauer/?lang=ja">
+<link rel="alternate" hreflang="x-default" href="https://nosz.github.io/kuchlbauer/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Das Kuchlbauer-Quiz mit Flaschl">
-<meta property="og:description" content="Sieben Lektionen zur Brauerei zum Kuchlbauer in Abensberg, eine sprechende Flasche und Urkunden. Deutsch, English, Italiano, Bairisch.">
+<meta property="og:description" content="Sieben Lektionen zur Brauerei zum Kuchlbauer in Abensberg, eine sprechende Flasche und Urkunden. Deutsch, English, Italiano, Bairisch, 日本語.">
 <meta property="og:url" content="https://nosz.github.io/kuchlbauer/">
 <meta property="og:image" content="https://nosz.github.io/kuchlbauer/kuchlbauer_vorschau.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -25,7 +31,7 @@
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;min-height:100vh;color:var(--txt);font-family:var(--sans);font-size:1rem;line-height:1.5;background:#3a1d0d;background-image:radial-gradient(ellipse at 15% 10%,rgba(214,130,50,.55),transparent 55%),radial-gradient(ellipse at 90% 40%,rgba(168,100,42,.45),transparent 50%),linear-gradient(180deg,#4a2611,#2b160b);background-attachment:fixed}
-h1,h2,h3{font-family:var(--serif);color:var(--gold);letter-spacing:.04em;line-height:1.2;margin:0 0 .5em}
+html[lang="ja"]{--serif:Georgia,"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;--sans:system-ui,"Yu Gothic","Hiragino Sans","Meiryo","Noto Sans JP",sans-serif}h1,h2,h3{font-family:var(--serif);color:var(--gold);letter-spacing:.04em;line-height:1.2;margin:0 0 .5em}
 h1{font-size:clamp(1.7rem,6vw,2.6rem)}h2{font-size:1.4rem}h3{font-size:1.15rem}
 a{color:var(--gold2)}
 button{font:inherit;color:inherit}
@@ -33,11 +39,11 @@ button{font:inherit;color:inherit}
 .hin{max-width:1000px;margin:0 auto;padding:8px 14px;display:flex;align-items:center;gap:10px;flex-wrap:nowrap}
 .brand{display:flex;align-items:center;gap:8px;background:none;border:0;cursor:pointer;font-family:var(--serif);font-weight:700;letter-spacing:.06em;font-size:1.1rem;color:#fff;padding:4px;min-height:44px;flex:1 1 auto;min-width:0;text-align:left}
 .brand i{color:var(--gold);font-size:1.4rem}.bsym{display:inline-flex;flex:none}.brand span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.bi{display:inline-flex;align-items:center;justify-content:center;width:1em;height:1em;line-height:1;flex:none;vertical-align:-.125em}.bi svg{width:1em;height:1em;display:block}.langs{display:flex;gap:2px;padding:3px;border:1px solid rgba(212,164,10,.55);border-radius:999px;background:rgba(0,0,0,.2)}
-.lg{min-width:42px;min-height:36px;padding:0 8px;border:0;border-radius:999px;background:none;cursor:pointer;font-family:var(--serif);font-weight:700;letter-spacing:.05em;color:#fff}
-.lg[aria-pressed=true]{background:var(--gold);color:#1a1205}.lg:hover:not([aria-pressed=true]){background:rgba(212,164,10,.2)}
+.bi{display:inline-flex;align-items:center;justify-content:center;width:1em;height:1em;line-height:1;flex:none;vertical-align:-.125em}.bi svg{width:1em;height:1em;display:block}
+
+[hidden]{display:none!important}.langwrap{position:relative;flex:none}.langbtn{display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:0 12px;border-radius:999px;border:1px solid rgba(212,164,10,.55);background:rgba(0,0,0,.2);color:#fff;font-family:var(--serif);font-weight:700;letter-spacing:.05em;cursor:pointer}.langbtn:hover{background:rgba(212,164,10,.2)}.langbtn .bi{color:var(--gold);font-size:.85rem}.fl{display:inline-flex;width:24px;height:16px;border-radius:3px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.6);flex:none}.fl svg{width:24px;height:16px;display:block}.langmenu{position:absolute;right:0;top:calc(100% + 8px);min-width:200px;background:var(--g1);border:1px solid var(--gold);border-radius:14px;padding:6px;box-shadow:0 10px 24px rgba(0,0,0,.55);z-index:25}.lgi{display:flex;align-items:center;gap:10px;width:100%;min-height:44px;padding:0 12px;border:0;border-radius:10px;background:none;color:#fff;font-size:1rem;cursor:pointer;text-align:left}.lgi:hover{background:rgba(212,164,10,.2)}.lgi[aria-current=true]{background:var(--gold);color:#1a1205;font-weight:700}.lgi .bi{margin-left:auto}
 .ib{flex:none;min-width:40px;height:40px;padding:0;gap:8px;border-radius:999px;border:1px solid rgba(212,164,10,.55);background:rgba(0,0,0,.2);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:1.2rem;color:#fff}.ib .bi{color:var(--gold)}.ib:hover{background:rgba(212,164,10,.2)}.ib .lbl{display:none;font-size:.95rem;font-weight:600;letter-spacing:.02em}@media (min-width:760px){.ib{padding:0 16px}.ib .lbl{display:inline}}
-.ib:focus-visible,.lg:focus-visible,.btn:focus-visible,.opt:focus-visible,.brand:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--gold2);outline-offset:2px}
+.ib:focus-visible,.langbtn:focus-visible,.lgi:focus-visible,.btn:focus-visible,.opt:focus-visible,.brand:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--gold2);outline-offset:2px}
 main{max-width:1000px;margin:0 auto;padding:18px 14px 40px}
 .card{background:rgba(11,59,46,.93);border:1px solid var(--gold);border-radius:var(--r);padding:18px;margin:0 0 16px;box-shadow:0 6px 18px rgba(0,0,0,.3)}
 .card p{margin:0 0 .7em}.card p:last-child{margin-bottom:0}
@@ -117,7 +123,7 @@ body.fig main,body.fig .ftr{padding-bottom:130px}
 @keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
 @keyframes rise{to{transform:translate(var(--dx),-70vh);opacity:0}}
 @media (prefers-reduced-motion:reduce){.fh *,.fh,.namebtn.act{animation:none!important}.bub{transition:none}}
-@media (max-width:480px){.hin{flex-wrap:wrap}.brand{flex:1 1 100%!important;min-height:36px}.brand span{display:inline!important;font-size:.95rem;white-space:normal}.fh{width:70px}.bub{left:82px;bottom:calc(76px + env(safe-area-inset-bottom));max-width:calc(100vw - 94px)}.brand{font-size:.95rem}.lg{min-width:36px}.hin{gap:6px;padding:8px 8px}.ib{width:38px;height:38px;padding:0}a.credit{font-size:.95rem;padding:8px 14px}}
+@media (max-width:480px){.hin{gap:6px;padding:6px 8px}.brand{font-size:.8rem;letter-spacing:.03em;min-height:40px;padding:2px;gap:6px}.brand span{white-space:normal;line-height:1.15}.langbtn{padding:0 9px;min-height:38px}.langbtn .tx{display:none}.langmenu{min-width:180px}.fh{width:70px}.bub{left:82px;bottom:calc(76px + env(safe-area-inset-bottom));max-width:calc(100vw - 94px)}.ib{width:38px;height:38px;padding:0}a.credit{font-size:.95rem;padding:8px 14px}}
 @media print{.hdr,.ftr,.fh,.bub,.noprint{display:none!important}body{background:#fff}.card{border:0;box-shadow:none;background:#fff;color:#000}}
 </style>
 </head>
@@ -132,16 +138,23 @@ body.fig main,body.fig .ftr{padding-bottom:130px}
 
 <script>
 "use strict";
-const VERSION = "1.2.2", STAND = "27.10.2026";
+const VERSION = "1.4.2", STAND = "27.10.2026";
 const SHARE_URL = "https://nosz.github.io/kuchlbauer/";
 const SITE = "https://kuchlbauer.de/";
-const LANGS = [["de","DE","Deutsch","de-DE","de"],["en","EN","English","en-GB","en"],["it","IT","Italiano","it-IT","it"],["by","BAY","Bairisch","de-DE","bar"]];
+const LANGS = [["de","DE","Deutsch","de-DE","de"],["en","EN","English","en-GB","en"],["it","IT","Italiano","it-IT","it"],["by","BAY","Bairisch","de-DE","bar"],["ja","JA","日本語","ja-JP","ja"]];
 const KEY = "kuchlbauer-quiz-v1";
 
 /* ---------- Zustand ---------- */
 let st = {lang:null, prog:{}, name:"", fig:true};
 try{ Object.assign(st, JSON.parse(localStorage.getItem(KEY) || "{}")); }catch(e){ /* ohne Speicher weiter */ }
-if(!LANGS.some(l => l[0] === st.lang)){ const n = (navigator.language || "de").slice(0,2); st.lang = n === "en" ? "en" : n === "it" ? "it" : "de"; }
+if(!LANGS.some(l => l[0] === st.lang)){ const n = (navigator.language || "de").slice(0,2); st.lang = n === "en" ? "en" : n === "it" ? "it" : n === "ja" ? "ja" : "de"; }
+/* Sprache per Adresse: ?lang=de | en | it | by (auch bay, bar fuer Bairisch); ungueltige Werte werden ignoriert */
+const LANG_ALIASES = {de:"de", en:"en", it:"it", by:"by", bay:"by", bar:"by", ja:"ja", jp:"ja"};
+function langFromQuery(search){ try{ const v = (new URLSearchParams(search).get("lang") || "").trim().toLowerCase(); return Object.prototype.hasOwnProperty.call(LANG_ALIASES, v) ? LANG_ALIASES[v] : null; }catch(e){ return null; } }
+const shareUrl = () => SHARE_URL + "?lang=" + st.lang;
+function syncUrl(){ try{ const u = new URL(location.href); u.searchParams.set("lang", st.lang); history.replaceState(null, "", u.pathname + u.search + u.hash); }catch(e){ /* file:// oder gesperrt */ } }
+/* ?lang= anwenden (muss nach LANG_ALIASES stehen, sonst kommt still null zurueck) */
+{ const q = langFromQuery(location.search); if(q){ st.lang = q; save(); } }
 function save(){ try{ localStorage.setItem(KEY, JSON.stringify(st)); }catch(e){ /* ignorieren */ } }
 const li = () => LANGS.findIndex(l => l[0] === st.lang);
 const $ = s => document.querySelector(s);
@@ -163,6 +176,7 @@ const ICONS = {
  "balloon-heart":`<path fill-rule="evenodd" d="m8 2.42-.717-.737c-1.13-1.161-3.243-.777-4.01.72-.35.685-.451 1.707.236 3.062C4.16 6.753 5.52 8.32 8 10.042c2.479-1.723 3.839-3.29 4.491-4.577.687-1.355.587-2.377.236-3.061-.767-1.498-2.88-1.882-4.01-.721zm-.49 8.5c-10.78-7.44-3-13.155.359-10.063q.068.062.132.129.065-.067.132-.129c3.36-3.092 11.137 2.624.357 10.063l.235.468a.25.25 0 1 1-.448.224l-.008-.017c.008.11.02.202.037.29.054.27.161.488.419 1.003.288.578.235 1.15.076 1.629-.157.469-.422.867-.588 1.115l-.004.007a.25.25 0 1 1-.416-.278c.168-.252.4-.6.533-1.003.133-.396.163-.824-.049-1.246l-.013-.028c-.24-.48-.38-.758-.448-1.102a3 3 0 0 1-.052-.45l-.04.08a.25.25 0 1 1-.447-.224l.235-.468ZM6.013 2.06c-.649-.18-1.483.083-1.85.798-.131.258-.245.689-.08 1.335.063.244.414.198.487-.043.21-.697.627-1.447 1.359-1.692.217-.073.304-.337.084-.398"/>`,
  "box-arrow-up-right":`<path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/> <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/>`,
  "chat-dots":`<path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/> <path d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9 9 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.4 10.4 0 0 1-.524 2.318l-.003.011a11 11 0 0 1-.244.637c-.079.186.074.394.273.362a22 22 0 0 0 .693-.125m.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6-3.004 6-7 6a8 8 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a11 11 0 0 0 .398-2"/>`,
+ "chevron-down":`<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>`,
  "check-lg":`<path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/>`,
  "circle":`<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>`,
  "clipboard":`<path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"/> <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"/>`,
@@ -491,6 +505,120 @@ let joke = {bag: [], cur: null, shown: false};
 const hasPunch = () => JOKES[joke.cur][0].length === 2;
 function nextJoke(){ if(!joke.bag.length) joke.bag = shuffle(JOKES.map((_, i) => i)); joke.cur = joke.bag.pop(); joke.shown = false; }
 nextJoke();
+/* ---------- Japanisch (5. Sprache): wird nach den Texten in S, M, LESSONS und JOKES eingefuegt ---------- */
+const JA = {
+ S:{
+  brand:"Kuchlbauer Quiz by Anja", title:"Kuchlbauer クイズ",
+  sub:"アーベンスベルクのヴァイスビア専門ブルワリー：7つのレッスン、しゃべるボトル、二日酔いはゼロ。",
+  share:"シェア", figOff:"Flaschlを隠す", figOn:"Flaschlを表示", home:"トップページへ",
+  nameQ:"お名前は？ 入力すると修了証が特別になります。名前はこの端末にだけ保存されます。",
+  namePh:"お名前", save:"保存", saved:"保存しました", savedMsg:"保存しました：{n}", anon:"匿名のままにする", changeName:"名前を変更",
+  start:"ここから開始", next:"次のステップ", lessons:"レッスン", lesson:"レッスン", qOf:"第{a}問／全{b}問",
+  begin:"スタート", cont:"次へ", finish:"結果を見る", overview:"一覧へ戻る", result:"結果", rightOf:"{n}問中{r}問正解",
+  passed:"合格！修了証が解放されました。", failed:"まだ合格ではありません。3問中2問以上の正解が必要です。", again:"もう一度",
+  cert:"修了証", certs:"すべての修了証", none:"修了証はまだありません。3問中2問以上正解してレッスンに合格しましょう。",
+  shareCert:"修了証を友だちに見せる", saveImg:"画像として保存", print:"印刷",
+  master:"マイスター修了証", masterLocked:"7つのレッスンをすべて終えると、マイスター修了証がもらえます。", rank:"ランク",
+  ranks:["コースター見習い","ジョッキ見習い","醸造職人","マイスター候補","ヴァイスビア・マイスター"],
+  stars:"スター", official:"公式サイトで",
+  officialSub:"価格・時間・日程はあえてクイズに載せていません。公式サイトで最新情報をご確認ください（ドイツ語のページです）。",
+  oBier:"ビールとアート", oFuehr:"見学ツアーとチケット", oEvent:"イベントとグルメ", oBesuch:"来場者情報", oBrau:"醸造コース", oShop:"ショップ",
+  source:"出典",
+  disc:"すべての情報は kuchlbauer.de（2026年10月27日時点）に基づいており、変更される場合があります。クイズでは価格・時間・日程をあえて掲載していません。Flaschlとそのジョークは創作（ユーモア）です。方言や翻訳は愛情を込めたものですので、ネイティブの方にチェックしてもらってください。",
+  instCta:"アプリとしてインストール：ワンタップでホーム画面に追加。オフラインでも使えます。", instBtn:"インストール",
+  instIos:"iPhone/iPad：Safariで共有アイコン（矢印付きの四角）をタップし、「ホーム画面に追加」を選んでください。",
+  shMsg:"Kuchlbauerクイズに挑戦！アーベンスベルクのヴァイスビア専門ブルワリーについて学べる7つのレッスン。しゃべる瓶のFlaschlが案内します。",
+  shLesson:"Kuchlbauerクイズのレッスン「{l}」に合格：{n}問中{r}問正解。Flaschlもビールケースのように誇らしげです。",
+  shMaster:"Kuchlbauerクイズの全レッスンをクリア：マイスター修了証をゲット！乾杯！",
+  copied:"リンクをコピーしました", shClose:"閉じる", shCopy:"リンクをコピー", shWa:"WhatsApp", shMail:"メール",
+  update:"新しいバージョンがあります。ページを再読み込みしてください。", ver:"バージョン", by:"Design by Anja",
+  didPass:"は次のレッスンに合格しました", didMaster:"は7つのレッスンすべてに合格し、ヴァイスビア・マイスターになりました",
+  certTitle:"修了証", certMTitle:"マイスター修了証", guest:"ヴァイスビア・ファン", knew:"正解：", sig:"署名：Flaschl",
+  certFoot:"kuchlbauer.de の情報（2026年10月27日時点）",
+  jokesH:"Flaschlのジョーク劇場", jokesSub:"とっておきのビールジョークを、ボトルが自由に語ります。", jokeShow:"オチを見る", jokeNext:"次のジョーク",
+  jokeNote:"有名なビールジョークのモチーフを参考に創作したものです。ユーモアであり、ブルワリーに関する主張ではありません。"
+ },
+ M:{
+  greet:["こんにちは！Flaschlだよ。中身は空っぽだけど、知識はいっぱい！","乾杯！ヴァイスビアの瓶、Flaschlです。豆知識なら任せて！"],
+  greetN:"こんにちは、{n}さん！来てくれてうれしいな。カウンターの席、取っておくね。",
+  idle:["ヴァイスビアは忍耐が大切。ぼくもだよ。でも王冠はちゃんと閉まってます。","ぼくは空き瓶じゃないよ。知識の瓶です。","レッスン1回は、ヴァイスビアを注ぐくらいの時間。泡はきれいにね。","趣味は泡の鑑賞。悪夢は瓶の回収機。","価格や時間は覚えてないんだ。下の公式サイトを見てね。","ぼく、満タンだよ。知識でね、もちろん。"],
+  right:["乾杯！正解！","その通り！樽を開けたての一撃みたい！","すごい！泡がぐんぐん育ってきた！"],
+  wrong:["おしい！解説がすぐ出るよ。","いてて。でも間違いから学べば、気が抜けたりしないよ。","気にしないで。70メートルの設計も、最初は作り直しだったんだ。"],
+  pass:"合格！ビールケースみたいに誇らしいよ。", fail:"あと一歩！もう一回どうぞ。ぼくはその前に振らないでね。",
+  master:"全レッスンクリア！公式にヴァイスビア・マイスターだよ。非公式でもね。", lang:"日本語もばっちり！乾杯！"
+ },
+ L:[
+  {t:"家族経営のブルワリー", i:"Brauerei zum Kuchlbauerはアーベンスベルクにあります。ウェブサイトによると「zum Kuchlbauer」という名称は1751年にさかのぼり、1904年から家族が経営して、現在は9代目です。ブルワリーによれば、14世紀に伯爵から与えられた、世界でも最も古い醸造権のひとつを持っています。醸造所からは6種類のヴァイスビアが生まれます。",
+   q:[["ウェブサイトによると、家族の伝統は何世代続いていますか？","9世代","3世代","25世代","トップページでは9世代の家族の伝統とされています。25と答えた人は、ジョッキの数を数えているのかもしれません。"],
+      ["「zum Kuchlbauer」という名前になったのはいつからですか？","1751年から","1951年から","2051年から","ファミリーブルワリーのページでは、名称は1751年にさかのぼるとされています。2051年はさすがに気が早いですね。"],
+      ["ファミリーブルワリーのページによると、ブルワリーは何種類のヴァイスビアを造っていますか？","6種類","2種類","12種類","ページでは、伝統的なレシピと地元産の原料で造る6種類のヴァイスビアが挙げられています。名前はそこには載っていません。"]]},
+  {t:"タワーとクンストハウス", i:"Kuchlbauerタワーは、フリーデンスライヒ・フンデルトヴァッサーによる建築プロジェクトです。1999年に高さ70メートルで設計しましたが、その規模では建てられませんでした。長年の友人であり同僚のペーター・ペリカンが設計を調整し、2007年から2010年にかけて建設されました。KunstHausAbensbergでは、フンデルトヴァッサーの生涯と作品を知ることができます。",
+   q:[["1999年にKuchlbauerタワーを設計したのは誰ですか？","フリーデンスライヒ・フンデルトヴァッサー","アントニ・ガウディ","ビアコースターに描いた醸造マイスター","ウェブサイトによると、タワーはフリーデンスライヒ・フンデルトヴァッサーの建築プロジェクトです。"],
+      ["タワーを建てられるように設計を調整したのは誰ですか？","ペーター・ペリカン（フンデルトヴァッサーの友人で同僚）","誰も。中世からそこに立っています","Flaschl本人","ペーター・ペリカンが、今の形のタワーを計画・修正・施工しました。Flaschlは見ていただけです。"],
+      ["1999年のフンデルトヴァッサーの当初の設計は、高さどのくらいでしたか？","70メートル","7メートル","700メートル","設計は70メートルで、そのままでは建てられませんでした。醸造コースのページによると、完成したタワーの高さは35メートルです。"]]},
+  {t:"見学ツアーとチケット", i:"ブルワリーには、見学ツアーとタワーを含む「Kuchlbauers Bierwelt」があります。ツアーは決まった時間に行われ、実施日は時期によって異なります。需要に応じた追加ツアーもあります。聖金曜日と諸聖人の日は休業、冬季休業は12月24日から1月6日までです。衛生上の理由から犬の同伴はできません。価格とチケットは公式サイトでご確認ください。",
+   q:[["来場者情報によると、ツアーが行われる決まった時刻はいつですか？","11:00、13:00、15:00","7:00、9:00、12:00","3杯目のヴァイスビアのあとだけ","来場者情報には11時、13時、15時とあります。実施日は時期によって異なるので、事前にページで確認してください。"],
+      ["来場者情報によると、休業日はいつですか？","聖金曜日と諸聖人の日","バラの月曜日と灰の水曜日","なし。ブルワリーは眠らない","聖金曜日と諸聖人の日が挙げられています。そのほか、12月24日から1月6日までは冬季休業です。"],
+      ["犬はツアーに同伴できますか？","いいえ、衛生上の理由で不可","はい、ただしタワーの中だけ","はい、全員OK。馬も","来場者情報によると、衛生上の理由から犬の同伴はできません。"]]},
+  {t:"醸造コース", i:"醸造コースでは、醸造マイスターのウーヴェの指導のもと、3ヘクトリットルのミニ醸造所で、粉砕から貯蔵までヴァイスビアを自分で仕込みます。タワーを含む見学ツアーと、数種類のヴァイスビアの試飲も含まれます。コースは約8時間です。価格・日程・予約はコースのページに記載されており、問い合わせはページによると書面（メール）のみです。",
+   q:[["醸造が行われるミニ醸造所の規模はどのくらいですか？","3ヘクトリットル","300ヘクトリットル","3リットル","醸造コースのページによると、3ヘクトリットルのミニ醸造所で醸造します。ほどよい量のヴァイスビアです。"],
+      ["醸造コースはおよそどのくらいの時間かかりますか？","約8時間","約45分","約3日","ページには約8時間とあり、朝に本館前で集合します。醸造プロセス全体としては意外と短いですね。"],
+      ["ページによると、コースは何人以上で開催されますか？","7人以上","2人以上","70人以上","最少人数に達しない場合は、早めに連絡が来ます。問い合わせはページによると書面（メール）のみです。"]]},
+  {t:"イベントとグルメ", i:"敷地内はいつもにぎやかです。家族みんなのためのKuchlbauers Ostermarkt（イースターマーケット）、Kuchlbauers Turmweihnacht（タワーのクリスマス）、ページによると地域で最も古い市のひとつで1313年から続くGillamoos、土の丘の家のとなり・タワーの足元にあるビアガーデン、そしてヴァイスビア専門ブルワリーの本家であるBrauereigasthof。日程は公式サイトでご確認ください。",
+   q:[["ページによると、Gillamoosはいつから続く伝統ですか？","1313年から","1913年から","先週の火曜日から","Kuchlbauerのページによると、Gillamoosは地域で最も古い市のひとつで、1313年からの伝統があります。"],
+      ["ページによると、ビアガーデンはどこにありますか？","Kuchlbauerタワーの足元、土の丘の家のとなり","タワーの屋上","ハラタウのホップ畑の真ん中","ビアガーデンはKuchlbauerタワーの足元、土の丘の家（Erdhügelhaus）のとなりにあります。"],
+      ["トップページによると、Brauereigasthof zum Kuchlbauerとは何ですか？","ヴァイスビア専門ブルワリーの本家","タワー内のポップアップストア","高速道路のサービスエリア","トップページによると、Brauereigasthofはヴァイスビア専門ブルワリーの本家（Mutterhaus）です。"]]},
+  {t:"来場者情報", i:"ブルワリーはアーベンスベルクのRömerstraße 5〜9にあります。駐車はブルワリー敷地（Schulhausplatz 4、マーケット開催中は閉鎖）か、Gillamooswiese（ページによると徒歩5〜10分）。アーベンスベルク駅からは徒歩約5分です。タワーのエレベーターは展望テラスまで上がります。構造上の理由から、Bierweltとタワーは車椅子での利用が一部に限られます。",
+   q:[["アーベンスベルクのブルワリーはどの通りにありますか？","Römerstraße 5〜9","Hundertwasserweg 1","Weissbierallee 99","来場者情報にはRömerstraße 5–9、93326 Abensbergとあります。駐車場へのナビはSchulhausplatz 4です。"],
+      ["アーベンスベルク駅から徒歩でどのくらいですか？","約5分","約90分","熱気球のみ","来場者情報によると、アーベンスベルク駅から徒歩約5分です。"],
+      ["Kuchlbauerタワーのエレベーターはどこまで行きますか？","展望テラスまで","発酵室まで","ありません。階段だけです","タワーのエレベーターは展望テラスまで上がります。それでもBierweltとタワーは、車椅子での利用が一部に限られます。"]]},
+  {t:"ボスラウンド：先を見る力", i:"ラストラウンド！ファミリーブルワリーのページによると、2018年にブルワリーは地域の5軒の農家と大麦をKuchlbauerにのみ供給する取り決めを結び、自社の太陽光発電設備で1,239,000 kWhを発電しました。余剰分は電力網に送られました。トップページはWeissbier-Quartier+を、気候にプラスとなる物流センターであり、人と自然の生息空間だと説明しています。",
+   q:[["2018年、ブルワリーは何軒の地域農家と大麦の供給を取り決めましたか？","5軒","1軒だけ","50軒","ページには、大麦をKuchlbauerにのみ供給する地域の農家5軒とあります。"],
+      ["ページによると、2018年にブルワリーはどのくらいの太陽光発電をしましたか？","1,239,000 kWh","1,239 kWh","12 kWh（電球1個ぶん）","自社の太陽光発電設備で1,239,000 kWhとあります。余った電力は電力網に供給されました。"],
+      ["トップページによると、Weissbier-Quartier+とは何ですか？","気候にプラスの物流センター","スキー場","王冠の博物館","トップページは、気候にプラスの物流センターであり、人と自然の生息空間だと説明しています。"]]}
+ ],
+ J:[
+  ["瓶が2本出会いました。1本が言います：「空っぽに見えるよ。」","もう1本：「ありがとう。ぼくも今、頭の中は空っぽなんだ。」"],
+  ["ぼくのフィットネス計画：週2回のマース・トレーニング。","でも「マースを守る（節度を保つ）」がなぜかできません。（ドイツ語のMaßは1リットルジョッキと節度の両方の意味です）"],
+  ["醸造マイスターのジョーク、知ってる？","もう古すぎて熟成しちゃってるんだ。"],
+  ["ヴァイスビアに落ち着いてって頼んだんだ。","「今ちょっと泡立ってるだけだから」だって。"],
+  ["ぼくが一番うれしい評価は？","デポジット。いつも返してもらえるから。"],
+  ["泡のないヴァイスビアって何？","フンデルトヴァッサーのいないタワーみたいなもの：立ってはいるけど、あの何かが足りない。"],
+  ["酵母がヨガで一番好きなポーズは？","下向きの沈殿物。"],
+  ["ヴァイスビアが別のヴァイスビアに言いました：「今日はにごってるね。」","「わざとだよ。ぼくはヴァイスビアで、ピルスじゃないからね！」"],
+  ["良い決意とビールの泡の共通点は？","どちらも、息を吹きかけなければ長持ちします。"],
+  ["ヴァイスビアはなぜウソをつけないの？","いつでも底（真相）まで見通せるから。"],
+  ["醸造職人はなぜあんなに落ち着いているの？","まず何でも発酵させて待つから。"],
+  ["空のグラスがお店の人に言いました。","「話し合いが必要かも。なんだか満たされなくて。」"],
+  ["自信たっぷりのビールジョッキを何と呼ぶ？","マースシュタープ（ものさし）。（Maßはジョッキの単位でもあります）"],
+  ["ホップと麦芽にカップルセラピーが要らないのはなぜ？","あの二人はまだ失われていないから。（ドイツ語で「Hopfen und Malz verloren」は手遅れという意味です）"],
+  ["注ぎ終わったヴァイスビアは何と言う？","「これで僕が一番上だ（絶好調だ）。」"],
+  ["フンデルトヴァッサーのタワーに定規がないのはなぜ？","まっすぐな線は、そこでは人気がないから。"],
+  ["恋する酵母は何を歌う？","「Ich bin so gärn bei dir.（あなたのそばが大好き）」（ドイツ語の駄洒落：gärenは発酵する、gernは喜んで）"],
+  ["白ソーセージにはお約束のように何がつきもの？","ヴァイスビア。あとはマスタードくらい。"],
+  ["満タンの瓶が空き瓶に言いました。","「もっと何かを取り込んだ方がいいよ。」"],
+  ["Flaschlはなぜメリーゴーランドに乗れないの？","降りたあと泡があふれちゃうから。"],
+  ["泡のないヴァイスビアは、王冠のない王様のようなものです。ちゃんと治めますが、見た目はそれらしくありません。"],
+  ["酵母は、いつも底に沈むのを止められません。ただ地に足がついているだけです。"],
+  ["泡はヴァイスビアの世間話：見た目はいいけど、長続きしません。"],
+  ["デポジットに文句はありません。ただ、返却されることにすごく愛着があります。"],
+  ["ビールの次に最高の発明？グラスです。なければシュノーケルが必要です。"],
+  ["おいしいヴァイスビアは斜めに注ぎます。ぼくもよく斜めに寝ているので、よく分かります。"],
+  ["ヒツジを数える人もいます。ぼくは泡の粒を数えます。3つめで寝ちゃいます。"],
+  ["フンデルトヴァッサーのタワーとヴァイスビアの共通点：まず下から見上げること。"],
+  ["ぼくの人生訓：十分に待てば、落ち着いたヴァイスビアが飲める。"],
+  ["ヴァイスビアの流儀：まず見て、次に泡立て、それから味わう。"],
+  ["太ってるんじゃないよ、ゆったりした瓶のおなかなんだ。"],
+  ["ホップと麦芽が失われたときは、醸造マイスターを呼ぶのが一番です。"]
+ ]
+};
+(function mergeJa(){
+  for(const k in JA.S){ if(k === "ranks") S.ranks.forEach((r, i) => { r[4] = JA.S.ranks[i]; }); else S[k][4] = JA.S[k]; }
+  for(const k in JA.M) M[k][4] = JA.M[k];
+  LESSONS.forEach((l, i) => { l.t[4] = JA.L[i].t; l.i[4] = JA.L[i].i; l.q.forEach((q, n) => { q[4] = JA.L[i].q[n]; }); });
+  JOKES.forEach((j, i) => { j[4] = JA.J[i]; });
+})();
+
 const NQ = 3;
 const lessonById = id => LESSONS.find(l => l.id === id);
 const bestOf = id => (st.prog[id] && st.prog[id].best) || 0;
@@ -512,7 +640,7 @@ function bottleInner(p){
   + '<circle cx="48" cy="12" r="9" fill="#fff"/><circle cx="62" cy="5" r="10" fill="#fff"/><circle cx="80" cy="6" r="10" fill="#fff"/><circle cx="92" cy="14" r="8" fill="#fff"/>'
   + '<path d="M24 192 H116 V262 H24 Z" fill="#b3261e" stroke="#d4a40a" stroke-width="3"/>'
   + '<path d="M30 198 H110 V256 H30 Z" fill="none" stroke="#d4a40a" stroke-width="1.2"/>'
-  + '<text x="70" y="226" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="17" fill="#f6d453" letter-spacing="1">WEISSE</text>'
+  + '<text x="70" y="226" text-anchor="middle" font-family="Georgia,Yu Mincho,Hiragino Mincho ProN,Noto Serif JP,serif" font-weight="700" font-size="17" fill="#f6d453" letter-spacing="1">WEISSE</text>'
   + '<path d="M36 238 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l6 -4" fill="none" stroke="#fff" stroke-width="2.4"/>'
   + '<polygon points="39,246 45,251 39,256 33,251" fill="#7fb2e5"/><polygon points="55,246 61,251 55,256 49,251" fill="#fff"/><polygon points="71,246 77,251 71,256 65,251" fill="#7fb2e5"/><polygon points="87,246 93,251 87,256 81,251" fill="#fff"/><polygon points="103,246 109,251 103,256 97,251" fill="#7fb2e5"/>'
   + '<ellipse cx="56" cy="164" rx="10" ry="12" fill="#fff" stroke="#3a1c08" stroke-width="2"/><ellipse cx="84" cy="164" rx="10" ry="12" fill="#fff" stroke="#3a1c08" stroke-width="2"/>'
@@ -571,10 +699,30 @@ const isIos = () => /iphone|ipad|ipod/i.test(navigator.userAgent) && !isStandalo
 function snack(msg){ const s = $("#snack"); s.textContent = msg; s.classList.add("on"); clearTimeout(snack.t); snack.t = setTimeout(() => s.classList.remove("on"), 3200); }
 function go(v){ view = v; render(); window.scrollTo(0, 0); }
 
+/* Flaggen (selbst gezeichnet): DE schwarz-rot-gold, EN Union Jack, IT gruen-weiss-rot, BAY weiss-blaue Rauten */
+const FLAGS = {
+ de:'<rect width="24" height="5.400" fill="#000"/><rect y="5.300" width="24" height="5.400" fill="#dd0000"/><rect y="10.600" width="24" height="5.400" fill="#ffce00"/>',
+ en:'<rect width="24" height="16" fill="#012169"/><path d="M0 0L24 16M24 0L0 16" stroke="#fff" stroke-width="3.200"/><path d="M0 0L24 16M24 0L0 16" stroke="#c8102e" stroke-width="1.200"/><path d="M12 0V16M0 8H24" stroke="#fff" stroke-width="5.200"/><path d="M12 0V16M0 8H24" stroke="#c8102e" stroke-width="3"/>',
+ it:'<rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#ce2b37"/>',
+ ja:'<rect width="24" height="16" fill="#fff"/><circle cx="12" cy="8" r="4.800" fill="#bc002d"/>',
+ by:'<rect width="24" height="16" fill="#0098d4"/><g fill="#fff"><path d="M4 0L8 4L4 8L0 4Z"/><path d="M12 0L16 4L12 8L8 4Z"/><path d="M20 0L24 4L20 8L16 4Z"/><path d="M8 8L12 12L8 16L4 12Z"/><path d="M16 8L20 12L16 16L12 12Z"/><path d="M0 8L4 12L0 16Z"/><path d="M24 8L24 16L20 12Z"/></g>'
+};
+const flagEl = code => { const s = h("span", {class:"fl", "aria-hidden":"true"}); s.innerHTML = '<svg viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg" focusable="false">' + FLAGS[code] + '</svg>'; return s; };
+/* Sprachauswahl als kompaktes Auswahlmenue (spart Platz in der Kopfzeile, vor allem auf dem Handy) */
+function closeLangMenu(){ const m = document.querySelector(".langmenu"); if(m){ m.hidden = true; const b = document.querySelector(".langbtn"); if(b) b.setAttribute("aria-expanded", "false"); } }
+function langMenu(){
+  const cur = LANGS[li()];
+  const menu = h("div", {class:"langmenu", role:"group", "aria-label":"Sprache / Language", hidden:true},
+    LANGS.map(l => h("button", {type:"button", class:"lgi", lang:l[4], "aria-current":String(l[0] === st.lang), onclick:() => setLang(l[0])}, flagEl(l[0]), h("span", {text:l[2]}), l[0] === st.lang ? ic("check-lg") : null)));
+  const btn = h("button", {type:"button", class:"langbtn", "aria-haspopup":"true", "aria-expanded":"false", "aria-label":"Sprache / Language: " + cur[2], title:cur[2], onclick:e => { e.stopPropagation(); const open = menu.hidden; menu.hidden = !open; btn.setAttribute("aria-expanded", String(open)); }}, flagEl(cur[0]), h("span", {class:"tx", text:cur[1]}), ic("chevron-down"));
+  return h("div", {class:"langwrap"}, btn, menu);
+}
+document.addEventListener("click", e => { if(!e.target.closest(".langwrap")) closeLangMenu(); });
+document.addEventListener("keydown", e => { if(e.key === "Escape") closeLangMenu(); });
 function header(){
   return h("header", {class:"hdr"}, h("div", {class:"hin"},
     h("button", {type:"button", class:"brand", "aria-label":t("home"), onclick:() => go({v:"home"})}, bottleIcon(), h("span", {text:t("brand")})),
-    h("div", {class:"langs", role:"group", "aria-label":"Sprache / Language"}, LANGS.map(l => h("button", {type:"button", class:"lg", lang:l[4], "aria-pressed":String(l[0] === st.lang), "aria-label":l[2], title:l[2], onclick:() => setLang(l[0])}, l[1]))),
+    langMenu(),
     h("button", {type:"button", class:"ib", id:"hshare", "aria-label":t("share"), title:t("share"), onclick:() => doShare(t("shMsg"))}, ic("share"), h("span", {class:"lbl", text:t("share")})),
     h("button", {type:"button", class:"ib", "aria-label":t(st.fig ? "figOff" : "figOn"), title:t(st.fig ? "figOff" : "figOn"), onclick:toggleFig}, ic(st.fig ? "eye" : "eye-slash"), h("span", {class:"lbl", text:t(st.fig ? "figOff" : "figOn")}))
   ));
@@ -582,7 +730,7 @@ function header(){
 /* Flaschen-Symbol (Bootstrap Icons hat keine Flasche): Umriss der Flaschl-Figur in Gold */
 function bottleIcon(){ const s = h("span", {class:"bsym", "aria-hidden":"true"}); s.innerHTML = '<svg viewBox="0 0 24 40" width="22" height="36"><path d="M9.5 3h5v1.5l-.3 8.5c0 3 4.8 4.200 4.800 9.500V34c0 2-1.500 3-3.500 3h-7c-2 0-3.500-1-3.500-3V22.500C5 17.200 9.800 16 9.800 13L9.500 4.500Z" fill="#d4a40a"/><rect x="8.500" y="1" width="7" height="3" rx="1" fill="#f0c53a"/><rect x="5" y="23" width="14" height="8" fill="#b3261e"/><circle cx="10" cy="18" r="1.200" fill="#0b3b2e"/><circle cx="14" cy="18" r="1.200" fill="#0b3b2e"/></svg>'; return s; }
 function setLang(l){
-  st.lang = l; save(); document.documentElement.lang = LANGS[li()][4]; render();
+  st.lang = l; save(); syncUrl(); document.documentElement.lang = LANGS[li()][4]; render();
   say(mt("lang")); hop();
 }
 function toggleFig(){
@@ -597,7 +745,7 @@ function footer(){
     h("svg", {}),
     h("div", {class:"fin"},
       h("nav", {class:"flinks", "aria-label":"kuchlbauer.de"}, L.map(x => ext(x[2] || SITE + x[1], "", x[0]))),
-      h("div", {class:"soc"}, soc.map(s => ext(s[2], "", ic(s[0]), h("span", {class:"vh", style:"position:absolute;left:-9999px", text:s[1]})))),
+      h("div", {class:"soc"}, soc.map(s => h("a", {href:s[2], target:"_blank", rel:"noopener", "aria-label":s[1] + " (kuchlbauer)", title:s[1]}, ic(s[0])))),
       view.v === "home" ? h("div", {class:"fcredit"},
         h("p", {class:"fver"}, h("span", {text:t("ver") + " " + VERSION + " · " + STAND})),
         h("p", {class:"fby", text:t("by")})) : null
@@ -722,17 +870,27 @@ function next(){
 }
 
 function dateStr(id){ const d = (id === "master" ? (st.prog._masterDate) : st.prog[id] && st.prog[id].date); const x = d ? new Date(d) : new Date(); return x.toLocaleDateString(LANGS[li()][3], {day:"2-digit", month:"2-digit", year:"numeric"}); }
-function wrap(s, max){ const w = String(s).split(/\s+/), out = []; let c = ""; for(const x of w){ if((c + " " + x).trim().length > max){ out.push(c); c = x; } else c = (c + " " + x).trim(); } if(c) out.push(c); return out; }
+function wrap(s, max){
+  /* Breite in Einheiten: lateinisch 1, japanisch/chinesisch (Vollbreite) 2; japanischer Text hat keine Leerzeichen und wird zeichenweise umbrochen */
+  const cjk = /[\u3000-\u9fff\uff00-\uffef]/, cw = c => cjk.test(c) ? 2 : 1, out = []; let line = "", u = 0;
+  const push = () => { if(line.trim()) out.push(line.trim()); line = ""; u = 0; };
+  for(const tok of String(s).split(/\s+/)){
+    if(!tok) continue;
+    if(cjk.test(tok)){ if(line){ line += " "; u += 1; } for(const ch of tok){ const k = cw(ch); if(u + k > max) push(); line += ch; u += k; } }
+    else { const tw = [...tok].reduce((a, c) => a + cw(c), 0); if(u && u + 1 + tw > max) push(); line += (line ? " " : "") + tok; u = [...line].reduce((a, c) => a + cw(c), 0); }
+  }
+  push(); return out;
+}
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 function certSvg(id){
   const master = id === "master", L = master ? null : lessonById(id), W = 1200, H = 850;
   const nm = st.name || t("guest");
   let y = 330, body = "";
-  const line = (txt, size, fill, weight, anchor) => { body += '<text x="' + (anchor === "start" ? 360 : 780) + '" y="' + y + '" text-anchor="' + (anchor || "middle") + '" font-family="Georgia,serif" font-size="' + size + '" fill="' + fill + '"' + (weight ? ' font-weight="' + weight + '"' : "") + '>' + esc(txt) + '</text>'; y += size * 1.35; };
+  const line = (txt, size, fill, weight, anchor) => { body += '<text x="' + (anchor === "start" ? 360 : 780) + '" y="' + y + '" text-anchor="' + (anchor || "middle") + '" font-family="Georgia,Yu Mincho,Hiragino Mincho ProN,Noto Serif JP,serif" font-size="' + size + '" fill="' + fill + '"' + (weight ? ' font-weight="' + weight + '"' : "") + '>' + esc(txt) + '</text>'; y += size * 1.35; };
   const nmBig = nm.length <= 22; wrap(nm, nmBig ? 22 : 30).forEach(s => line(s, nmBig ? 50 : 38, "#0b3b2e", 700)); y += nmBig ? 22 : 14;
   wrap(master ? t("didMaster") : t("didPass"), 52).forEach(s => line(s, 26, "#333"));
   if(master){ y += 8; LESSONS.forEach(l => line(l.t[li()], 19, "#0f4a3a", 600)); }
-  else { y += 10; wrap(L.t[li()], 30).forEach(s => line("„" + s + "“", 36, "#8a6500", 700)); y += 4; line(t("rightOf", {r:bestOf(id), n:NQ}), 24, "#333", 600); y += 12;
+  else { y += 10; { const tl = wrap(L.t[li()], 30), qo = st.lang === "ja" ? String.fromCharCode(0x300C) : String.fromCharCode(0x201E), qc = st.lang === "ja" ? String.fromCharCode(0x300D) : String.fromCharCode(0x201C); tl.forEach((s, k) => line((k === 0 ? qo : "") + s + (k === tl.length - 1 ? qc : ""), 36, "#8a6500", 700)); } y += 4; line(t("rightOf", {r:bestOf(id), n:NQ}), 24, "#333", 600); y += 12;
     L.q.forEach(q => { const a = q[li()]; wrap(t("knew") + " " + a[1], 62).forEach((s, i) => line(s, 20, "#222", i ? 400 : 600)); y += 4; }); }
   const stN = master ? 3 : bestOf(id);
   const starPts = (cx, cy, R, r) => { let p = []; for(let k = 0; k < 10; k++){ const a = -Math.PI / 2 + k * Math.PI / 5, rr = k % 2 ? r : R; p.push((cx + Math.cos(a) * rr).toFixed(1) + "," + (cy + Math.sin(a) * rr).toFixed(1)); } return p.join(" "); };
@@ -743,7 +901,7 @@ function certSvg(id){
   const wreath = (() => { let o = ""; for(const s of [-1, 1]){ for(let k = 0; k < 11; k++){ const a = (118 + k * 12.5) * Math.PI / 180, R = 160, px = 225 + s * Math.cos(a) * R * -1 * -1, py = 392 + Math.sin(a) * R; const x = 225 + s * Math.cos(a) * R, y = 392 + Math.sin(a) * R, rot = (Math.atan2(Math.cos(a) * s, -Math.sin(a)) * 180 / Math.PI); o += '<ellipse cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" rx="12" ry="5.500" transform="rotate(' + (((a * 180 / Math.PI) + 90) * (s === 1 ? 1 : -1) + (s === 1 ? 0 : 180)).toFixed(1) + ' ' + x.toFixed(1) + ' ' + y.toFixed(1) + ')" fill="' + (k % 2 ? "#1b7a5f" : "#0f4a3a") + '" stroke="#d4a40a" stroke-width="1"/>'; } } return o; })();
   const bottle = bottleInner("c").replace(/<rect class="lid"[^>]*\/>/g, "").replace(/<path class="mo"[^>]*\/>/g, "");
   const corner = (x, y, sx, sy) => '<g transform="translate(' + x + ' ' + y + ') scale(' + sx + ' ' + sy + ')" fill="none" stroke="#d4a40a" stroke-linecap="round"><path d="M0 96 C0 52 8 22 38 11 C60 3 76 16 68 31 C62 41 47 37 50 28" stroke-width="3.500"/><path d="M12 12 C42 42 72 54 124 52 C148 51 158 40 150 31 C145 26 136 30 140 37" stroke-width="3"/><path d="M0 64 C24 66 36 80 36 106 C36 120 26 124 22 118" stroke-width="2"/><path d="M52 62 C70 76 90 80 108 72" stroke-width="1.800"/><path d="M30 44 q14 -18 30 -5 q-12 15 -30 5z" fill="#d4a40a" stroke="none"/><path d="M82 56 q18 -10 30 4 q-16 10 -30 -4z" fill="#d4a40a" stroke="none"/><path d="M8 78 q-10 14 2 28 q10 -14 -2 -28z" fill="#d4a40a" stroke="none"/><circle cx="6" cy="6" r="3.500" fill="#d4a40a" stroke="none"/><circle cx="126" cy="52" r="2.500" fill="#d4a40a" stroke="none"/></g>';
-  const sig = '<path d="M520 752 H1040" stroke="#0b3b2e" stroke-width="1.5"/><text x="780" y="782" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="22" fill="#0b3b2e">' + esc(t("sig")) + '  ·  ' + esc(dateStr(id)) + '</text>';
+  const sig = '<path d="M520 752 H1040" stroke="#0b3b2e" stroke-width="1.5"/><text x="780" y="774" text-anchor="middle" font-family="Georgia,Yu Mincho,Hiragino Mincho ProN,Noto Serif JP,serif" font-style="italic" font-size="22" fill="#0b3b2e">' + esc(t("sig")) + '  ·  ' + esc(dateStr(id)) + '</text>';
   return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '">'
    + '<defs><radialGradient id="pb" cx=".5" cy=".45" r=".8"><stop offset="0" stop-color="#fffaf0"/><stop offset=".7" stop-color="#f7ebc9"/><stop offset="1" stop-color="#e9d5a0"/></radialGradient>'
    + '<radialGradient id="md" cx=".5" cy=".4" r=".7"><stop offset="0" stop-color="#fff6d6"/><stop offset="1" stop-color="#f0cf6a"/></radialGradient>'
@@ -758,15 +916,15 @@ function certSvg(id){
    + corner(62, 62, 1, 1) + corner(W - 62, 62, -1, 1) + corner(62, H - 62, 1, -1) + corner(W - 62, H - 62, -1, -1)
    + '<rect x="56" y="56" width="' + (W - 112) + '" height="150" fill="url(#hd)"/><path d="M56 206 C330 176 700 230 1144 196" fill="none" stroke="url(#gl)" stroke-width="6"/>'
    + '<polygon points="' + starPts(150, 128, 14, 6) + '" fill="#f0c53a"/><polygon points="' + starPts(1050, 128, 14, 6) + '" fill="#f0c53a"/>'
-   + '<text x="600" y="124" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="60" fill="#f0c53a" letter-spacing="9">' + esc(master ? t("certMTitle") : t("certTitle")) + '</text>'
-   + '<text x="600" y="170" text-anchor="middle" font-family="Georgia,serif" font-size="26" fill="#fff" letter-spacing="4">' + esc(t("title")) + '</text>'
+   + '<text x="600" y="124" text-anchor="middle" font-family="Georgia,Yu Mincho,Hiragino Mincho ProN,Noto Serif JP,serif" font-weight="700" font-size="60" fill="#f0c53a" letter-spacing="9">' + esc(master ? t("certMTitle") : t("certTitle")) + '</text>'
+   + '<text x="600" y="170" text-anchor="middle" font-family="Georgia,Yu Mincho,Hiragino Mincho ProN,Noto Serif JP,serif" font-size="26" fill="#fff" letter-spacing="4">' + esc(t("title")) + '</text>'
    + '<g transform="translate(15 0)">' + wreath + '<circle cx="225" cy="392" r="146" fill="url(#md)" stroke="url(#gl)" stroke-width="7"/><circle cx="225" cy="392" r="134" fill="none" stroke="#d4a40a" stroke-width="1.5" stroke-dasharray="3 7"/>'
    + '<g transform="translate(165.500 258) scale(.85)">' + bottle + '</g>'
-   + '<path d="M196 735 L180 800 L214 786 L225 806 Z" fill="#b3261e"/><path d="M254 735 L270 800 L236 786 L225 806 Z" fill="#8f1d17"/>'
+   + '<path d="M196 735 L184 782 L214 772 L225 788 Z" fill="#b3261e"/><path d="M254 735 L266 782 L236 772 L225 788 Z" fill="#8f1d17"/>'
    + '<polygon points="' + seal + '" fill="url(#gl)" stroke="#7a5a05" stroke-width="2"/><circle cx="225" cy="700" r="42" fill="none" stroke="#fff6d6" stroke-width="2.5"/>'
    + [0, 1, 2].map(k => '<polygon points="' + starPts(195 + k * 30, 702, 13, 5.500) + '" fill="' + (k < stN ? "#fff6d6" : "none") + '" stroke="#7a5a05" stroke-width="1.500"/>').join("")
    + '</g>' + body + orn(780, 288, 230) + orn(780, 726, 230) + sig
-   + '<text x="600" y="822" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#444">' + esc(t("certFoot")) + '</text></svg>';
+   + '<text x="600" y="789" text-anchor="middle" font-family="Georgia,Yu Mincho,Hiragino Mincho ProN,Noto Serif JP,serif" font-size="13" fill="#444">' + esc(t("certFoot")) + '</text></svg>';
 }
 const certUrl = id => "data:image/svg+xml;charset=utf-8," + encodeURIComponent(certSvg(id));
 function certBlob(id){
@@ -810,15 +968,15 @@ function viewCerts(){
 async function doShare(text, blob){
   try{
     if(navigator.share){
-      if(blob && navigator.canShare){ const f = new File([blob], "kuchlbauer-urkunde.png", {type:"image/png"}); if(navigator.canShare({files:[f]})){ await navigator.share({files:[f], title:t("title"), text:text + " " + SHARE_URL}); return; } }
-      await navigator.share({title:t("title"), text, url:SHARE_URL}); return;
+      if(blob && navigator.canShare){ const f = new File([blob], "kuchlbauer-urkunde.png", {type:"image/png"}); if(navigator.canShare({files:[f]})){ await navigator.share({files:[f], title:t("title"), text:text + " " + shareUrl()}); return; } }
+      await navigator.share({title:t("title"), text, url:shareUrl()}); return;
     }
   }catch(e){ if(e && e.name === "AbortError") return; }
-  const d = $("#shdlg"); const full = text + " " + SHARE_URL;
+  const d = $("#shdlg"); const full = text + " " + shareUrl();
   d.replaceChildren(h("h3", {text:t("share")}), h("p", {class:"small mut", text:text}),
     ext("https://wa.me/?text=" + encodeURIComponent(full), "btn", ic("whatsapp"), t("shWa")),
     h("a", {class:"btn", href:"mailto:?subject=" + encodeURIComponent(t("title")) + "&body=" + encodeURIComponent(full)}, ic("envelope"), t("shMail")),
-    h("button", {type:"button", class:"btn ghost", onclick:async () => { try{ await navigator.clipboard.writeText(full); snack(t("copied")); }catch(e){ snack(SHARE_URL); } }}, ic("clipboard"), t("shCopy")),
+    h("button", {type:"button", class:"btn ghost", onclick:async () => { try{ await navigator.clipboard.writeText(full); snack(t("copied")); }catch(e){ snack(shareUrl()); } }}, ic("clipboard"), t("shCopy")),
     h("button", {type:"button", class:"btn ghost", onclick:() => d.close()}, ic("x-lg"), t("shClose")));
   if(d.showModal) d.showModal(); else d.setAttribute("open", "");
 }
@@ -835,7 +993,7 @@ function render(){
 addEventListener("beforeinstallprompt", e => { e.preventDefault(); dip = e; if(view.v === "home") render(); });
 addEventListener("appinstalled", () => { dip = null; render(); });
 
-setFig(); render();
+setFig(); syncUrl(); render();
 /* Start: Flaschl hüpft herein, begrüßt und gibt gelegentlich Sprüche (nur auf der Startseite, nie scrollend) */
 if(st.fig){
   fh.classList.add("in");

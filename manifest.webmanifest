@@ -1,7 +1,7 @@
 {
   "name": "Das Kuchlbauer-Quiz mit Flaschl",
   "short_name": "Kuchlbauer-Quiz",
-  "description": "Sieben Lektionen rund um die Brauerei zum Kuchlbauer in Abensberg mit Flaschl, der sprechenden Flasche, Quiz, Humor und Urkunden. Deutsch, English, Italiano, Bairisch. Läuft auch offline.",
+  "description": "Sieben Lektionen rund um die Brauerei zum Kuchlbauer in Abensberg mit Flaschl, der sprechenden Flasche, Quiz, Humor und Urkunden. Deutsch, English, Italiano, Bairisch, 日本語. Läuft auch offline.",
   "id": "/kuchlbauer/",
   "start_url": "./",
   "scope": "./",
