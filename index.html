@@ -24,7 +24,6 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-+
 
 <style>
 :root{--g1:#0b3b2e;--g2:#0f4a3a;--gold:#d4a40a;--gold2:#f0c53a;--cu1:#2b160b;--cu2:#6b3a1c;--cu3:#a8642a;--red:#b3261e;--ok:#17703c;--txt:#fff;--mut:#e9dcc4;--r:16px;--serif:Georgia,"Times New Roman",Times,serif;--sans:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
@@ -138,7 +137,7 @@ body.fig main,body.fig .ftr{padding-bottom:130px}
 
 <script>
 "use strict";
-const VERSION = "1.4.2", STAND = "27.10.2026";
+const VERSION = "1.4.3", STAND = "27.10.2026";
 const SHARE_URL = "https://nosz.github.io/kuchlbauer/";
 const SITE = "https://kuchlbauer.de/";
 const LANGS = [["de","DE","Deutsch","de-DE","de"],["en","EN","English","en-GB","en"],["it","IT","Italiano","it-IT","it"],["by","BAY","Bairisch","de-DE","bar"],["ja","JA","日本語","ja-JP","ja"]];
@@ -216,7 +215,7 @@ const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* ---------- Texte: [de, en, it, bairisch] ---------- */
 const S = {
- brand:Array(4).fill("Kuchlbauer Quiz by Anja"),
+ brand:["Kuchlbauer Quiz von Anja","Kuchlbauer Quiz by Anja","Quiz Kuchlbauer di Anja","Kuchlbauer Quiz vo da Anja"],
  title:["Das Kuchlbauer-Quiz","The Kuchlbauer Quiz","Il Quiz Kuchlbauer","Des Kuchlbauer-Quiz"],
  sub:["Der Weissbier-Spezialist aus Abensberg: sieben Lektionen, eine sprechende Flasche und null Kater.","The wheat beer specialist from Abensberg: seven lessons, one talking bottle and zero hangover.","Lo specialista della birra di frumento di Abensberg: sette lezioni, una bottiglia parlante e zero postumi.","Da Weissbier-Spezialist aus Abensberg: sieben Lektionen, a redade Flaschn und koa Brummschädl."],
  jokesH:["Flaschl erzählt Witze","Flaschl tells jokes","Flaschl racconta barzellette","Da Flaschl dazählt Witz"],
@@ -283,7 +282,7 @@ const S = {
  shMail:["E-Mail","Email","E-mail","E-Mail"],
  update:["Neue Version bereit. Seite neu laden.","New version ready. Reload the page.","Nuova versione pronta. Ricarica la pagina.","Neie Version do. Seitn neu lodn."],
  ver:["Version","Version","Versione","Version"],
- by:Array(4).fill("Design by Anja"),
+ by:["Design von Anja","Design by Anja","Design di Anja","Design vo da Anja"],
  didPass:["hat die Lektion bestanden","has passed the lesson","ha superato la lezione","hot de Lektion bstandn"],
  didMaster:["hat alle sieben Lektionen bestanden und ist Weissbier-Meister","has passed all seven lessons and is a wheat beer master","ha superato tutte le sette lezioni ed è maestro della birra di frumento","hot alle sieben Lektionen bstandn und is Weissbier-Moasta"],
  certTitle:["URKUNDE","CERTIFICATE","ATTESTATO","URKUNDN"],
@@ -508,7 +507,7 @@ nextJoke();
 /* ---------- Japanisch (5. Sprache): wird nach den Texten in S, M, LESSONS und JOKES eingefuegt ---------- */
 const JA = {
  S:{
-  brand:"Kuchlbauer Quiz by Anja", title:"Kuchlbauer クイズ",
+  brand:"Kuchlbauer クイズ（制作：Anja）", title:"Kuchlbauer クイズ",
   sub:"アーベンスベルクのヴァイスビア専門ブルワリー：7つのレッスン、しゃべるボトル、二日酔いはゼロ。",
   share:"シェア", figOff:"Flaschlを隠す", figOn:"Flaschlを表示", home:"トップページへ",
   nameQ:"お名前は？ 入力すると修了証が特別になります。名前はこの端末にだけ保存されます。",
@@ -531,7 +530,7 @@ const JA = {
   shLesson:"Kuchlbauerクイズのレッスン「{l}」に合格：{n}問中{r}問正解。Flaschlもビールケースのように誇らしげです。",
   shMaster:"Kuchlbauerクイズの全レッスンをクリア：マイスター修了証をゲット！乾杯！",
   copied:"リンクをコピーしました", shClose:"閉じる", shCopy:"リンクをコピー", shWa:"WhatsApp", shMail:"メール",
-  update:"新しいバージョンがあります。ページを再読み込みしてください。", ver:"バージョン", by:"Design by Anja",
+  update:"新しいバージョンがあります。ページを再読み込みしてください。", ver:"バージョン", by:"デザイン：Anja",
   didPass:"は次のレッスンに合格しました", didMaster:"は7つのレッスンすべてに合格し、ヴァイスビア・マイスターになりました",
   certTitle:"修了証", certMTitle:"マイスター修了証", guest:"ヴァイスビア・ファン", knew:"正解：", sig:"署名：Flaschl",
   certFoot:"kuchlbauer.de の情報（2026年10月27日時点）",

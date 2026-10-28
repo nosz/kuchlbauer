@@ -1,6 +1,6 @@
 # Das Kuchlbauer-Quiz mit Flaschl
 
-**Version 1.4.2, Stand 27.10.2026.** Eigenständige Web-App (PWA) rund um die Brauerei zum Kuchlbauer in Abensberg (https://kuchlbauer.de/), gebaut nach dem Vorbild von DANCECHANCE (Referenz in `referenz/`, unverändert).
+**Version 1.4.3, Stand 27.10.2026.** Eigenständige Web-App (PWA) rund um die Brauerei zum Kuchlbauer in Abensberg (https://kuchlbauer.de/), gebaut nach dem Vorbild von DANCECHANCE (Referenz in `referenz/`, unverändert).
 
 ## Starten (lokal)
 Die App braucht einen kleinen Webserver (wegen Service Worker und PWA):
@@ -48,6 +48,7 @@ const s = await (await fetch('tests/kuchlbauer.test.js')).text(); const r = awai
 Nicht automatisch prüfbar: Service-Worker-Registrierung und Installation (in Chrome/Edge unter localhost nachprüfen).
 
 ## Änderungsprotokoll
+- 1.4.3 (28.10.2026): Fehler behoben: Ein verirrtes „+“ im Kopf der Seite (seit 1.2.2) erschien oben links auf der Seite und schob den Stil-Block in den Seitenkörper. Kopfzeile und Fußzeile folgen jetzt der Sprache (de „Kuchlbauer Quiz von Anja“ / „Design von Anja“, en „by“, it „di“, Bairisch „vo da“, ja „制作：Anja“ / „デザイン：Anja“); der Name Kuchlbauer bleibt unübersetzt.
 - 1.4.2 (28.10.2026): Social-Links (Instagram, Facebook, YouTube) mit eigenem Namen für Screenreader (`aria-label`) statt versteckten Textes. Geprüft: Sprache per Adresse mit echten Aufrufen (de, en, it, by, ja, Großbuchstaben, ungültig), echter Klick auf externe Links (öffnen in neuem Tab) und auf interne Knöpfe, Datei-Pfade für Doppelklick-Betrieb (keine absoluten Pfade, Service Worker nur über http).
 - 1.4.1 (28.10.2026): Urkunde: Fußzeile und Siegelbänder liegen jetzt innerhalb des Goldrahmens (vorher überdeckte die Fußzeile den Rahmen), Anführungszeichen um den Lektionstitel nur am Anfang und Ende (bei mehrzeiligen Titeln), japanisch mit 「」.
 - 1.4.0 (28.10.2026): Japanisch (JA, 日本語) als fünfte Sprache: alle Oberflächentexte, 7 Lektionen mit 21 Fragen, Flaschl-Sprüche, 32 Witze, Urkunde (Zeilenumbruch für japanischen Text, Schriftfolge mit Yu Mincho/Hiragino/Noto Serif JP), japanische Flagge (weiß mit rotem Kreis), `?lang=ja`. Übersetzung noch nicht von Muttersprachlern geprüft.
